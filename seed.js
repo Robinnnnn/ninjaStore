@@ -25,7 +25,6 @@ var User = Promise.promisifyAll(mongoose.model('User'));
 var Item = Promise.promisifyAll(mongoose.model('Item'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
 var Review = Promise.promisifyAll(mongoose.model('Review'));
-
 var seedUsers = function() {
 
     var users = [{
@@ -246,23 +245,22 @@ connectToDb.then(function() {
                     })
             })
     })
-    // .then(function(){
-    //     var review = {review:"Good"};
-    //     User.findOneAsync({})
-    //         .then(function(user){
-    //             review.userId = user._id;
-    //             return Item.findOneAsync({})
-    //         })
-    //         .then(function(item){
-    //             review.itemId = item._id;
-    //             return Review.createAsync(review);
-    //         })
+    .then(function(){
+            var review = {review:"Good items 123"};
+            return User.findOneAsync({})
+                .then(function(user){
+                    review.userId = user._id;
+                    return Item.findOneAsync({})
+                })
+                .then(function(item){
+                    review.itemId = item._id;
+                    return Review.createAsync(review);
+                })
 
-    // })
+        })
     .then(function(){
         console.log(chalk.green('Seed successful!'));
         process.kill(0);
-
     }).catch(function(err) {
         console.error(err);
         process.kill(1);
