@@ -7,8 +7,12 @@ var Item = new mongoose.Schema({
         type: String
     },
     description: {
-        short: { type: String },
-        long: { type: String }
+        short: {
+            type: String
+        },
+        long: {
+            type: String
+        }
     },
     price: {
         type: Number
@@ -18,19 +22,29 @@ var Item = new mongoose.Schema({
         min: 0
     },
     photo: {
-      type: String
+        type: String
     },
     categories: {
-      type: Array
+        type: Array
     },
     // input: reviews, likes, wish list, etc.
     // helpful for building recommendation engine down the line
     input: {
-      type: Array
+        type: Array
     },
     output: {
-      type: Array
+        type: Array
     }
 });
+
+Item.statics.getCategory = function(category) {
+    return this.find({
+        categories: {
+            $elemMatch: {
+                $in: [category]
+            }
+        }
+    })
+}
 
 mongoose.model('Item', Item);
