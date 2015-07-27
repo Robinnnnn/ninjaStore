@@ -2,7 +2,7 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 
-var schema = new mongoose.Schema({
+var User = new mongoose.Schema({
     email: {
         type: String
     },
@@ -23,6 +23,14 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
+    },
+    input: {
+      type: Array
+    },
+    // output: reviews, likes, wish list, etc.
+    // helpful for building recommendation engine down the line
+    ouput: {
+      type: Array
     }
 });
 
@@ -39,7 +47,7 @@ var encryptPassword = function (plainText, salt) {
     return hash.digest('hex');
 };
 
-schema.pre('save', function (next) {
+User.pre('save', function (next) {
 
     if (this.isModified('password')) {
         this.salt = this.constructor.generateSalt();
@@ -50,11 +58,11 @@ schema.pre('save', function (next) {
 
 });
 
-schema.statics.generateSalt = generateSalt;
-schema.statics.encryptPassword = encryptPassword;
+User.statics.generateSalt = generateSalt;
+User.statics.encryptPassword = encryptPassword;
 
-schema.method('correctPassword', function (candidatePassword) {
+User.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
-mongoose.model('User', schema);
+mongoose.model('User', User);
