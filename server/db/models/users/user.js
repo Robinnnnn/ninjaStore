@@ -29,6 +29,12 @@ var User = new mongoose.Schema({
     },
     reviews: {
       type: Array,
+      ref: 'Review',
+      default: []
+    },
+    orders: {
+      type: Array,
+      ref: 'Order',
       default: []
     },
     isAdmin: {

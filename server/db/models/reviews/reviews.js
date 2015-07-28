@@ -2,18 +2,23 @@
 var mongoose = require('mongoose');
 
 var Review = new mongoose.Schema({
-	itemId: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Item'
-	},
-	userId: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
-	},
-	review: {
-		type: String,
-		required: true
-	}
+    itemId: {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'Item'
+    },
+    userId: {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'User'
+    },
+    review: {
+    	type: String,
+    	required: true
+    },
+    rating: {
+      type: Number,
+      min: 0, max: 5
+    }
+
 });
 
 Review.path('review').validate(function(v) {
