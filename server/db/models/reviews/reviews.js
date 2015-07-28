@@ -21,6 +21,11 @@ var Review = new mongoose.Schema({
 
 });
 
+Review.virtual('created').get(function() {
+    if (this["_created"]) return this["_created"];
+    return this["_created"] = this._id.getTimestamp();
+})
+
 Review.path('review').validate(function(v) {
 	return v.length > 10;
 })
