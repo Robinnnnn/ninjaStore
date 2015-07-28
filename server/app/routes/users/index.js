@@ -19,41 +19,16 @@ router.param('id', function (req, res, next, id) {
 	.then(null, next);
 });
 
-// Unauthenticated Users
-// AUTH >>> NONE
-router.post('/', function (req, res, next) {
-	User.create(req.body)
-	.then(function (user) {
-		res.status(201).json(user);
-	})
-	.then(null, next);
-});
-
-// AUTH >>> NONE
+// Everyone
 router.get('/:id', function (req, res, next) {
 	res.status(200).json(req.requestedUser)
 });
 
-// Authenticated Users
+// All Users
 router.use(function(req, res, next) {
 	if (req.user) return next()
 	res.status(401).end()
 })
-
-// AUTH >>> ADMIN
-router.get('/',
-	function(req, res, next) {
-		if (req.user.isAdmin) return next()
-		res.status(401).end()
-	},
-	function (req, res, next) {
-		User.find({}).exec()
-		.then(function (users) {
-			res.json(users);
-		})
-		.then(null, next);
-	}
-);
 
 // Current User Or Admin
 router.use(function(req, res, next) {
@@ -61,35 +36,44 @@ router.use(function(req, res, next) {
 	res.status(401).end()
 })
 
-// AUTH >>> SESSION OR ADMIN
-router.put('/:id', function (req, res, next) {
-	_.extend(req.requestedUser, req.body);
-	req.requestedUser.save()
-	.then(function (user) {
-		res.json(user);
-	})
-	.then(null, next);
-});
+		router.put('/:id', function (req, res, next) {
+			_.extend(req.requestedUser, req.body);
+			req.requestedUser.save()
+			.then(function (user) {
+				res.json(user);
+			})
+			.then(null, next);
+		});
 
-// AUTH >>> SESSION OR ADMIN
-router.delete('/:id', function (req, res, next) {
-	req.requestedUser.remove()
-	.then(function () {
-		res.status(204).end();
-	})
-	.then(null, next);
-});
+		router.delete('/:id', function (req, res, next) {
+			req.requestedUser.remove()
+			.then(function () {
+				res.status(204).end();
+			})
+			.then(null, next);
+		});
 
+// AUTH >>> Admin
+router.use(function(req, res, next) {
+	if (req.user.isAdmin) return next()
+	res.status(401).end()
+})
 
+		router.get('/', function (req, res, next) {
+				User.find({}).exec()
+				.then(function (users) {
+					res.json(users);
+				})
+				.then(null, next);
+			}
+		);
 
-
-
-
-
-// router.use('/:id', Auth.isAuthenticated, function (req, res, next) {
-// 	if (req.requestedUser._id == req.user._id) next();
-// 	else Auth.isAdmin(req, res, next);
-// });
-
+		router.post('/', function (req, res, next) {
+			User.create(req.body)
+			.then(function (user) {
+				res.status(201).json(user);
+			})
+			.then(null, next);
+		});
 
 module.exports = router;

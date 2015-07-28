@@ -33,13 +33,7 @@ router.get('/',
   }
 );
 
-// AUTH >>> SESSION OR ADMIN
-router.get('/:id', function(req, res, next) {
-    res.json(req.order);
-  }
-)
-
-// AUTH >>> SESSION OR ADMIN
+// AUTH >>> Everyone
 router.post('/', function(req, res, next) {
     Order.create(req.body)
         .then(function(order) {
@@ -48,7 +42,13 @@ router.post('/', function(req, res, next) {
         .then(null, next)
 })
 
-// AUTH >>> SESSION OR ADMIN
+// AUTH >>> Current User or Admin
+router.get('/:id', function(req, res, next) {
+    res.json(req.order);
+  }
+)
+
+// AUTH >>> Current User or Admin
 router.put('/:id', function(req, res, next) {
     for (var key in req.body) {
         req.order[key] = req.body[key];
@@ -58,7 +58,7 @@ router.put('/:id', function(req, res, next) {
     })
 })
 
-// AUTH >>> SESSION OR ADMIN
+// AUTH >>> Current User or Admin
 router.delete('/:id', function(req, res, next) {
     req.order.remove()
         .then(function() {
@@ -67,12 +67,3 @@ router.delete('/:id', function(req, res, next) {
             });
         })
 })
-
-// // we could just use filter instead of unique routes
-// router.get('/category/:name', function(req, res, next) {
-//     Item.getCategory(req.params.name).exec()
-//         .then(function(items) {
-//             res.json(items)
-//         })
-//         .then(null, next)
-// })

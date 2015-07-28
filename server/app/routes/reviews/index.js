@@ -19,16 +19,21 @@ router.param('id', function (req, res, next, id) {
 	.then(null, next);
 });
 
-// AUTH >>> SESSION OR ADMIN
-router.post('/', function(req, res, next) {
-  Review.create(req.body)
-    .then(function(review) {
-      res.status(201).json(review)
-    })
-    .then(null, next)
+// AUTH >>> Everyone
+router.post('/',
+	function(req, res, next) {
+		if (req.user) return next()
+		res.status(401).end()
+	},
+	function(req, res, next) {
+	  Review.create(req.body)
+	    .then(function(review) {
+	      res.status(201).json(review)
+	    })
+	    .then(null, next)
 })
 
-// AUTH >>> SESSION OR ADMIN
+// AUTH >>> Current User or Admin
 router.put('/:id', function(req, res, next) {
   _.extend(req.requestedReview, req.body);
 	req.requestedReview.save()
@@ -38,7 +43,7 @@ router.put('/:id', function(req, res, next) {
 	.then(null, next);
 })
 
-// AUTH >>> SESSION OR ADMIN
+// AUTH >>> Current User or Admin
 router.delete('/:id', function(req, res, next) {
   req.requestedReview.remove()
 	.then(function () {
