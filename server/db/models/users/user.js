@@ -24,13 +24,15 @@ var User = new mongoose.Schema({
     google: {
         id: String
     },
-    input: {
-      type: Array
+    reviews: {
+      type: Array,
+      ref: 'Review',
+      default: []
     },
-    // output: reviews, likes, wish list, etc.
-    // helpful for building recommendation engine down the line
-    ouput: {
-      type: Array
+    orders: {
+      type: Array,
+      ref: 'Order',
+      default: []
     }
 });
 

@@ -27,13 +27,10 @@ var Item = new mongoose.Schema({
     categories: {
         type: Array
     },
-    // input: reviews, likes, wish list, etc.
-    // helpful for building recommendation engine down the line
-    input: {
-        type: Array
-    },
-    output: {
-        type: Array
+    reviews: {
+      type: Array,
+      ref: 'Review'
+      default: []
     }
 });
 
