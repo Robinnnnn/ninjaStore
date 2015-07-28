@@ -12,12 +12,14 @@ router.param('id', function (req, res, next, id) {
 		if (!review) throw HttpError(404);
 		else {
 			req.requestedReview = review;
-			next();
+			if (req.requestedRevew.userId == req.user._id || req.user.isAdmin) return next()
+			res.status(401).end()
 		}
 	})
 	.then(null, next);
 });
 
+// AUTH >>> SESSION OR ADMIN
 router.post('/', function(req, res, next) {
   Review.create(req.body)
     .then(function(review) {
@@ -26,6 +28,7 @@ router.post('/', function(req, res, next) {
     .then(null, next)
 })
 
+// AUTH >>> SESSION OR ADMIN
 router.put('/:id', function(req, res, next) {
   _.extend(req.requestedReview, req.body);
 	req.requestedReview.save()
@@ -35,6 +38,7 @@ router.put('/:id', function(req, res, next) {
 	.then(null, next);
 })
 
+// AUTH >>> SESSION OR ADMIN
 router.delete('/:id', function(req, res, next) {
   req.requestedReview.remove()
 	.then(function () {

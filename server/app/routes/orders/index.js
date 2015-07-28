@@ -6,30 +6,41 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 var Order = mongoose.model('Order')
 
-router.get('/', function(req, res, next) {
-    Order.find({}).exec()
-        .then(function(orders) {
-            res.json(orders)
-        })
-        .then(null, next);
-});
-
 router.param('id', function(req, res, next, id) {
     Order.findById(id).then(function(order) {
         if (order) {
             req.order = order;
-            next();
+            if (req.order.userId == req.user._id || req.user.isAdmin) return next()
+            res.status(401).end()
         } else {
             throw Error('order not found')
         }
     }).then(null, next)
 })
 
+// AUTH >>> ADMIN
+router.get('/',
+  function(req, res, next) {
+    if (req.user.isAdmin) return next()
+    res.status(401).end()
+  },
+  function(req, res, next) {
+    Order.find({}).exec()
+        .then(function(orders) {
+            res.json(orders)
+        })
+        .then(null, next);
+  }
+);
+
+// AUTH >>> SESSION OR ADMIN
 router.get('/:id', function(req, res, next) {
     res.json(req.order);
-})
+  }
+)
 
-router.post('/create', function(req, res, next) {
+// AUTH >>> SESSION OR ADMIN
+router.post('/', function(req, res, next) {
     Order.create(req.body)
         .then(function(order) {
             res.status(201).json(order)
@@ -37,7 +48,8 @@ router.post('/create', function(req, res, next) {
         .then(null, next)
 })
 
-router.put('/edit/:id', function(req, res, next) {
+// AUTH >>> SESSION OR ADMIN
+router.put('/:id', function(req, res, next) {
     for (var key in req.body) {
         req.order[key] = req.body[key];
     }
@@ -46,7 +58,8 @@ router.put('/edit/:id', function(req, res, next) {
     })
 })
 
-router.delete('/delete/:id', function(req, res, next) {
+// AUTH >>> SESSION OR ADMIN
+router.delete('/:id', function(req, res, next) {
     req.order.remove()
         .then(function() {
             res.status(204).send({

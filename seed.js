@@ -32,7 +32,8 @@ var seedUsers = function() {
         password: 'password'
     }, {
         email: 'obama@gmail.com',
-        password: 'potus'
+        password: 'potus',
+        isAdmin: true
     }];
 
     return User.createAsync(users);

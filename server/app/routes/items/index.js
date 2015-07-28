@@ -29,6 +29,13 @@ router.get('/:id', function(req, res, next) {
     res.json(req.item);
 })
 
+// ADMIN USERS
+router.use(function(req, res, next) {
+	if (req.user.isAdmin) return next()
+	res.status(401).end()
+})
+
+// AUTH >>> ADMIN
 router.post('/create', function(req, res, next) {
     Item.create(req.body)
         .then(function(item) {
@@ -37,6 +44,7 @@ router.post('/create', function(req, res, next) {
         .then(null, next)
 })
 
+// AUTH >>> ADMIN
 router.put('/edit/:id', function(req, res, next) {
     for (var key in req.body) {
         req.item[key] = req.body[key];
@@ -46,6 +54,7 @@ router.put('/edit/:id', function(req, res, next) {
     })
 })
 
+// AUTH >>> ADMIN
 router.delete('/delete/:id', function(req, res, next) {
     req.item.remove()
         .then(function() {
