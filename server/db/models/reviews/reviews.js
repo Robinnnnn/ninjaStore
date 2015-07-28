@@ -21,8 +21,8 @@ var Review = new mongoose.Schema({
 
 });
 
-Review.path('review').validate(function(v){
+Review.path('review').validate(function(v) {
 	return v.length > 10;
-}, 'Review not long enough')
+})
 
 mongoose.model('Review', Review);
