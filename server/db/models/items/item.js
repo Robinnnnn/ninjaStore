@@ -35,6 +35,14 @@ var Item = new mongoose.Schema({
     }]
 });
 
+Item.statics.search = function(query) {
+    var queries = query.split(" ").join('|');
+    var queryMatch = new RegExp(queries, 'ig');
+    return this.find({
+        name: queryMatch
+    })
+}
+
 Item.statics.getCategory = function(category) {
     return this.find({
         categories: {
