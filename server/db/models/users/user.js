@@ -31,8 +31,6 @@ var User = new mongoose.Schema({
       type: Array,
       default: []
     },
-    // output: reviews, likes, wish list, etc.
-    // helpful for building recommendation engine down the line
     isAdmin: {
       type: Boolean,
       default: false
