@@ -53,7 +53,7 @@ router.delete('/delete/:id', function(req, res, next) {
         })
 })
 
-router
+// router
 
 // // we could just use filter instead of unique routes
 // router.get('/category/:name', function(req, res, next) {

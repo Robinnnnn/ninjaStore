@@ -29,14 +29,12 @@ var User = new mongoose.Schema({
     },
     reviews: {
       type: Array,
-<<<<<<< HEAD
       ref: 'Review',
       default: []
     },
     orders: {
       type: Array,
       ref: 'Order',
-=======
       default: []
     },
     isAdmin: {
@@ -52,7 +50,6 @@ var User = new mongoose.Schema({
     },
     addresses: {
       type: Array,
->>>>>>> master
       default: []
     }
 });

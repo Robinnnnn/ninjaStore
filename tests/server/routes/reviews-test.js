@@ -2,6 +2,9 @@
 var mongoose = require('mongoose');
 require('../../../server/db/models');
 var Review = mongoose.model('Review');
+var Item = mongoose.model('Item');
+var User = mongoose.model('User');
+
 
 var expect = require('chai').expect;
 
@@ -23,9 +26,26 @@ describe('Reviews Route', function () {
 	});
 
   var guestAgent;
+  var user;
+  var item;
 
-	beforeEach('Create guest agent', function () {
+	beforeEach('Create guest agent', function (done) {
 		guestAgent = supertest.agent(app);
+      User.create({
+         name: 'Pat Will',
+         email: 'pat@will.ninja',
+         password: 'ninja'
+       }).then(function(newUser){
+         user = newUser;
+        //  console.log(Item.findOne({}));
+         return Item.create({
+           name: "Some sweet throwing stars",
+           price: 14.99
+         })
+       }).then(function(newItem){
+         item = newItem;
+         done();
+       }, done)
 	});
 
   describe('/ POST', function() {
@@ -33,17 +53,82 @@ describe('Reviews Route', function () {
     it('create a new review', function(done) {
       guestAgent.post('/api/reviews')
     	  .send({
-          name: 'Pat Will',
-    			email: 'pat@will.ninja',
-    			password: 'ninja'
+          userId: user._id,
+    			itemId: item._id,
+    			review: 'This was awesome, but it broke!',
+          rating: 1
     		})
     		.expect(201)
     		.end(function (err, res) {
     			if (err) return done(err);
-    			expect(res.body.name).to.equal('Pat Will');
-    			createdUser = res.body;
+          expect(res.body._id).to.be.ok;
+    			expect(res.body.userId).to.equal(user._id.toString());
+          expect(res.body.itemId).to.equal(item._id.toString());
     			done();
     		});
+    })
+  })
+
+  describe('/:id PUT', function() {
+
+    var review;
+
+  	beforeEach('Create test review', function (done) {
+      Review.create({
+         review:"blah blah blah blah",
+         itemId: item._id,
+         userId: user._id,
+         rating: 2
+      })
+      .then(function(newReview){
+        review = newReview;
+        done();
+      }, done)
+    })
+
+    it('edits review with specified id', function(done) {
+      guestAgent.put('/api/reviews/' + review._id)
+      .send({
+        rating: 5
+      })
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err)
+        expect(res.body._id).to.equal(review._id.toString())
+        expect(res.body.rating).to.not.equal(review.rating)
+        done()
+      })
+    })
+  })
+
+  describe('/:id DELETE', function() {
+
+    var review;
+
+  	beforeEach('Create test review', function (done) {
+      Review.create({
+         review:"blah blah blah blah",
+         itemId: item._id,
+         userId: user._id,
+         rating: 2
+      })
+      .then(function(newReview){
+        review = newReview;
+        done();
+      }, done)
+    })
+
+    it('delete review with specified id', function(done) {
+      guestAgent.delete('/api/reviews/' + review._id)
+      .expect(204)
+      .end(function(err, res) {
+        if (err) return done(err)
+        Review.findById(review._id, function(err, review) {
+          if (err) return done(err)
+          expect(review).to.be.null
+          done()
+        })
+      })
     })
   })
 
@@ -67,7 +152,7 @@ describe('Reviews Route', function () {
   //       })
   //   })
   // })
-
+/*
   describe('/:id GET', function() {
 
     var user
@@ -156,4 +241,5 @@ describe('Reviews Route', function () {
     })
   })
 
+*/
 });

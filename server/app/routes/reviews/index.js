@@ -9,7 +9,7 @@ var Review = mongoose.model('Review')
 router.param('id', function (req, res, next, id) {
 	Review.findById(id).exec()
 	.then(function (review) {
-		if (!user) throw HttpError(404);
+		if (!review) throw HttpError(404);
 		else {
 			req.requestedReview = review;
 			next();

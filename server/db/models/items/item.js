@@ -29,7 +29,7 @@ var Item = new mongoose.Schema({
     },
     reviews: {
       type: Array,
-      ref: 'Review'
+      ref: 'Review',
       default: []
     }
 });

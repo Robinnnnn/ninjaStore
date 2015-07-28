@@ -11,8 +11,8 @@ var Review = new mongoose.Schema({
       ref:'User'
     },
     review: {
-    	type:String,
-    	required:true
+    	type: String,
+    	required: true
     },
     rating: {
       type: Number,
@@ -22,7 +22,7 @@ var Review = new mongoose.Schema({
 });
 
 Review.path('review').validate(function(v){
-	return v.length>10;
-})
+	return v.length > 10;
+}, 'Review not long enough')
 
 mongoose.model('Review', Review);
