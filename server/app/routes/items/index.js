@@ -49,8 +49,18 @@ router.put('/edit/:id', function(req, res, next) {
 router.delete('/delete/:id', function(req, res, next) {
     req.item.remove()
         .then(function() {
-            res.status(204).send({message:'success!'});
+            res.status(204).send({
+                message: 'success!'
+            });
         })
+})
+
+router.get('/search/:query', function(req, res, next) {
+    Item.search(req.params.query).exec()
+        .then(function(items) {
+            res.json(items)
+        })
+        .then(null, next)
 })
 
 // router
