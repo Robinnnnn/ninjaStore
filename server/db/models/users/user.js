@@ -27,16 +27,12 @@ var User = new mongoose.Schema({
     google: {
         id: String
     },
-    input: {
+    reviews: {
       type: Array,
       default: []
     },
     // output: reviews, likes, wish list, etc.
     // helpful for building recommendation engine down the line
-    ouput: {
-      type: Array,
-      default: []
-    },
     isAdmin: {
       type: Boolean,
       default: false
