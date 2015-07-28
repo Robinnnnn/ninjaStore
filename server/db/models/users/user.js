@@ -3,6 +3,9 @@ var crypto = require('crypto');
 var mongoose = require('mongoose');
 
 var User = new mongoose.Schema({
+    name: {
+      type: String
+    },
     email: {
         type: String
     },
@@ -25,12 +28,29 @@ var User = new mongoose.Schema({
         id: String
     },
     input: {
-      type: Array
+      type: Array,
+      default: []
     },
     // output: reviews, likes, wish list, etc.
     // helpful for building recommendation engine down the line
     ouput: {
-      type: Array
+      type: Array,
+      default: []
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false
+    },
+    phone: {
+      type: Number
+    },
+    paymentInformation: {
+      type: Array,
+      default: []
+    },
+    addresses: {
+      type: Array,
+      default: []
     }
 });
 
