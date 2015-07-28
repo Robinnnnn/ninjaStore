@@ -29,12 +29,10 @@ var Item = new mongoose.Schema({
     },
     // input: reviews, likes, wish list, etc.
     // helpful for building recommendation engine down the line
-    input: {
-        type: Array
-    },
-    output: {
-        type: Array
-    }
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review'
+    }]
 });
 
 Item.statics.getCategory = function(category) {
