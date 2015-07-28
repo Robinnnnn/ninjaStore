@@ -32,7 +32,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/create', function(req, res, next) {
     Item.create(req.body)
         .then(function(item) {
-            res.json(item)
+            res.status(201).json(item)
         })
         .then(null, next)
 })
@@ -49,7 +49,7 @@ router.put('/edit/:id', function(req, res, next) {
 router.delete('/delete/:id', function(req, res, next) {
     req.item.remove()
         .then(function() {
-            res.status(204).send();
+            res.status(204).send({message:'success!'});
         })
 })
 
