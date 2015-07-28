@@ -14,17 +14,15 @@ router.get('/', function(req, res, next) {
         .then(null, next);
 });
 
-router.param('id', function(req, res, next) {
-    Item.findById(req.params.id).then(function(item) {
+router.param('id', function(req, res, next, id) {
+    Item.findById(id).then(function(item) {
         if (item) {
             req.item = item;
             next();
         } else {
             throw Error('item not found')
         }
-    }).catch(function(e) {
-        res.status(404).send(e);
-    })
+    }).then(null, next)
 })
 
 router.get('/:id', function(req, res, next) {
@@ -34,7 +32,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/create', function(req, res, next) {
     Item.create(req.body)
         .then(function(item) {
-            req.json(item)
+            res.json(item)
         })
         .then(null, next)
 })
@@ -54,6 +52,8 @@ router.delete('/delete/:id', function(req, res, next) {
             res.status(204).send();
         })
 })
+
+router
 
 // // we could just use filter instead of unique routes
 // router.get('/category/:name', function(req, res, next) {
