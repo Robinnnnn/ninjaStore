@@ -3,6 +3,9 @@ var crypto = require('crypto');
 var mongoose = require('mongoose');
 
 var User = new mongoose.Schema({
+    name: {
+      type: String
+    },
     email: {
         type: String
     },
@@ -26,12 +29,30 @@ var User = new mongoose.Schema({
     },
     reviews: {
       type: Array,
+<<<<<<< HEAD
       ref: 'Review',
       default: []
     },
     orders: {
       type: Array,
       ref: 'Order',
+=======
+      default: []
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false
+    },
+    phone: {
+      type: Number
+    },
+    paymentInformation: {
+      type: Array,
+      default: []
+    },
+    addresses: {
+      type: Array,
+>>>>>>> master
       default: []
     }
 });
