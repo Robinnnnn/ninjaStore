@@ -13,3 +13,12 @@ router.get('/', function(req, res, next) {
         })
         .then(null, next)
 });
+
+// we could just use filter instead of unique routes
+router.get('/category/:name', function(req, res, next) {
+    Item.getCategory(req.params.name).exec()
+        .then(function(items) {
+            res.json(items)
+        })
+        .then(null, next)
+})
