@@ -14,6 +14,14 @@ router.get('/', function(req, res, next) {
         .then(null, next);
 });
 
+router.get('/search/:query', function(req, res, next) {
+    Item.search(req.params.query).exec()
+        .then(function(items) {
+            res.json(items)
+        })
+        .then(null, next)
+})
+
 router.param('id', function(req, res, next, id) {
     Item.findById(id).then(function(item) {
         if (item) {
@@ -62,14 +70,6 @@ router.delete('/delete/:id', function(req, res, next) {
                 message: 'success!'
             });
         })
-})
-
-router.get('/search/:query', function(req, res, next) {
-    Item.search(req.params.query).exec()
-        .then(function(items) {
-            res.json(items)
-        })
-        .then(null, next)
 })
 
 // router
