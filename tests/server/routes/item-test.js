@@ -92,6 +92,19 @@ describe('Items Route', function() {
 					.expect(401)
 					.end(done);
 			});
+			it('should correctly return searched items', function(done) {
+				var query = "dragon";
+				userAgent.get('/api/items/search/'+query)
+					.expect(200)
+					.end(function(err,response){
+						if(err) return done(err);
+						expect(response.body).to.be.an('array');
+						expect(response.body[0].name).to.be.equal('Flying Dragon');
+						done();
+					});
+			});
+
+
 		})
 
 		describe('admin testing', function() {
