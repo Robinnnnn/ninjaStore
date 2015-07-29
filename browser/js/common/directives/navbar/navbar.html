@@ -30,15 +30,16 @@
             </li> -->
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
             <button ng-show="!user" ui-sref="#" class="btn login-button">Sign Up</button>
-            <button ng-show="!user" ui-sref="cart" class="btn login-button">
+            <button ui-sref="cart" class="btn login-button">
               <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             </button>
             <button
               ng-show='user'
               class='btn login-button'
-              ng-click='logout()'>
-              <span>Welcome, {{ user.email }}! </span>Logout
+              ng-click='logout()'>Logout
             </button>
         </div>
     </div>
 </nav>
+
+<!-- <span>Welcome, {{ user.email }}! </span> -->
