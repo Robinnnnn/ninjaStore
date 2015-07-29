@@ -12,6 +12,10 @@ var User = new mongoose.Schema({
     password: {
         type: String
     },
+    passwordReset: {
+      type: Boolean,
+      default: false
+    },
     salt: {
         type: String
     },
