@@ -39,6 +39,7 @@ router.get('/',
 router.post('/', function(req, res, next) {
     Order.create(req.body)
         .then(function(order) {
+            if(req.user) req.user.orders.push(order);
             res.status(201).json(order)
         })
         .then(null, next)

@@ -49,7 +49,7 @@ var seedItems = function() {
         },
         price: 9.99,
         quantity: 20,
-        photo: "http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg"],
         categories: ["Throwing Stars"]
     }, {
         name: "Triple Action Bat Throwing Stars Set of 3",
@@ -59,7 +59,7 @@ var seedItems = function() {
         },
         price: 15.99,
         quantity: 30,
-        photo: "http://allninjagear.com/content/images/thumbs/0000149_triple-action-bat-throwing-stars-set-of-3_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000149_triple-action-bat-throwing-stars-set-of-3_360.jpeg"],
         categories: ["Throwing Stars"]
     }, {
         name: "Ninja's Deadliest Royal Flush Throwing Cards - Spades",
@@ -69,7 +69,7 @@ var seedItems = function() {
         },
         price: 18.99,
         quantity: 50,
-        photo: "http://allninjagear.com/content/images/thumbs/0000253_ninjas-deadliest-royal-flush-throwing-cards-spades_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000253_ninjas-deadliest-royal-flush-throwing-cards-spades_360.jpeg"],
         categories: ["Throwing Stars"]
     }, {
         name: "Dragon's Pearl Wood Nunchucks",
@@ -79,7 +79,7 @@ var seedItems = function() {
         },
         price: 15.99,
         quantity: 40,
-        photo: "http://allninjagear.com/content/images/thumbs/0002826_dragons-pearl-wood-nunchucks_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0002826_dragons-pearl-wood-nunchucks_360.jpeg"],
         categories: ["Nunchucks"]
     }, {
         name: "G-Force Swirl Chain Chucks Set",
@@ -89,7 +89,7 @@ var seedItems = function() {
         },
         price: 99.99,
         quantity: 10,
-        photo: "http://allninjagear.com/content/images/thumbs/0002805_g-force-swirl-chain-chucks-set_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0002805_g-force-swirl-chain-chucks-set_360.jpeg"],
         categories: ["Nunchucks"]
     }, {
         name: "Red Guardian Ninja Sword",
@@ -99,7 +99,7 @@ var seedItems = function() {
         },
         price: 22.99,
         quantity: 15,
-        photo: "http://allninjagear.com/content/images/thumbs/0001591_red-guardian-ninja-sword_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0001591_red-guardian-ninja-sword_360.jpeg"],
         categories: ["Swords"]
     }, {
         name: "Black Dragon Naginata",
@@ -109,7 +109,7 @@ var seedItems = function() {
         },
         price: 79.99,
         quantity: 5,
-        photo: "http://allninjagear.com/content/images/thumbs/0000136_black-dragon-naginata_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000136_black-dragon-naginata_360.jpeg"],
         categories: ["Swords"]
     }, {
         name: ".40 Caliber Broadhead Glow in the Dark Darts",
@@ -119,7 +119,7 @@ var seedItems = function() {
         },
         price: 5.49,
         quantity: 7,
-        photo: "http://allninjagear.com/content/images/thumbs/0000287_40-caliber-broadhead-glow-in-the-dark-darts_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000287_40-caliber-broadhead-glow-in-the-dark-darts_360.jpeg"],
         categories: ["Blowguns"]
     }, {
         name: ".40 Caliber Spike Darts",
@@ -129,7 +129,7 @@ var seedItems = function() {
         },
         price: 4.99,
         quantity: 15,
-        photo: "http://allninjagear.com/content/images/thumbs/0000294_40-caliber-spike-darts_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000294_40-caliber-spike-darts_360.jpeg"],
         categories: ["Blowguns"]
     }, {
         name: '12" Mini Ninja Stun Dart Blowgun',
@@ -139,7 +139,7 @@ var seedItems = function() {
         },
         price: 7.99,
         quantity: 22,
-        photo: "http://allninjagear.com/content/images/thumbs/0000034_12-mini-ninja-stun-dart-blowgun_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000034_12-mini-ninja-stun-dart-blowgun_360.jpeg"],
         categories: ["Blowguns"]
     }, {
         name: 'Foam Blowgun Target',
@@ -149,7 +149,7 @@ var seedItems = function() {
         },
         price: 12.99,
         quantity: 12,
-        photo: "http://allninjagear.com/content/images/thumbs/0000311_foam-blowgun-target_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000311_foam-blowgun-target_360.jpeg"],
         categories: ["Blowguns"]
     }, {
         name: 'Muzzle Guard with Peep Sight Glow in the Dark',
@@ -159,7 +159,7 @@ var seedItems = function() {
         },
         price: 0.99,
         quantity: 100,
-        photo: "http://allninjagear.com/content/images/thumbs/0000313_muzzle-guard-with-peep-sight-glow-in-the-dark_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000313_muzzle-guard-with-peep-sight-glow-in-the-dark_360.jpeg"],
         categories: ["Blowguns"]
     }, {
         name: 'Exploding Cap Darts',
@@ -169,7 +169,7 @@ var seedItems = function() {
         },
         price: 5.99,
         quantity: 27,
-        photo: "http://allninjagear.com/content/images/thumbs/0000298_exploding-cap-darts_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000298_exploding-cap-darts_360.jpeg"],
         categories: ["Blowguns"]
     }, {
         name: 'Black Blow-Dart Ninja Sword',
@@ -179,7 +179,7 @@ var seedItems = function() {
         },
         price: 37.99,
         quantity: 48,
-        photo: "http://allninjagear.com/content/images/thumbs/0000175_black-blow-dart-ninja-sword_360.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000175_black-blow-dart-ninja-sword_360.jpeg"],
         categories: ["Blowguns", "Swords"]
     }, {
         name: "Black Ronin Triple Bolt Throwing Knives",
@@ -189,7 +189,7 @@ var seedItems = function() {
         },
         price: 15.99,
         quantity: 50,
-        photo: "http://allninjagear.com/content/images/thumbs/0000336_black-ronin-triple-bolt-throwing-knives.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0000336_black-ronin-triple-bolt-throwing-knives.jpeg"],
         categories: ["Throwing Knives"]
     }, {
         name: "Bat Gear Gift Set",
@@ -199,7 +199,7 @@ var seedItems = function() {
         },
         price: 59.99,
         quantity: 15,
-        photo: "http://allninjagear.com/content/images/thumbs/0002884_bat-gear-gift-set.jpeg",
+        photos: ["http://allninjagear.com/content/images/thumbs/0002884_bat-gear-gift-set.jpeg"],
         categories: ["Throwing Knives", "Throwing Stars", "Accessories"]
     }];
 

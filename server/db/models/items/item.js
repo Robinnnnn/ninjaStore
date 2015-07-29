@@ -21,8 +21,8 @@ var Item = new mongoose.Schema({
         type: Number,
         min: 0
     },
-    photo: {
-        type: String
+    photos: {
+        type: Array
     },
     categories: {
         type: Array
