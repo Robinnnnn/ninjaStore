@@ -35,6 +35,17 @@ router.get('/',
     }
 );
 
+// middleware for getting current order information
+router.use('/current', function(req, res, next) {
+  if (req.cart) return next()
+  res.status(204).end()
+})
+
+// get current order information
+router.get('/current', function(req, res, next) {
+  res.status(200).json(req.cart)
+})
+
 // AUTH >>> Everyone
 router.post('/', function(req, res, next) {
     Order.create(req.body)
@@ -47,7 +58,7 @@ router.post('/', function(req, res, next) {
 
 // AUTH >>> Current User or Admin
 router.get('/:id', function(req, res, next) {
-    res.json(req.order);
+    res.status(200).json(req.order);
 })
 
 // AUTH >>> Current User or Admin
@@ -57,7 +68,7 @@ router.put('/:id', function(req, res, next) {
         req.order[key] = req.body[key];
     }
     req.order.save().then(function(order) {
-        res.json(order);
+        res.status(200).json(order);
     })
 })
 

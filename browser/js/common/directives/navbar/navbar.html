@@ -31,11 +31,11 @@
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
             <button ng-show="!user" ui-sref="login" class="btn login-button">Sign Up</button>
             <button ng-show="!user" ui-sref="login" class="btn login-button">Logout</button>
-            <button ng-show="!user" ui-sref="login" class="btn login-button">
+            <button ng-show="!user" ui-sref="cart" class="btn login-button">
               <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             </button>
         </div>
-        
+
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>
