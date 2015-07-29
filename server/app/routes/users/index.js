@@ -19,19 +19,35 @@ router.param('id', function (req, res, next, id) {
 	.then(null, next);
 });
 
+router.get('/', 
+	function(req, res, next) {
+		if (req.user.isAdmin) return next()
+		res.status(401).end()
+	}, 
+	function (req, res, next) {
+		User.find({}).exec()
+		.then(function (users) {
+			res.json(users);
+		})
+		.then(null, next);
+	}
+);
+
 // Everyone
 router.get('/:id', function (req, res, next) {
 	res.status(200).json(req.requestedUser)
 });
 
-// All Users
-router.use(function(req, res, next) {
-	if (req.user) return next()
-	res.status(401).end()
-})
+router.post('/', function (req, res, next) {
+	User.create(req.body)
+	.then(function (user) {
+		res.status(201).json(user);
+	})
+	.then(null, next);
+});
 
 // Current User Or Admin
-router.use(function(req, res, next) {
+router.use('/:id', function(req, res, next) {
 	if (req.user._id == req.requestedUser._id || req.user.isAdmin) return next()
 	res.status(401).end()
 })
@@ -53,27 +69,6 @@ router.use(function(req, res, next) {
 			.then(null, next);
 		});
 
-// AUTH >>> Admin
-router.use(function(req, res, next) {
-	if (req.user.isAdmin) return next()
-	res.status(401).end()
-})
 
-		router.get('/', function (req, res, next) {
-				User.find({}).exec()
-				.then(function (users) {
-					res.json(users);
-				})
-				.then(null, next);
-			}
-		);
-
-		router.post('/', function (req, res, next) {
-			User.create(req.body)
-			.then(function (user) {
-				res.status(201).json(user);
-			})
-			.then(null, next);
-		});
 
 module.exports = router;
