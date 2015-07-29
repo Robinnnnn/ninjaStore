@@ -4,7 +4,7 @@ module.exports = router;
 var mongoose = require('mongoose');
 
 var _ = require('lodash');
-var Review = mongoose.model('Review')
+var Review = mongoose.model('Review');
 
 router.param('id', function (req, res, next, id) {
 	Review.findById(id).exec()
@@ -12,26 +12,26 @@ router.param('id', function (req, res, next, id) {
 		if (!review) throw HttpError(404);
 		else {
 			req.requestedReview = review;
-			if (req.requestedRevew.userId == req.user._id || req.user.isAdmin) return next()
-			res.status(401).end()
+			if (req.requestedReview.userId == req.user._id || req.user.isAdmin) return next()
+			res.status(401).end();
 		}
 	})
 	.then(null, next);
 });
 
-// AUTH >>> Everyone
+// AUTH >>> loggedIn
 router.post('/',
 	function(req, res, next) {
-		if (req.user) return next()
-		res.status(401).end()
+		if (req.user) return next();
+		res.status(401).end();
 	},
 	function(req, res, next) {
 	  Review.create(req.body)
 	    .then(function(review) {
-	      res.status(201).json(review)
+	      res.status(201).json(review);
 	    })
-	    .then(null, next)
-})
+	    .then(null, next);
+});
 
 // AUTH >>> Current User or Admin
 router.put('/:id', function(req, res, next) {
@@ -41,7 +41,7 @@ router.put('/:id', function(req, res, next) {
 		res.json(review);
 	})
 	.then(null, next);
-})
+});
 
 // AUTH >>> Current User or Admin
 router.delete('/:id', function(req, res, next) {
@@ -50,4 +50,4 @@ router.delete('/:id', function(req, res, next) {
 		res.status(204).end();
 	})
 	.then(null, next);
-})
+});
