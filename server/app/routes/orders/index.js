@@ -10,7 +10,9 @@ router.param('id', function(req, res, next, id) {
     Order.findById(id).then(function(order) {
         if (order) {
             req.order = order;
-            if (req.order.userId == req.user._id || req.user.isAdmin) return next()
+            // console.log('res.user:', req.user._id.toString())
+            // console.log('req.order:', req.order.userId.toString())
+            if (req.order.userId.toString() === req.user._id.toString() || req.user.isAdmin) return next()
             res.status(401).end()
         } else {
             throw Error('order not found')
@@ -20,17 +22,17 @@ router.param('id', function(req, res, next, id) {
 
 // AUTH >>> ADMIN
 router.get('/',
-  function(req, res, next) {
-    if (req.user.isAdmin) return next()
-    res.status(401).end()
-  },
-  function(req, res, next) {
-    Order.find({}).exec()
-        .then(function(orders) {
-            res.json(orders)
-        })
-        .then(null, next);
-  }
+    function(req, res, next) {
+        if (req.user.isAdmin) return next()
+        res.status(401).end()
+    },
+    function(req, res, next) {
+        Order.find({}).exec()
+            .then(function(orders) {
+                res.json(orders)
+            })
+            .then(null, next);
+    }
 );
 
 // AUTH >>> Everyone
@@ -45,10 +47,10 @@ router.post('/', function(req, res, next) {
 // AUTH >>> Current User or Admin
 router.get('/:id', function(req, res, next) {
     res.json(req.order);
-  }
-)
+})
 
 // AUTH >>> Current User or Admin
+// consider using order.updateOrderState() method
 router.put('/:id', function(req, res, next) {
     for (var key in req.body) {
         req.order[key] = req.body[key];
@@ -56,6 +58,11 @@ router.put('/:id', function(req, res, next) {
     req.order.save().then(function(order) {
         res.json(order);
     })
+})
+
+router.use(function(req, res, next) {
+    if (req.user.isAdmin) return next();
+    res.status(401).end();
 })
 
 // AUTH >>> Current User or Admin

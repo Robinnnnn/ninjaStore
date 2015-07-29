@@ -6,7 +6,7 @@ var Order = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    sessionId: String,
+    // sessionId: String,
     items: [{
         id: {
             type: mongoose.Schema.Types.ObjectId,
