@@ -33,7 +33,7 @@ describe('Items Route', function() {
 			},
 			price: 99.99,
 			quantity: 200,
-			photo: "http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg",
+			photos: ["http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg"],
 			categories: ["Throwing Stars"]
 		};
 		var itemPost = {
@@ -44,7 +44,7 @@ describe('Items Route', function() {
 			},
 			price: 999.99,
 			quantity: 0,
-			photo: "http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg",
+			photos: ["http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg"],
 			categories: ["Stars"]
 		};
 

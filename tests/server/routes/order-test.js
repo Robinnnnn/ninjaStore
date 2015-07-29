@@ -33,7 +33,7 @@ describe('Order Route', function() {
 			},
 			price: 99.99,
 			quantity: 200,
-			photo: "http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg",
+			photos: ["http://allninjagear.com/content/images/thumbs/0000256_flying-dragon-throwing-star_360.jpeg"],
 			categories: ["Throwing Stars"]
 		};
 
