@@ -22,12 +22,14 @@ app.factory('Order', function($http) {
   }
 
   Order.fetchCurrent = () => {
-    return $http.get(Order.url + 'current')
+    return $http.get('/cart')
       .then(res => {
         let order = new Order(res.data)
-        order.items.map(obj => {
-          return new Item(obj)
-        })
+        if (order.items) {
+          order.items.map(obj => {
+            return new Item(obj)
+          })
+        }
         return order
       })
   }

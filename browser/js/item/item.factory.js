@@ -26,6 +26,11 @@ app.factory('Item',function($http){
       .then(res => new Item(res.data))
   }
 
+	Item.prototype.addToCart = () => {
+		return $http.post('/cart', this)
+			.then(res => new Item(res.data))
+	}
+
   Item.prototype.save = () => {
     let verb
     let url
