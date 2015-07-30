@@ -25,6 +25,20 @@ var User = Promise.promisifyAll(mongoose.model('User'));
 var Item = Promise.promisifyAll(mongoose.model('Item'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
 var Review = Promise.promisifyAll(mongoose.model('Review'));
+
+var wipeDB = function () {
+
+    var models = [User, Item, Order, Review];
+    var promiseArr = [];
+    models.forEach(function (model) {
+        promiseArr.push(model.find({}).remove().exec());
+    });
+
+    return Promise.all(promiseArr);
+
+};
+
+
 var seedUsers = function() {
 
     var users = [{
@@ -215,7 +229,10 @@ var review2 = {
     review: "It sucks so bad so bad",
     rating:1
 }
-connectToDb.then(function() {
+connectToDb.then(function(){
+    wipeDB()
+})
+.then(function() {
     User.findAsync({}).then(function(users) {
             if (users.length === 0) {
                 return seedUsers();

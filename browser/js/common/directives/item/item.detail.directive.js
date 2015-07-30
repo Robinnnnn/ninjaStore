@@ -4,6 +4,9 @@ app.directive('itemDetail', function() {
 		templateUrl: 'js/common/directives/item/item.detail.html',
 		scope: {
 			item: '='
+		},
+		link: function($scope) {
+			$scope.item.price /= 100;
 		}
 	};
 });

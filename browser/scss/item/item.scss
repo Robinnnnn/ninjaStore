@@ -18,9 +18,7 @@
 }
 
 .detailOverview{
-	/*float:right;*/
 	display: inline;
-	/*border: 1px solid black;*/
 	padding-left: 20px;
 }
 
@@ -29,17 +27,22 @@
     margin: 0;
     padding: 0;
 }
-ul.rating {
-    display: inline-block;
+
+.ratingStar {
+    height: 20px;
+    width: 20px;
+    float: left;
 }
-.rating li {
-    list-style-type: none;
-    display: inline-block;
-    padding: 1px;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
+
+.filled {
+    img {
+        opacity: 0.2;
+        float: left;
+    }
 }
-.rating .filled {
-    color: red;
+
+
+
+.reviewFull {
+    border: 1px solid black;
 }
