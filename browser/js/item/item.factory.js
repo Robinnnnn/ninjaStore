@@ -1,27 +1,31 @@
-app.factory('Item',function($http){
+app.factory('Item', function($http) {
 	function Item(props) {
-    angular.extend(this, props)
-    return this
-  }
+		angular.extend(this, props)
+		return this
+	}
 
-  Item.url = '/api/items/'
+	Item.url = '/api/items/'
 
-  Object.defineProperty(Item.prototype, 'url', {
-    get: function() { return Item.url + this._id }
-  })
+	Object.defineProperty(Item.prototype, 'url', {
+		get: function() {
+			return Item.url + this._id
+		}
+	})
 
-  Item.prototype.isNew = function() { return !this._id }
+	Item.prototype.isNew = function() {
+		return !this._id
+	}
 
-  Item.fetchAll = () => {
-    return $http.get(Item.url)
-      .then(res => {
-        return res.data.map(obj => {
-          return new Item(obj)
-        })
-      })
-  }
+	Item.fetchAll = function() {
+		return $http.get(Item.url)
+			.then(res => {
+				return res.data.map(obj => {
+					return new Item(obj)
+				})
+			})
+	}
 
-  Item.prototype.fetch = function() {
+	Item.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => new Item(res.data))
   }
