@@ -1,40 +1,45 @@
-<div >
-	<div class="detailTitle">
-		<!-- <pre>{{item}}</pre> -->
-		<p>
-			{{item.name}}
-		</p>
-	</div>
-	<div>
-		<img class="detailImage" src="{{item.photos[0]}}">
-	</div>
-	<div class="detailDesc">
-		<p>{{item.description.short}}</p>
-	</div>
-	<div>
-		{{item.getRating()}}
-	</div>
+<div class="container">
+    <div>
+        <div>
+            <img class="detailImage" src="{{item.photos[0]}}">
+        </div>
 
-	<div class="detailPrice">
-		<p>{{item.price}}</p>
-	</div>
+        <div class="detailOverview">
+	        <div class="detailTitle">
+	            <h2>
+	            {{item.name}}
+	            </h2>
+	        </div>
+	        <div class="detailDesc">
+	            <p>{{item.description.short}}</p>
+	        </div>
+	        <div id="item-rating" star-rating rating = "{{item.rating}}" max="5">
+	            <!-- Average rating:
+	            {{item.rating}} -->
+	        </div>
+	        <div class="detailPrice">
+	            <p>Price:{{item.price}}</p>
+	        </div>
+	        <add-to-cart item='item'></add-to-cart>
+		    <div>
+		        {{item.description.long}}
+		    </div>
+        </div>
+    </div>
 </div>
-
-
-<div class="detailOverview">
-	{{item.description.long}}
-</div>
-
-<div class="reviewContainer">
-	<div ng-repeat="review in item.reviews">
-		<ul>
-			<li>
-				<p>{{review.userId.email}}</p>
-			</li>
-			<li>
-			<p>{{review.review}}</p>
-			</li>
-
-		</ul>
-	</div>
+<div class="container">
+	<h2>
+    	Customer Reviews:
+	</h2>
+    <div ng-repeat="review in item.reviews">
+        <ul>
+            <li>
+                <p>From: {{review.userId.email}}</p>
+            </li>
+            <li>
+                <p>{{review.review}}</p>
+                <p>Rating:{{review.rating}} </p>
+            </li>
+        </ul>
+    </div>
 </div>
