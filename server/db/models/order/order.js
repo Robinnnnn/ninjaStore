@@ -19,7 +19,7 @@ var Order = new mongoose.Schema({
         quantity: Number
     }],
     orderState: {
-        enum: ['Processing', 'Cancelled', 'Completed', 'Cart'],
+        enum: ['Processing', 'Cancelled', 'Completed', 'Cart', 'Created'],
         type: String,
         default: 'Created'
     }

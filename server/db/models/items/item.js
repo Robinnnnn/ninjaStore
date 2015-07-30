@@ -55,21 +55,23 @@ Item.statics.getCategory = function(category) {
 }
 
 Item.statics.getAllCategories = function() {
-  let categories = []
-  return this.find({})
-    .distinct('categories')
-    .exec()
-    // .then(function(results) {
-    //   console.log(results)
-    // })
+    var categories = []
+    return this.find({})
+        .distinct('categories')
+        .exec()
+        // .then(function(results) {
+        //   console.log(results)
+        // })
 }
 
 Item.methods.getAllReviews = function() {
     var self = this;
-    return Review.find({_id:{
-        $in: self.reviews
-    }})
-        .populate('userId','email')
+    return Review.find({
+            _id: {
+                $in: self.reviews
+            }
+        })
+        .populate('userId', 'email')
         .exec()
 }
 
