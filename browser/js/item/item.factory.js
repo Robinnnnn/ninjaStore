@@ -21,7 +21,7 @@ app.factory('Item',function($http){
       })
   }
 
-  Item.prototype.fetch = () => {
+  Item.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => new Item(res.data))
   }
@@ -32,7 +32,7 @@ app.factory('Item',function($http){
 			.then(res => new Item(res.data))
 	}
 
-  Item.prototype.save = () => {
+  Item.prototype.save = function() {
     let verb
     let url
     if (this.isNew()) {
@@ -46,7 +46,7 @@ app.factory('Item',function($http){
       .then(res => new Item(res.data))
   }
 
-  Item.prototype.destroy = () => $http.delete(this.url)
+  Item.prototype.destroy = function() { return $http.delete(this.url) }
 
   return Item
 })
