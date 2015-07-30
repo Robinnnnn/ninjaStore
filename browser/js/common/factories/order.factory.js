@@ -10,7 +10,7 @@ app.factory('Order', function($http, Item) {
     get: function() { return Order.url + this._id }
   })
 
-  Order.prototype.isNew = () => !this._id
+  Order.prototype.isNew = function() { return !this._id }
 
   Order.fetchAll = () => {
     return $http.get(Order.url)
@@ -22,7 +22,6 @@ app.factory('Order', function($http, Item) {
   }
 
   Order.fetchCurrent = () => {
-    'fetching cart'
     return $http.get('/api/cart')
       .then(res => {
         let order = new Order(res.data)
@@ -35,7 +34,7 @@ app.factory('Order', function($http, Item) {
       })
   }
 
-  Order.prototype.fetch = () => {
+  Order.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => {
         let order = new Order(res.data)
@@ -46,7 +45,7 @@ app.factory('Order', function($http, Item) {
       })
   }
 
-  Order.prototype.save = () => {
+  Order.prototype.save = function() {
     let verb
     let url
     if (this.isNew()) {
@@ -60,7 +59,7 @@ app.factory('Order', function($http, Item) {
       .then(res => new Order(res.data))
   }
 
-  Order.prototype.destroy = () => $http.delete(this.url)
+  Order.prototype.destroy = function() { return $http.delete(this.url) }
 
   return Order
 })
