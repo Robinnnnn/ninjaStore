@@ -1,10 +1,52 @@
-app.factory('ItemFactory',function($http){
-	return {
-		getAll: function(){
-			return $http.get('/api/items')
-						.then(function(res){
-							return res.data;
-						})
-		}
+app.factory('Item',function($http){
+	function Item(props) {
+    angular.extend(this, props)
+    return this
+  }
+
+  Item.url = '/api/items/'
+
+  Object.defineProperty(Item.prototype, 'url', {
+    get: function() { return Item.url + this._id }
+  })
+
+  Item.prototype.isNew = function() { return !this._id }
+
+  Item.fetchAll = () => {
+    return $http.get(Item.url)
+      .then(res => {
+        return res.data.map(obj => {
+          return new Item(obj)
+        })
+      })
+  }
+
+  Item.prototype.fetch = () => {
+    return $http.get(this.url)
+      .then(res => new Item(res.data))
+  }
+
+	Item.prototype.addToCart = function() {
+		console.log('adding item to cart', this);
+		return $http.post('/api/cart', this)
+			.then(res => new Item(res.data))
 	}
+
+  Item.prototype.save = () => {
+    let verb
+    let url
+    if (this.isNew()) {
+      verb = 'post'
+      url = Item.url
+    } else {
+      verb = 'put'
+      url = this.url
+    }
+    return $http[verb](url, this)
+      .then(res => new Item(res.data))
+  }
+
+  Item.prototype.destroy = () => $http.delete(this.url)
+
+  return Item
 })

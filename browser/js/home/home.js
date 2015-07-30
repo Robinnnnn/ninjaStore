@@ -3,8 +3,8 @@ app.config(function($stateProvider) {
         url: '/',
         templateUrl: 'js/home/home.html',
         resolve: {
-            items: function(ItemFactory) {
-                return ItemFactory.getAll();
+            items: function(Item) {
+                return Item.fetchAll();
             }
         },
         controller: function($scope, items) {
@@ -22,6 +22,7 @@ app.config(function($stateProvider) {
                 item.shortTitle = shortenTitle(item.name, 35);
                 return item;
             })
+            console.log(items);
         }
     });
 });

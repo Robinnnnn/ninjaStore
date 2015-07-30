@@ -1,5 +1,5 @@
-app.controller('itemHoverCtrl',function(ItemFactory){
-	ItemFactory.getOne()
+app.controller('itemHoverCtrl',function(Item){
+	Item.getOne()
 			   .then(function(res){
 			   		
 			   })
