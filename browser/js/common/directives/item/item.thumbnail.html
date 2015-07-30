@@ -4,7 +4,7 @@
 		<p>{{item.shortTitle}}</p>
 	</div>
 	<div>
-		<a ui-sref="item.detail">
+		<a ui-sref="item({ id: item._id })">
 			<img class="thumbnailImage" src="{{item.photos[0]}}">
 		</a>
 	</div>

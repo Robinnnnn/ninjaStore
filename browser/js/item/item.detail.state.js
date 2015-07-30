@@ -1,7 +1,7 @@
 app.config(function($stateProvider) {
-	$stateProvider.state('item.detail', {
-		url: '/item/:id',
-		templateUrl: 'js/item/item.detail.html',
+	$stateProvider.state('item', {
+		url: 'api/items/:id',
+		// templateUrl: 'js/item/item.detail.html',
 		resolve: {
 			item: function(ItemFactory, $stateParams) {
 				return ItemFactory.getOne($stateParams.id);
