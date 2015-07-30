@@ -4,6 +4,7 @@ module.exports = router;
 
 // middleware for getting current order information
 router.use('/', function(req, res, next) {
+  console.log('cart middleware');
   if (req.session.cart) return next()
   req.session.cart = {}
   next()
@@ -25,4 +26,9 @@ router.post('/', function(req, res, next) {
     console.log('created new cart',req.session.cart);
     res.status(200).json(req.body)
   }
+})
+
+router.delete('/', function(req, res, next) {
+  req.session.cart = {}
+  res.status(200).json(req.session.cart)
 })

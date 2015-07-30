@@ -5,10 +5,16 @@ app.directive('addToCart', function() {
       item: '='
     },
     link: function(scope, elem, attr) {
-      elem.bind('click', function() {
+
+      scope.QUANTITY = scope.item.quantity
+
+      scope.addToCart = () => {
         scope.item.addToCart()
-      })
+          .then(item => {
+            console.log('added to cart');
+          })
+      }
     },
-    template: `<button class='btn btn-default'>Add to Cart</button>`
+    templateUrl: '/js/common/directives/addToCart/addToCart.html'
   }
 })
