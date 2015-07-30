@@ -19,6 +19,7 @@ var Order = new mongoose.Schema({
         quantity: Number
     }],
     orderState: {
+        enum: ['Processing', 'Cancelled', 'Completed', 'Cart', 'Created'],
         type: String,
         default: 'Created'
     }
@@ -30,12 +31,7 @@ Order.virtual('created').get(function() {
 })
 
 Order.methods.updateOrderState = function(state) {
-    if (state === 'Processing' || 'Cancelled' || 'Completed') {
-        this.orderState = state;
-        return 'Order is now ' + state + '.'
-    } else {
-        return new Error('invalid state!');
-    }
+    this.orderState = state;
 }
 
 mongoose.model('Order', Order);
