@@ -1,7 +1,7 @@
 app.config(function($stateProvider) {
 	$stateProvider.state('itemDetail', {
 		url: '/items/:id',
-		templateUrl: 'js/item/item.detail2.html',
+		templateUrl: 'js/item/item.detail.state.html',
 		resolve: {
 			item: function(Item, $stateParams) {
 				let item = new Item({
@@ -11,7 +11,7 @@ app.config(function($stateProvider) {
 			}
 		},
 		controller: function($scope, item) {
-			console.log(item)
+			console.log(item);
 			$scope.item = item;
 		}
 	});

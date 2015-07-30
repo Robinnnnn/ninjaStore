@@ -66,20 +66,11 @@ Item.statics.getAllCategories = function() {
 
 Item.methods.getAllReviews = function() {
     var self = this;
-    // return this.populate('reviews')
-
     return Review.find({_id:{
         $in: self.reviews
     }})
-        .populate('userId')
+        .populate('userId','email')
         .exec()
-
-        // .then(function(reviews){
-        //     this.reviews = reviews;
-        //     return this;
-        // })
-            // this.populate('Review');
-
 }
 
 mongoose.model('Item', Item);

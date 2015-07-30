@@ -3,13 +3,27 @@
         <div class="navbar-header">
             <fullstack-logo></fullstack-logo>
         </div>
+
+<!--             <div class="btn-group" dropdown is-open="status.isopen">
+      <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+        Button dropdown <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+        <li role="menuitem"><a href="#">Action</a></li>
+        <li role="menuitem"><a href="#">Another action</a></li>
+        <li role="menuitem"><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li role="menuitem"><a href="#">Separated link</a></li>
+      </ul>
+    </div> -->
+
         <div class="navbar navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a ui-sref='home'>Home</a></li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                <li class="dropdown" dropdown is-open="status.isopen">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdown-toggle>Categories <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Action</a></li> 
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li role="separator" class="divider"></li>
