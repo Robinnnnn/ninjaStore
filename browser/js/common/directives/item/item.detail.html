@@ -1,11 +1,12 @@
-<div>
+<div >
 	<div class="detailTitle">
+		<!-- <pre>{{item}}</pre> -->
 		<p>
 			{{item.name}}
 		</p>
 	</div>
 	<div>
-		<img class="detailImage"src="{{item.photos[0]}}">
+		<img class="detailImage" src="{{item.photos[0]}}">
 	</div>
 	<div class="detailDesc">
 		<p>{{item.description.short}}</p>
@@ -25,7 +26,15 @@
 </div>
 
 <div class="reviewContainer">
-	<div ng-repeat="review in reviews">
-		<p>{{review.user}}</p>
+	<div ng-repeat="review in item.reviews">
+		<ul>
+			<li>
+				<p>{{review.userId.email}}</p>
+			</li>
+			<li>
+			<p>{{review.review}}</p>
+			</li>
+
+		</ul>
 	</div>
 </div>

@@ -61,7 +61,7 @@ Item.methods.getAllReviews = function() {
     return Review.find({_id:{
         $in: self.reviews
     }})
-        .populate('userId')
+        .populate('userId','email')
         .exec()
 
         // .then(function(reviews){
