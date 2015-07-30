@@ -8,6 +8,7 @@ app.config(function($stateProvider) {
             }
         },
         controller: function($scope, items) {
+            $scope.activeCategory = ''
             $scope.items = items;
 
             // makes sure the name of the item doesn't expand its div height

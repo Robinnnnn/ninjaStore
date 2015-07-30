@@ -1,15 +1,23 @@
-app.controller('navbarCtrl', function($scope, searchFactory, $state, Item) {
+app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state, Item) {
 	$scope.query;
 	$scope.items;
 
-	$scope.search = function() {
+	$scope.show = (category) => {
+		$state.go('showResult', {
+			category: category
+		})
+	}
+
+	$scope.search = () => {
 		$state.go('searchResult', {
 			query: $scope.query
 		})
 	}
 
 	Item.getCategories()
-		.then(function(categories) {
+		.then(categories => {
 			$scope.categories = categories
 		})
+
+
 })

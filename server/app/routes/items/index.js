@@ -39,9 +39,18 @@ router.get('/', function(req, res, next) {
 router.get('/search/:query', function(req, res, next) {
     Item.search(req.params.query).exec()
         .then(function(items) {
-            res.json(items)
+            res.status(200).json(items)
         })
         .then(null, next)
+})
+
+router.get('/show/:category', function(req, res, next) {
+  Item.getCategory(req.params.category)
+    .exec()
+    .then(items => {
+      res.status(200).json(items)
+    })
+    .then(null, next)
 })
 
 // AUTH >>> Everyone
