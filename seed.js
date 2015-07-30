@@ -206,6 +206,15 @@ var seedItems = function() {
     return Item.createAsync(items);
 }
 
+var review1 = {
+    review: "Good items 123",
+    rating:5
+};
+
+var review2 = {
+    review: "It sucks so bad so bad",
+    rating:1
+}
 connectToDb.then(function() {
     User.findAsync({}).then(function(users) {
             if (users.length === 0) {
@@ -243,20 +252,36 @@ connectToDb.then(function() {
                 })
         })
         .then(function() {
-            var review = {
-                review: "Good items 123"
-            };
-            return User.findOneAsync({})
+            return User.findAsync({})
                 .then(function(user) {
-                    review.userId = user._id;
+                    review1.userId = user[0]._id;
+                    review2.userId = user[1]._id;
                     return Item.findOneAsync({})
                 })
                 .then(function(item) {
-                    review.itemId = item._id;
-                    return Review.createAsync(review);
+                    review1.itemId = item._id;
+                    review2.itemId = item._id;
+                    return Review.createAsync(review1);
                 })
-
         })
+        .then(function(review){
+            return Item.findOneAsync({_id:review.itemId})
+                .then(function(item){
+                    item.reviews.push(review._id);
+                    return item.save();
+                })
+        })
+        .then(function(){
+            return Review.createAsync(review2);
+        })
+        .then(function(review){
+            return Item.findOneAsync({_id:review.itemId})
+                .then(function(item){
+                    item.reviews.push(review._id);
+                    return item.save();
+                })
+        })
+
         .then(function() {
             console.log(chalk.green('Seed successful!'));
             process.kill(0);

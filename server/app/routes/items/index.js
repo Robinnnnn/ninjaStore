@@ -37,37 +37,42 @@ router.get('/search/:query', function(req, res, next) {
 
 // AUTH >>> Everyone
 router.get('/:id', function(req, res, next) {
-    res.json(req.item);
+    req.item.getAllReviews()
+        .then(function(reviews){
+            req.item = req.item.toObject();
+            req.item.reviews = reviews;
+            res.json(req.item);
+        })
 })
 
 // AUTH >>> Admin
 router.use(function(req, res, next) {
-	if (req.user.isAdmin) return next()
-	res.status(401).end()
+    if (req.user.isAdmin) return next()
+    res.status(401).end()
 })
 
-    router.post('/', function(req, res, next) {
-        Item.create(req.body)
-            .then(function(item) {
-                res.status(201).json(item)
-            })
-            .then(null, next)
-    })
-
-    router.put('/:id', function(req, res, next) {
-        for (var key in req.body) {
-            req.item[key] = req.body[key];
-        }
-        req.item.save().then(function(item) {
-            res.json(item);
+router.post('/', function(req, res, next) {
+    Item.create(req.body)
+        .then(function(item) {
+            res.status(201).json(item)
         })
-    })
+        .then(null, next)
+})
 
-    router.delete('/:id', function(req, res, next) {
-        req.item.remove()
-            .then(function() {
-                res.status(204).send({
-                    message: 'success!'
-                });
-            })
+router.put('/:id', function(req, res, next) {
+    for (var key in req.body) {
+        req.item[key] = req.body[key];
+    }
+    req.item.save().then(function(item) {
+        res.json(item);
     })
+})
+
+router.delete('/:id', function(req, res, next) {
+    req.item.remove()
+        .then(function() {
+            res.status(204).send({
+                message: 'success!'
+            });
+        })
+})
