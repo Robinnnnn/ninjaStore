@@ -17,6 +17,14 @@ router.param('id', function(req, res, next, id) {
     }).then(null, next)
 })
 
+router.get('/categories', function(req, res, next) {
+  Item.getAllCategories()
+    .then(function(categories) {
+      res.status(200).json(categories)
+    })
+    .then(null, next)
+})
+
 // AUTH >>> Everyone
 router.get('/', function(req, res, next) {
   console.log('hitting route');

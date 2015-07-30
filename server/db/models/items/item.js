@@ -54,6 +54,16 @@ Item.statics.getCategory = function(category) {
     })
 }
 
+Item.statics.getAllCategories = function() {
+  let categories = []
+  return this.find({})
+    .distinct('categories')
+    .exec()
+    // .then(function(results) {
+    //   console.log(results)
+    // })
+}
+
 Item.methods.getAllReviews = function() {
     var self = this;
     // return this.populate('reviews')
