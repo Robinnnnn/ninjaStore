@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 
 // post to current order
 router.post('/', function(req, res, next) {
+  console.log(req.body);
   if (req.cart.items) {
     req.cart.items.push(req.body)
     res.status(200).json(req.body)

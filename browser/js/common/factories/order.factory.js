@@ -1,4 +1,4 @@
-app.factory('Order', function($http) {
+app.factory('Order', function($http, Item) {
   function Order(props) {
     angular.extend(this, props)
     return this

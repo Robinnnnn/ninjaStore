@@ -3,8 +3,8 @@ app.config(function($stateProvider) {
         url: '/',
         templateUrl: 'js/home/home.html',
         resolve: {
-            items: function(ItemFactory) {
-                return ItemFactory.getAll();
+            items: function(Item) {
+                return Item.fetchAll();
             }
         },
         controller: function($scope, items) {

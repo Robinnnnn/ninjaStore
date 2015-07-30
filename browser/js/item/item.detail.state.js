@@ -3,8 +3,8 @@ app.config(function($stateProvider) {
 		url: '/item/:id',
 		templateUrl: 'js/item/item.detail.html',
 		resolve: {
-			item: function(ItemFactory, $stateParams) {
-				return ItemFactory.getOne($stateParams.id);
+			item: function(Item, $stateParams) {
+				return Item.getOne($stateParams.id);
 			}
 		},
 		controller: function($scope, item) {
