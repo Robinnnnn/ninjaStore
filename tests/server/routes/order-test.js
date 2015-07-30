@@ -40,7 +40,6 @@ describe('Order Route', function() {
 		beforeEach('Create an item', function(done) {
 			Item.create(itemInfo)
 				.then(function(item) {
-					// itemId = item._id;
 					done();
 				})
 		});
