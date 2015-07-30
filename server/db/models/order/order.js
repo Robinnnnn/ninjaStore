@@ -6,11 +6,10 @@ var Order = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    userInfo:{
-        email:String,
-        address:String
+    userInfo: {
+        email: String,
+        address: String
     },
-    // sessionId: String,
     items: [{
         id: {
             type: mongoose.Schema.Types.ObjectId,
