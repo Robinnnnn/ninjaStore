@@ -59,9 +59,6 @@ Item.statics.getAllCategories = function() {
   return this.find({})
     .distinct('categories')
     .exec()
-    // .then(function(results) {
-    //   console.log(results)
-    // })
 }
 
 Item.methods.getAllReviews = function() {
