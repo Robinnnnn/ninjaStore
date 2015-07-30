@@ -1,0 +1,33 @@
+<div>
+	<div class="detailTitle">
+		<p>
+			{{item.name}}
+		</p>
+	</div>
+	<div>
+		<img class="detailImage"src="{{item.photos[0]}}">
+	</div>
+	<div class="detailDesc">
+		<p>{{item.description.short}}</p>
+	</div>
+	<div>
+		{{item.getRating()}}
+	</div>
+
+	<div class="detailPrice">
+		<p>{{item.price}}</p>
+	</div>
+</div>
+
+
+<div class="detailOverview">
+	{{item.description.long}}
+</div>
+
+<div class="reviewContainer">
+	<div ng-repeat="review in reviews">
+		<p>{{review.user}}</p>
+	</div>
+</div>
+
+
