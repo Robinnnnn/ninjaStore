@@ -1,5 +1,6 @@
 app.config(function($stateProvider) {
-	$stateProvider.state('searchResult', {
+	$stateProvider
+	.state('searchResult', {
 		url: '/search/:query',
 		templateUrl: 'js/home/home.html',
 		resolve: {
@@ -8,5 +9,17 @@ app.config(function($stateProvider) {
 			}
 		},
 		controller: 'searchCtrl'
+	})
+	.state('showResult', {
+		url: '/show/:category',
+		templateUrl: '/js/home/home.html',
+		resolve: {
+			items: (searchFactory, $stateParams) => {
+				return searchFactory.show($stateParams.category)
+			}
+		},
+		controller: ($scope, items) => {
+			$scope.items = items
+		}
 	})
 })

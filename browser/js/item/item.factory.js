@@ -25,6 +25,13 @@ app.factory('Item', function($http) {
 			})
 	}
 
+	Item.getCategories = function() {
+		return $http.get(Item.url + '/categories')
+			.then(res => {
+				return res.data
+			})
+	}
+
 	Item.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => new Item(res.data))

@@ -55,13 +55,9 @@ Item.statics.getCategory = function(category) {
 }
 
 Item.statics.getAllCategories = function() {
-    var categories = []
-    return this.find({})
-        .distinct('categories')
-        .exec()
-        // .then(function(results) {
-        //   console.log(results)
-        // })
+  return this.find({})
+    .distinct('categories')
+    .exec()
 }
 
 Item.methods.getAllReviews = function() {
