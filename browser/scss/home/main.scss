@@ -10,22 +10,27 @@
   margin: 0 auto;
 }
 
-.itemThumbnail {
+.thumbnail {
 	border: 2px black solid;
   height: 410px;
 }
 
-.itemImage {
+.thumbnailImage {
   width: 100%;
   height: 100%;
 }
 
-.itemTitle {
+.thumbnailTitle {
   width: 100%;
   height: 40px;
   text-align: center;
 }
 
-.itemShortDescription {
+.thumbnailDesc {
+
+}
+
+.thumbnailPrice {
+  text-align: left;
 
 }
