@@ -4,10 +4,9 @@ module.exports = router;
 
 // middleware for getting current order information
 router.use('/', function(req, res, next) {
-  console.log(req.body);
   if (req.cart) return next()
   req.cart = {}
-  res.status(201).json(req.cart)
+  next()
 })
 
 // get current order information
@@ -17,12 +16,13 @@ router.get('/', function(req, res, next) {
 
 // post to current order
 router.post('/', function(req, res, next) {
-  console.log(req.body);
   if (req.cart.items) {
     req.cart.items.push(req.body)
+    console.log(req.cart);
     res.status(200).json(req.body)
   } else {
     req.cart.items = [req.body]
+    console.log(req.cart);
     res.status(200).json(req.body)
   }
 })

@@ -22,7 +22,8 @@ app.factory('Order', function($http, Item) {
   }
 
   Order.fetchCurrent = () => {
-    return $http.get('/cart')
+    'fetching cart'
+    return $http.get('/api/cart')
       .then(res => {
         let order = new Order(res.data)
         if (order.items) {
