@@ -55,8 +55,13 @@ module.exports = function (app) {
 
     // Simple /logout route.
     app.get('/logout', function (req, res) {
-        req.logout();
-        res.status(200).end();
+        req.user.cart = req.session.cart
+        req.user.save()
+          .then(function(user) {
+            req.session.cart = {}
+            req.logout();
+            res.status(200).end();
+          })
     });
 
     // Each strategy enabled gets registered.

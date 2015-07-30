@@ -22,6 +22,7 @@ app.config(function($stateProvider) {
                 item.shortTitle = shortenTitle(item.name, 35);
                 return item;
             })
+            console.log(items);
         }
     });
 });

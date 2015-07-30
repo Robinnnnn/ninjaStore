@@ -7,10 +7,10 @@ app.factory('Order', function($http, Item) {
   Order.url = '/api/orders/'
 
   Object.defineProperty(Order.prototype, 'url', {
-    get: () => Order.url + this._id
+    get: function() { return Order.url + this._id }
   })
 
-  Order.isNew = () => !this._id
+  Order.prototype.isNew = () => !this._id
 
   Order.fetchAll = () => {
     return $http.get(Order.url)

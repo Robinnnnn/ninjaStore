@@ -7,10 +7,10 @@ app.factory('Item',function($http){
   Item.url = '/api/items/'
 
   Object.defineProperty(Item.prototype, 'url', {
-    get: () => Item.url + this._id
+    get: function() { return Item.url + this._id }
   })
 
-  Item.isNew = () => !this._id
+  Item.prototype.isNew = function() { return !this._id }
 
   Item.fetchAll = () => {
     return $http.get(Item.url)
@@ -26,8 +26,9 @@ app.factory('Item',function($http){
       .then(res => new Item(res.data))
   }
 
-	Item.prototype.addToCart = () => {
-		return $http.post('/cart', this)
+	Item.prototype.addToCart = function() {
+		console.log('adding item to cart', this);
+		return $http.post('/api/cart', this)
 			.then(res => new Item(res.data))
 	}
 
