@@ -35,17 +35,6 @@ router.get('/',
     }
 );
 
-// middleware for getting current order information
-router.use('/current', function(req, res, next) {
-  if (req.cart) return next()
-  res.status(204).end()
-})
-
-// get current order information
-router.get('/current', function(req, res, next) {
-  res.status(200).json(req.cart)
-})
-
 // AUTH >>> Everyone
 router.post('/', function(req, res, next) {
     Order.create(req.body)

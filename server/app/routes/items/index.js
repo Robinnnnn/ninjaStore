@@ -19,6 +19,7 @@ router.param('id', function(req, res, next, id) {
 
 // AUTH >>> Everyone
 router.get('/', function(req, res, next) {
+  console.log('hitting route');
     Item.find({}).exec()
         .then(function(items) {
             res.json(items)

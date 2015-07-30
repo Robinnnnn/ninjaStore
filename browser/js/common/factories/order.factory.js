@@ -1,4 +1,4 @@
-app.factory('Order', function($http) {
+app.factory('Order', function($http, Item) {
   function Order(props) {
     angular.extend(this, props)
     return this
@@ -7,10 +7,10 @@ app.factory('Order', function($http) {
   Order.url = '/api/orders/'
 
   Object.defineProperty(Order.prototype, 'url', {
-    get: () => Order.url + this._id
+    get: function() { return Order.url + this._id }
   })
 
-  Order.isNew = () => !this._id
+  Order.prototype.isNew = () => !this._id
 
   Order.fetchAll = () => {
     return $http.get(Order.url)
@@ -22,13 +22,28 @@ app.factory('Order', function($http) {
   }
 
   Order.fetchCurrent = () => {
-    return $http.get(Order.url + 'current')
-      .then(res => new Order(res.data))
+    'fetching cart'
+    return $http.get('/api/cart')
+      .then(res => {
+        let order = new Order(res.data)
+        if (order.items) {
+          order.items.map(obj => {
+            return new Item(obj)
+          })
+        }
+        return order
+      })
   }
 
   Order.prototype.fetch = () => {
     return $http.get(this.url)
-      .then(res => new Order(res.data))
+      .then(res => {
+        let order = new Order(res.data)
+        order.items.map(obj => {
+          return new Item(obj)
+        })
+        return order
+      })
   }
 
   Order.prototype.save = () => {
