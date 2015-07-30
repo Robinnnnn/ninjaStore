@@ -13,12 +13,14 @@
 	        <div class="detailDesc">
 	            <p>{{item.description.short}}</p>
 	        </div>
-	        <div id="item-rating" star-rating rating = "{{item.rating}}" max="5">
-	            <!-- Average rating:
-	            {{item.rating}} -->
-	        </div>
+
+	        <div> <span ng-model="rating">{{item.rating}} out of 5
+		        <div star-rating rating-value="item.rating" max="5" ></div>
+		        </span>
+		    </div>
+
 	        <div class="detailPrice">
-	            <p>Price:{{item.price}}</p>
+	            <p>Price:{{item.price | currency}}</p>
 	        </div>
 	        <add-to-cart item='item'></add-to-cart>
 		    <div>
@@ -31,7 +33,7 @@
 	<h2>
     	Customer Reviews:
 	</h2>
-    <div ng-repeat="review in item.reviews">
+    <div class="reviewFull" ng-repeat="review in item.reviews">
         <ul>
             <li>
                 <p>From: {{review.userId.email}}</p>
@@ -43,3 +45,5 @@
         </ul>
     </div>
 </div>
+
+    
