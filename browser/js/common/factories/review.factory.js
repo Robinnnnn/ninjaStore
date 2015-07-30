@@ -7,10 +7,10 @@ app.factory('Review', function($http) {
   Review.url = '/api/reviews/'
 
   Object.defineProperty(Review.prototype, 'url', {
-    get: () => Review.url + this._id
+    get: function() { return Review.url + this._id }
   })
 
-  Review.isNew = () => !this._id
+  Review.isNew = function() { return !this._id }
 
   Review.fetchAll = () => {
     return $http.get(Review.url)
@@ -26,12 +26,12 @@ app.factory('Review', function($http) {
       .then(res => new Review(res.data))
   }
 
-  Review.prototype.fetch = () => {
+  Review.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => new Review(res.data))
   }
 
-  Review.prototype.save = () => {
+  Review.prototype.save = function() {
     let verb
     let url
     if (this.isNew()) {
@@ -45,7 +45,7 @@ app.factory('Review', function($http) {
       .then(res => new Review(res.data))
   }
 
-  Review.prototype.destroy = () => $http.delete(this.url)
+  Review.prototype.destroy = function() { return $http.delete(this.url) }
 
   return Review
 })
