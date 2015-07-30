@@ -1,19 +1,18 @@
 app.config(function($stateProvider) {
-	$stateProvider.state('item.detail', {
-		url: '/item/:id',
-		templateUrl: 'js/item/item.detail.html',
+	$stateProvider.state('itemDetail', {
+		url: '/items/:id',
+		templateUrl: 'js/item/item.detail2.html',
 		resolve: {
 			item: function(Item, $stateParams) {
-				return Item.getOne($stateParams.id);
+				let item = new Item({
+					_id: $stateParams.id
+				})
+				return item.fetch()
 			}
 		},
 		controller: function($scope, item) {
-			$scope.items = item;
-
-			$scope.items = $scope.items.map(function(item) {
-				item.shortTitle = shortenTitle(item.name, 35);
-				return item;
-			})
+			console.log(item)
+			$scope.item = item;
 		}
 	});
 });
