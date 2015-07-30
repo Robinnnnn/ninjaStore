@@ -1,4 +1,4 @@
-app.directive('addToCart', function() {
+app.directive('addToCart', function($state) {
   return {
     restrict: 'E',
     scope: {
@@ -11,7 +11,8 @@ app.directive('addToCart', function() {
       scope.addToCart = () => {
         scope.item.addToCart()
           .then(item => {
-            console.log('added to cart');
+            alert(`successfully added ${item.name} (${item.quantity}x) to your cart!`)
+            $state.go('cart')
           })
       }
     },

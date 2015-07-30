@@ -10,8 +10,8 @@ app.config(function($stateProvider) {
 
       $scope.clearCart = () => {
         Order.clearCart()
-          .then(function(cart) {
-            $state..go('cart')
+          .then(() => {
+            $state.go('home')
           })
       }
     }

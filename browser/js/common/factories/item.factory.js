@@ -38,7 +38,6 @@ app.factory('Item', function($http) {
   }
 
 	Item.prototype.addToCart = function() {
-		console.log('adding item to cart', this);
 		return $http.post('/api/cart', this)
 			.then(res => new Item(res.data))
 	}
