@@ -11,13 +11,18 @@
 }
 
 .thumbnail {
-	border: 2px black solid;
-  height: 410px;
+  margin: 0px 10px 20px;
+	// border: 2px black solid;
+  height:50%;
+}
+.col-lg-3,.col-md-3,.col-sm-3,.col-xs-3{
+  padding-left: 0;
+  padding-right:0;
 }
 
 .thumbnailImage {
   width: 100%;
-  height: 100%;
+  height: 280px;
 }
 
 .thumbnailTitle {

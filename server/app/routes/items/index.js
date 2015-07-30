@@ -50,6 +50,9 @@ router.get('/:id', function(req, res, next) {
         .then(function(reviews){
             req.item = req.item.toObject();
             req.item.reviews = reviews;
+            req.item.rating = reviews.reduce(function(sum,review){
+                return sum+=review.rating
+            },0)/reviews.length;
             res.json(req.item);
         })
 })
