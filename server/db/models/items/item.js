@@ -56,13 +56,10 @@ Item.statics.getCategory = function(category) {
 
 Item.methods.getAllReviews = function() {
     var self = this;
-
-    return Review.find({
-            _id: {
-                $in: self.reviews
-            }
-        })
-        .populate('userId')
+    return Review.find({_id:{
+        $in: self.reviews
+    }})
+        .populate('userId','email')
         .exec()
 }
 

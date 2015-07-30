@@ -3,7 +3,7 @@ app.directive('itemDetail', function() {
 		restrict: 'E',
 		templateUrl: 'js/common/directives/item/item.detail.html',
 		scope: {
-			theItem: '='
+			item: '='
 		}
 	};
 });
