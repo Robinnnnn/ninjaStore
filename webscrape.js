@@ -30,40 +30,59 @@ var linksFollow = [];*/
 var newLinks = {};
 var newLinksToFollow = {};
 
-var promisesArray = categories.map(function (category){
-	console.log(category);
-	return request(url(category))
-			.then(function(response){
+
+var loadCategoryLinks = categories.map(function (category){
+	return request(url(category)).then(function(response){
+		var productLinks = [];
+		var linksFollow = [];
+
+		$ = cheerio.load(response);
+
+		$('.product-item').children('.picture').each(function(i, elem){
+			productLinks.push($(this).children('a').attr('href'));
+		});
+
+		newLinks[category] = productLinks;
+
+		$('.individual-page').each(function(i, elem){
+			linksFollow.push($(this).children('a').attr('href'));
+		});
+
+		newLinksToFollow[category] = linksFollow;
+	});
+});
+
+Promise.all(loadCategoryLinks)
+.then(function(){
+/*	console.log('links', newLinks);
+	console.log('linkstoFollow', newLinksToFollow);*/
+	var productLinksDone = [];
+
+	for(var key in newLinksToFollow){
+		console.log(key, newLinksToFollow[key]);
+		var arr = newLinksToFollow[key].map(function (link){
+			console.log("url(link): ", url(link));
+			return request(url(link)).then(function(key){ return function(response){
 				var links = [];
-				var linksFollow = [];
 
 				$ = cheerio.load(response);
 
 				$('.product-item').children('.picture').each(function(i, elem){
 					links.push($(this).children('a').attr('href'));
 				});
+				// console.log(links);
+				newLinks[key] = newLinks[key].concat(links);
+			}; }(key));
+		});
 
-				newLinks[category] = links;
-
-				$('.individual-page').each(function(i, elem){
-					linksFollow.push($(this).children('a').attr('href'));
-				});
-
-				newLinksToFollow[category] = linksFollow;
-			})
-			.catch(console.error);
-});
-
-Promise.all(promisesArray)
-.then(function(){
-	console.log('linkstoFollow', newLinksToFollow);
-	for(var key in newLinksToFollow){
-		categories = categories.concat(newLinksToFollow[key]);
+		productLinksDone = productLinksDone.concat(arr);
 	}
-	
-	var promisesArray = categories
 
-});
+	console.log('On to the promises:');
+	return Promise.all(productLinksDone)
+}).then(function(){
+	console.log(newLinks);
+}).catch(console.log.bind(console));
 
 
 
