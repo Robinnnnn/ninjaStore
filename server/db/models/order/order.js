@@ -7,8 +7,16 @@ var Order = new mongoose.Schema({
         ref: 'User'
     },
     userInfo: {
+
         email: String,
-        address: String
+        addressStreet: String,
+        addressApt: String,
+        name: String,
+        city: String,
+        state: String,
+        zipcode: Number,
+        country: String,
+        phone: String
     },
     items: [{
         id: {
