@@ -1,7 +1,7 @@
 app.directive('itemDetail', function() {
 	return {
 		restrict: 'E',
-		templateUrl: 'js/common/directives/item/detail/item.detail.html',
+		templateUrl: 'js/common/directives/item/item.detail.html',
 		scope: {
 			item: '='
 		},

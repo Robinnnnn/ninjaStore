@@ -7,14 +7,6 @@ var router = require('express').Router(),
 var HttpError = require('../../utils/HttpError');
 var User = mongoose.model('User');
 
-// var ensureAuthenticated = function (req, res, next) {
-//     if (req.isAuthenticated()) {
-//         next();
-//     } else {
-//         res.status(401).end();
-//     }
-// };
-
 router.param('id', function (req, res, next, id) {
 	User.findById(id).exec()
 	.then(function (user) {
