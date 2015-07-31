@@ -1,8 +1,10 @@
 <div class='col-md-8 col-md-offset-2'>
   <div class='panel'>
     <h1 class='page-header'>Cart Information</h1>
-    <pre>{{order | json}}</pre>
-    <orderdetail></orderdetail>
+    <orderdetail order="order"></orderdetail>
   </div>
-  <button class='btn btn-default' ng-click='clearCart()'>clear cart</button>
+  <div class="cart-options">
+  	<button class='btn btn-default' ng-click='clearCart()'>Empty Cart</button>
+  	<button class='btn btn-default' ng-click='checkOut()'>Check Out</button>
+  </div>
 </div>
