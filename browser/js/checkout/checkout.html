@@ -1,0 +1,61 @@
+<div>
+    <div id="address">
+    	<h3>Shipping Address</h3>
+        <form class="form-group" ng-if="user===null">
+
+            Name:<input >
+
+            Address line 1<input name="streetAddress" type="text" class="form-control" id="streetAddress" ng-model="customer.streetAddress" placeholder="Street Address">
+            Address line 2<input name="streetAddress" type="text" class="form-control" id="streetAddress" ng-model="customer.streetAddress" placeholder="Street Address">
+        </form>
+        <div class="address" ng-if="user">
+            <ul class="addressList removeDot">
+                <li>
+                    {{user.name}}
+                </li>
+                <li>
+                    {{user.addresses[0].address}}
+                </li>
+                <li>
+                    {{user.addresses[0].city}}, {{user.addresses[0].state}} {{user.addresses[0].zipcode}}
+                </li>
+                 <li>
+                    {{user.email}}
+                </li>
+                <li>
+                	{{user.addresses[0].phone}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="paymentMethod">
+        <h3> Payment Method</h3>
+    </div>
+    <div id="confirmItemShipping">
+        <h3>Review items and shipping</h3>
+        <orderdetail order="order"></orderdetail>
+    </div>
+
+    <div id="orderTotal">
+    	<button class="btn btn-success" ng-click="placeOrder()">
+    		Place order
+    	</button>
+    	<h3> Order summary</h3>
+    	<ul class="removeDot">
+    		<li> Items({{summary.numItem}}): {{summary.itemPrice |currency}} </li>
+    		<li> Shipping & handling: {{summary.shipping | currency}}</li>
+    		<li>Total before tax:{{summary.totalBeforeTax| currency}}</li>
+
+    		<li> Estimate tax: {{summary.tax| currency}}</li>
+    	</ul>
+    	____________________________________________
+    		<h4> Order Total: {{summary.total| currency}}</h4>
+
+    </div>
+
+
+
+
+
+
+</div>

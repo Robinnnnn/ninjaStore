@@ -9,6 +9,26 @@ var User = new mongoose.Schema({
     email: {
         type: String
     },
+    addresses:[{
+        address :{
+          type:String
+        },
+        city:{
+          type:String
+        },
+        state:{
+          type:String
+        },
+        zipcode:{
+          type:Number
+        },
+        country:{
+          type:String
+        },
+        phone:{
+          type:String
+        }
+    }],
     password: {
         type: String
     },
@@ -45,14 +65,7 @@ var User = new mongoose.Schema({
       type: Boolean,
       default: false
     },
-    phone: {
-      type: Number
-    },
     paymentInformation: {
-      type: Array,
-      default: []
-    },
-    addresses: {
       type: Array,
       default: []
     },
