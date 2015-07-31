@@ -27,7 +27,6 @@ router.get('/categories', function(req, res, next) {
 
 // AUTH >>> Everyone
 router.get('/', function(req, res, next) {
-  console.log('hitting route');
     Item.find({}).exec()
         .then(function(items) {
             res.json(items)

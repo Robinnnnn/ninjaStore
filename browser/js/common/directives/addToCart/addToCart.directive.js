@@ -1,14 +1,21 @@
-app.directive('addToCart', function() {
+app.directive('addToCart', function($state) {
   return {
     restrict: 'E',
     scope: {
       item: '='
     },
     link: function(scope, elem, attr) {
-      elem.bind('click', function() {
+
+      scope.QUANTITY = scope.item.quantity
+
+      scope.addToCart = () => {
         scope.item.addToCart()
-      })
+          .then(item => {
+            alert(`successfully added ${item.name} (${item.quantity}x) to your cart!`)
+            $state.go('cart')
+          })
+      }
     },
-    template: `<button class='btn btn-default'>Add to Cart</button>`
+    templateUrl: '/js/common/directives/addToCart/addToCart.html'
   }
 })

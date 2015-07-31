@@ -34,6 +34,11 @@ app.factory('Order', function($http, Item) {
       })
   }
 
+  Order.clearCart = () => {
+    return $http.delete('/api/cart')
+      .then(res => res.data)
+  }
+
   Order.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => {
