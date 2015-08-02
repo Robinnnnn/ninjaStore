@@ -14,6 +14,9 @@ app.config(function($stateProvider) {
             $state.go('home')
           })
       }
+      $scope.checkOut = () => {
+            $state.go('checkOut');
+      };
     }
   })
 })

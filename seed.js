@@ -42,11 +42,29 @@ var wipeDB = function () {
 var seedUsers = function() {
 
     var users = [{
+        name:"Joe Biden",
         email: 'testing@fsa.com',
-        password: 'password'
+        password: 'password',
+        addresses:[{
+            address:'5 Hannover Street #1202',
+            city:"Exeter",
+            state:"NH",
+            zipcode:03833,
+            country:"USA",
+            phone:"1234567890"
+        }]
     }, {
+        name:"Barack Obama",
         email: 'obama@gmail.com',
         password: 'potus',
+        addresses:[{
+            address:'100 President Road',
+            city:"Potus",
+            state:"DC",
+            zipcode:99999,
+            country:"Uganda",
+            phone:"0987654321"
+        }],
         isAdmin: true
     }];
 

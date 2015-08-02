@@ -7,13 +7,13 @@
               <!-- Wrapper for slides -->
               <div class="carousel-inner">
                 <div class="item active">
-                    <img src="{{item.photo}}" alt="Image">
+                    <img class="orderDetailImage" src="{{item.photos[0]}}" alt="Image">
                 </div>
               </div>
             </div>
             <div class="slide-content">
                 <h4>{{item.name}}</h4>
-                <p>{{item.description}}
+                <p>{{item.description.short}}
                 </p>
                 <strong>Price: </strong> {{item.price}}
             </div>

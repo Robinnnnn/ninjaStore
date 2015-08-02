@@ -1,0 +1,75 @@
+<div class="container centered">
+    <div id="address" class="col-lg-6">
+    	<h3>Shipping Address</h3>
+        <form class="form-group" ng-if="user===null">
+
+            <input name="name" type="text" class="form-control" ng-model="customer.name" placeholder="Full Name">
+            <input name="streetAddress" type="text" class="form-control" ng-model="customer.addressStreet" placeholder="Street Address">
+            <input name="streetAddress" type="text" class="form-control" ng-model="customer.addressApt" placeholder="Apartment #">
+            <input name="city" type="text" class="form-control" ng-model="customer.city" placeholder="City">
+            <input name="state" type="text" class="form-control" ng-model="customer.state" placeholder="State / Province / Region">
+            <input name="zipcode" type="text" class="form-control" ng-model="customer.zipcode" placeholder="Zip Code">
+            <input name="country" type="text" class="form-control" ng-model="customer.country" placeholder="Country">
+            <input name="email" type="text" class="form-control" ng-model="customer.email" placeholder="E-mail">
+            <input name="phone" type="text" class="form-control" ng-model="customer.phone" placeholder="Phone Number">
+
+             <button class="btn btn-success" ng-click="saveInformation(customer)" type="submit">
+                Save
+            </button>
+
+
+        </form>
+        <div class="address" ng-if="user">
+            <ul class="addressList removeDot">
+                <li>
+                    {{user.name}}
+                </li>
+                <li>
+                    {{user.addresses[0].address || user.addressStreet}} {{ user.addressApt }}
+                </li>
+                <li>
+                    {{user.addresses[0].city || user.city}}, {{user.addresses[0].state || user.state}} {{user.addresses[0].zipcode || user.zipcode}}
+                </li>
+                 <li>
+                    {{user.email}}
+                </li>
+                <li>
+                	{{user.addresses[0].phone || user.phone}}
+                </li>
+            </ul>
+            <button class="btn btn-success" ng-click="editInformation()">
+                Edit
+            </button>
+        </div>
+    </div>
+    <div id="paymentMethod">
+        <h3> Payment Method</h3>
+    </div>
+    <div id="confirmItemShipping">
+        <h3>Review items and shipping</h3>
+        <orderdetail order="order"></orderdetail>
+    </div>
+
+    <div id="orderTotal">
+    	<h3> Order summary</h3>
+    	<ul class="removeDot">
+    		<li> Items({{summary.numItem}}): {{summary.itemPrice |currency}} </li>
+    		<li> Shipping & handling: {{summary.shipping | currency}}</li>
+    		<li>Total before tax:{{summary.totalBeforeTax| currency}}</li>
+
+    		<li> Estimate tax: {{summary.tax| currency}}</li>
+    	</ul>
+    	____________________________________________
+    		<h4> Order Total: {{summary.total| currency}}</h4>
+
+    </div>
+    <button class="btn btn-success" ng-click="placeOrder()" type="submit">
+        Place order
+    </button>
+
+
+
+
+
+
+</div>
