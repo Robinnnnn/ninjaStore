@@ -62,7 +62,7 @@ var seedItems = function() {
     price: 1998,
     quantity: 35,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0003923_universal-shoulder-harness-sword-sheath_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'swords' ] },
   { name: 'Ninja Carbon Steel Folding Grappling Hook',
     description: 
      { short: 'Use this ninja tool to boldly go where no ninja has gone before!',
@@ -102,7 +102,7 @@ var seedItems = function() {
     price: 1399,
     quantity: 33,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0003958_sword-cleaning-kit_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'swords' ] },
   { name: 'Ninja Tashibishi Caltrops',
     description: 
      { short: 'Sabotage your pursuers with ninja caltrops which always land with a spike up!',
@@ -110,7 +110,7 @@ var seedItems = function() {
     price: 499,
     quantity: 30,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000063_ninja-tashibishi-caltrops_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'other-ninja-weapons' ] },
   { name: 'Ninja Shuko Climbing Hand Claws Set',
     description: 
      { short: 'Ninjas don\'t need webbing to climb like Spiderman!',
@@ -150,7 +150,7 @@ var seedItems = function() {
     price: 5999,
     quantity: 48,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002884_bat-gear-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'throwing-knives', 'ninja-gift-sets' ] },
   { name: 'Ninja Arm Gauntlets',
     description: 
      { short: 'Make your ninja get-up even more dangerous and intimidating with these ninja arm gauntlets!',
@@ -164,7 +164,7 @@ var seedItems = function() {
     price: 899,
     quantity: 43,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002747_ninja-kunai-knife-necklace_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'other-ninja-weapons' ] },
   { name: 'Ninja Tabi Socks',
     description: 
      { short: 'The thonged sock that you need inside of your thonged boot for authentic ninja attire!',
@@ -189,14 +189,6 @@ var seedItems = function() {
     quantity: 4,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000119_ninja-climbing-foot-spikes-pair_480.jpeg' ],
     categories: [ 'ninja-gear' ] },
-  { name: 'Sai Keychain',
-    description: 
-     { short: 'Who needs a rabbit\'s foot or an alma mater pendant when you can have a ninja sai on your keychain!',
-       long: '' },
-    price: 499,
-    quantity: 43,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002799_sai-keychain_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
   { name: 'Ninja Climbing Gear Gift Set',
     description: 
      { short: 'Essential ninja climbing gear in one convenient package!',
@@ -204,7 +196,7 @@ var seedItems = function() {
     price: 5999,
     quantity: 15,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000504_ninja-climbing-gear-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'ninja-gift-sets' ] },
   { name: 'Ninja Hood With Mask',
     description: 
      { short: 'Concealment, anonymity, and stealthiness are at the core of the ninja persona.  Start with your head!',
@@ -236,7 +228,7 @@ var seedItems = function() {
     price: 2998,
     quantity: 44,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002864_kids-ninja-costume-with-safe-ninja-weapons_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'ninja-gift-sets' ] },
   { name: 'Shinobi Ninjutsu Stealth Ninja Uniform',
     description: 
      { short: 'Be the NINJA!',
@@ -245,14 +237,6 @@ var seedItems = function() {
     quantity: 20,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000111_shinobi-ninjutsu-stealth-ninja-uniform_480.jpeg' ],
     categories: [ 'ninja-gear' ] },
-  { name: 'Nunchaku Storage Case with Zipper Closure',
-    description: 
-     { short: 'A must have accessory for your nunchaku!',
-       long: 'Made of vinyl construction, this storage case has a zipper closure.  Nunchucks not included.Made of vinyl construction, this storage case has a zipper closure.  Nunchucks not included.' },
-    price: 699,
-    quantity: 15,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000406_nunchaku-storage-case-with-zipper-closure_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
   { name: 'Sai Carrying Case',
     description: 
      { short: 'The sai have their own concealed carry!',
@@ -260,7 +244,7 @@ var seedItems = function() {
     price: 1399,
     quantity: 21,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000411_sai-carrying-case_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'sai' ] },
   { name: 'Dragon\'s Pearl Wood Nunchucks',
     description: 
      { short: 'The flaming pearl of the dragon represents wealth, good luck, and prosperity.',
@@ -276,7 +260,7 @@ var seedItems = function() {
     price: 10699,
     quantity: 1,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000481_shinobi-ninjutsu-stealth-ninja-uniform-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gear' ] },
+    categories: [ 'ninja-gear', 'ninja-gift-sets' ] },
   { name: 'Naruto Shippuden Leaf Village Headband',
     description: 
      { short: 'Insignia of the Konoha Leaf Village',
@@ -308,7 +292,7 @@ var seedItems = function() {
     price: 499,
     quantity: 40,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002799_sai-keychain_480.jpeg' ],
-    categories: [ 'sai' ] },
+    categories: [ 'sai', 'ninja-gear' ] },
   { name: 'Deluxe Octagon Sai',
     description: 
      { short: 'Balanced and superior sai set! Choose chrome or black.',
@@ -349,14 +333,6 @@ var seedItems = function() {
     quantity: 24,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000426_octagon-nunchaku_480.jpeg' ],
     categories: [ 'nunchucks' ] },
-  { name: 'Sai Carrying Case',
-    description: 
-     { short: 'The sai have their own concealed carry!',
-       long: 'This sai case is black in color and 22 1/2" in overall length. Nylon case with zipper.This sai case is black in color and 22 1/2" in overall length. Nylon case with zipper.' },
-    price: 1399,
-    quantity: 38,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000411_sai-carrying-case_480.jpeg' ],
-    categories: [ 'sai' ] },
   { name: 'Golden Dragon Blue Nunchaku',
     description: { short: 'You don\'t want to wake the dragon!', long: '' },
     price: 1499,
@@ -450,7 +426,7 @@ var seedItems = function() {
     price: 699,
     quantity: 29,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000406_nunchaku-storage-case-with-zipper-closure_480.jpeg' ],
-    categories: [ 'nunchucks' ] },
+    categories: [ 'nunchucks', 'ninja-gear' ] },
   { name: 'Aluminum Nunchaku Escrima',
     description: 
      { short: 'Our Aluminum Nunchaku Escrima is actually two weapons in one. It is a 12″ nunchaku that features a metal chain and ball bearing swivel that can be screwed together to form a 24″ escrima stick. This weapon is made from heavy duty aluminum and features a textured handle for a secure grip.',
@@ -498,7 +474,7 @@ var seedItems = function() {
     price: 1998,
     quantity: 7,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002785_foam-training-three-section-nunchuck-staff_480.jpeg' ],
-    categories: [ 'nunchucks' ] },
+    categories: [ 'nunchucks', 'other-ninja-weapons' ] },
   { name: 'United Cutlery Foam Practice Nunchucks with Rope',
     description: 
      { short: 'These foam nunchaku are the easiest and most pain-free way to learn the art of "the chucks." You\'ll be Jackie Chan in no time without a lot the bruises on your face.',
@@ -514,7 +490,7 @@ var seedItems = function() {
     price: 3599,
     quantity: 30,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000425_three-section-nunchuck-staff_480.jpeg' ],
-    categories: [ 'nunchucks' ] },
+    categories: [ 'nunchucks', 'other-ninja-weapons' ] },
   { name: 'Hidden Dagger Nunchaku Baton',
     description: 
      { short: 'Three weapons in one -  Nunchaku, Baton, and Dagger!',
@@ -568,7 +544,7 @@ var seedItems = function() {
     price: 1499,
     quantity: 17,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0001629_chakra-blade-knuckle-guard-knife_480.jpeg' ],
-    categories: [ 'throwing-knives' ] },
+    categories: [ 'throwing-knives', 'other-ninja-weapons' ] },
   { name: 'Lightning Bolt Triple Throwing Knife Set',
     description: 
      { short: 'Includes a fully adjustable shoulder harness!',
@@ -632,7 +608,7 @@ var seedItems = function() {
     price: 5299,
     quantity: 9,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0001596_ninja-throwing-knife-gift-set_480.jpeg' ],
-    categories: [ 'throwing-knives' ] },
+    categories: [ 'throwing-knives', 'ninja-gift-sets' ] },
   { name: 'Kid Safe-ish Ninja Gear Gift Set',
     description: 
      { short: 'Short of sticking your kid in a rubber room he\'s going to find some way to hurt himself.  But here\'s our attempt at a kid safe-ish ninja gear gift set.',
@@ -640,7 +616,7 @@ var seedItems = function() {
     price: 3099,
     quantity: 17,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002784_kid-safe-ish-ninja-gear-gift-set_480.jpeg' ],
-    categories: [ 'nunchucks' ] },
+    categories: [ 'nunchucks', 'ninja-stars', 'blowguns', 'ninja-gift-sets' ] },
   { name: 'United Cutlery Foam Practice Nunchaku',
     description: 
      { short: 'These nunchakus are padded foam rubber covered PVC tube construction. Features steel caps and chain links. 12 3/4” overall',
@@ -696,7 +672,7 @@ var seedItems = function() {
     price: 1998,
     quantity: 42,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000526_ninja-nunchuck-gift-set_480.jpeg' ],
-    categories: [ 'nunchucks' ] },
+    categories: [ 'nunchucks', 'ninja-gift-sets' ] },
   { name: 'Ninja Warrior Throwing Knife Set',
     description: 
      { short: '',
@@ -744,7 +720,7 @@ var seedItems = function() {
     price: 5999,
     quantity: 0,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000519_naruto-gift-set_480.jpeg' ],
-    categories: [ 'throwing-knives' ] },
+    categories: [ 'throwing-knives', 'ninja-gift-sets' ] },
   { name: 'Naruto of the Hidden Leaf Gift Set',
     description: 
      { short: '"I\'m going to prove that in this world.. Heroes do exist!"',
@@ -752,7 +728,7 @@ var seedItems = function() {
     price: 5799,
     quantity: 40,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002887_naruto-of-the-hidden-leaf-gift-set_480.jpeg' ],
-    categories: [ 'throwing-knives' ] },
+    categories: [ 'throwing-knives', 'ninja-gift-sets' ] },
   { name: 'Hard Rubber Nunchaku',
     description: 
      { short: 'The 12" handles of this nunchaku are constructed from hard rubber. The chain is stainless steel and features ball bearing swivels.',
@@ -840,14 +816,6 @@ var seedItems = function() {
     price: 1698,
     quantity: 43,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000352_red-ninja-throwing-knife-set_480.jpeg' ],
-    categories: [ 'throwing-knives' ] },
-  { name: 'Bat Gear Gift Set',
-    description: 
-     { short: 'All the best Bat Gear in one tidy gift set! Includes bat throwers, throwing knives, and arm gauntlets.',
-       long: 'Gift set contains:Gift set contains:' },
-    price: 5999,
-    quantity: 9,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002884_bat-gear-gift-set_480.jpeg' ],
     categories: [ 'throwing-knives' ] },
   { name: 'On Target Kunai Throwing Knife Set',
     description: 
@@ -1032,14 +1000,6 @@ var seedItems = function() {
     price: 1998,
     quantity: 45,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000381_ridge-runner-6-piece-lightning-throwing-knife-set_480.jpeg' ],
-    categories: [ 'throwing-knives' ] },
-  { name: 'Legendary Dark Wing Throwing Knife Set of 3',
-    description: 
-     { short: 'Different shape, same super-hero!',
-       long: 'This bat thrower comes with three piece solid stainless steel construction set with a remarkable sharp blade on each side. This black anodize thrower features a shape of a true bat and comes in a well stitched, durable black nylon pouch. The pouch offers snap on closure with a double belt loop for a strong hold. Each thrower has its own compartment inside the durable nylon pouch. Each throwing knife measures 5.5″ overall and 2.5″ long blades. Made of 1045 surgical steel, Black with silver edges.This bat thrower comes with three piece solid stainless steel construction set with a remarkable sharp blade on each side. This black anodize thrower features a shape of a true bat and comes in a well stitched, durable black nylon pouch. The pouch offers snap on closure with a double belt loop for a strong hold. Each thrower has its own compartment inside the durable nylon pouch. Each throwing knife measures 5.5″ overall and 2.5″ long blades. Made of 1045 surgical steel, Black with silver edges.' },
-    price: 1599,
-    quantity: 0,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000157_legendary-dark-wing-throwing-knife-set-of-3_480.jpeg' ],
     categories: [ 'throwing-knives' ] },
   { name: 'Assassin\'s Constellation Ninja Shuriken Set',
     description: 
@@ -1277,14 +1237,6 @@ var seedItems = function() {
     quantity: 48,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000485_iron-cross-ninja-star-set_480.jpeg' ],
     categories: [ 'ninja-stars' ] },
-  { name: 'Kid Safe-ish Ninja Gear Gift Set',
-    description: 
-     { short: 'Short of sticking your kid in a rubber room he\'s going to find some way to hurt himself.  But here\'s our attempt at a kid safe-ish ninja gear gift set.',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 3099,
-    quantity: 18,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002784_kid-safe-ish-ninja-gear-gift-set_480.jpeg' ],
-    categories: [ 'ninja-stars' ] },
   { name: 'Diamond Plate Chopper Throwing Star Set',
     description: 
      { short: 'Chopper symbol on a diamond plate background design makes this four piece ninja star set unique. Shuriken measure 2 1/2" diameter. Includes free nylon carrying pouch.',
@@ -1372,7 +1324,7 @@ var seedItems = function() {
     price: 999,
     quantity: 25,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000022_flare-skull-throwing-star_480.jpeg' ],
-    categories: [ 'ninja-stars' ] },
+    categories: [ 'ninja-stars', 'ninja-stars' ] },
   { name: 'Cyclone Throwing Star',
     description: 
      { short: 'The Cyclone Throwing Star cuts through the air on a personal mission to wreak havoc.',
@@ -1516,7 +1468,7 @@ var seedItems = function() {
     price: 1599,
     quantity: 25,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000157_legendary-dark-wing-throwing-knife-set-of-3_480.jpeg' ],
-    categories: [ 'ninja-stars' ] },
+    categories: [ 'ninja-stars', 'throwing-knives' ] },
   { name: 'Dragon\'s Eye Ninja Throwing Star Set',
     description: 
      { short: 'The dragon\'s eye is a well known symbol of protection and these triangular stars are crafted in their likeness.',
@@ -1741,14 +1693,6 @@ var seedItems = function() {
     quantity: 7,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000414_vega-ninja-throwing-star_480.jpeg' ],
     categories: [ 'ninja-stars' ] },
-  { name: 'Flare Skull Throwing Star',
-    description: 
-     { short: 'Wicked sharp star features an angry free-spinning skull and flaming texture.',
-       long: '' },
-    price: 999,
-    quantity: 33,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000012_flare-skull-throwing-star_480.jpeg' ],
-    categories: [ 'ninja-stars' ] },
   { name: 'Japanese Naginata Ninja Sword',
     description: 
      { short: 'Naginata is a Japanese martial art form that originated over 1,000 years ago. Due to its massive height, the Naginata was the weapon of choice for battle against horseman and swords.',
@@ -1756,7 +1700,7 @@ var seedItems = function() {
     price: 7998,
     quantity: 15,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0003913_japanese-naginata-ninja-sword_480.jpeg' ],
-    categories: [ 'swords' ] },
+    categories: [ 'swords', 'other-ninja-weapons' ] },
   { name: 'Blowgun Mouthpiece',
     description: 
      { short: 'This blowgun mouthpiece prevents the inhalation of darts and fits a .40 caliber blowgun.',
@@ -1844,7 +1788,7 @@ var seedItems = function() {
     price: 2499,
     quantity: 4,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000238_black-raven-blowgun-knife-combo_480.jpeg' ],
-    categories: [ 'blowguns' ] },
+    categories: [ 'blowguns', 'other-ninja-weapons' ] },
   { name: 'Black Ronin Tomahawk with Sheath',
     description: 
      { short: 'Unlike cheap imitations, this Black Ronin blade is built to the highest quality standards.',
@@ -1869,14 +1813,6 @@ var seedItems = function() {
     quantity: 45,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000178_ninja-sword-with-set-of-2-kunai-throwers_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Kid Safe-ish Ninja Gear Gift Set',
-    description: 
-     { short: 'Short of sticking your kid in a rubber room he\'s going to find some way to hurt himself.  But here\'s our attempt at a kid safe-ish ninja gear gift set.',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 3099,
-    quantity: 42,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002784_kid-safe-ish-ninja-gear-gift-set_480.jpeg' ],
-    categories: [ 'blowguns' ] },
   { name: 'Black Legion Throwing Axe',
     description: 
      { short: 'This throwing axe from Black Legion really is one savage thrower!',
@@ -1892,7 +1828,7 @@ var seedItems = function() {
     price: 2999,
     quantity: 17,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000478_ninja-blowgun-gift-set_480.jpeg' ],
-    categories: [ 'blowguns' ] },
+    categories: [ 'blowguns', 'ninja-gift-sets' ] },
   { name: 'Foam Blowgun Target',
     description: 
      { short: 'This square blowgun target is made from 2″ thick self-healing air foam. Target area is 12″ x 12″.',
@@ -1996,7 +1932,7 @@ var seedItems = function() {
     price: 3799,
     quantity: 42,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000175_black-blow-dart-ninja-sword_480.jpeg' ],
-    categories: [ 'swords' ] },
+    categories: [ 'swords', 'blowguns' ] },
   { name: 'Ninja Sword with Attached Blowgun',
     description: 
      { short: 'Options!  Ninjas love options!  To slice and cut or to puncture and poison, that is the question.',
@@ -2004,7 +1940,7 @@ var seedItems = function() {
     price: 7998,
     quantity: 27,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000048_ninja-sword-with-attached-blowgun_480.jpeg' ],
-    categories: [ 'swords' ] },
+    categories: [ 'swords', 'blowguns' ] },
   { name: 'Dart Guard',
     description: 
      { short: 'Keep the tips of your darts razor sharp with a dart guard.',
@@ -2131,14 +2067,6 @@ var seedItems = function() {
     quantity: 22,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0001603_black-foam-training-escrima_480.jpeg' ],
     categories: [ 'other-ninja-weapons' ] },
-  { name: 'Ninja Sword with Attached Blowgun',
-    description: 
-     { short: 'Options!  Ninjas love options!  To slice and cut or to puncture and poison, that is the question.',
-       long: '' },
-    price: 7998,
-    quantity: 45,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000048_ninja-sword-with-attached-blowgun_480.jpeg' ],
-    categories: [ 'blowguns' ] },
   { name: '36" Ninja .40 Caliber Blowgun',
     description: 
      { short: 'A little extra length is always a good thing!',
@@ -2179,14 +2107,6 @@ var seedItems = function() {
     quantity: 39,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000174_shinwa-purple-knight-ninja-katana-damascus-sword_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Ninja Tashibishi Caltrops',
-    description: 
-     { short: 'Sabotage your pursuers with ninja caltrops which always land with a spike up!',
-       long: 'A caltrop (also known as caltrap, galtrop, cheval trap, galthrap, galtrap, calthrop, crow\'s foot) is an antipersonnel weapon made up of two or more sharp nails or spines arranged in such a manner that one of them always points upward from a stable base (for example, a tetrahedron). Caltrops served to slow down the advance of horses, war elephants, and human troops. They were said to be particularly effective against the soft feet of camels. In more modern times, caltrops are used against wheeled vehicles with pneumatic tires.The Japanese version of the caltrop is called makibishi. Makibishi were sharp spiked objects that were used in feudal Japan to slow down pursuers and also were used in the defense of samurai fortifications. Iron makibishi were called tetsubishi while the makibishi made from the dried seed pod of the water chestnut formed a natural type of makibashi called tennenbishi. Both types of makibishi could penetrate the thin soles of the shoes such as the waraji sandals that were commonly worn in feudal Japan.Pack contains 10 caltrops.A caltrop (also known as caltrap, galtrop, cheval trap, galthrap, galtrap, calthrop, crow\'s foot) is an antipersonnel weapon made up of two or more sharp nails or spines arranged in such a manner that one of them always points upward from a stable base (for example, a tetrahedron). Caltrops served to slow down the advance of horses, war elephants, and human troops. They were said to be particularly effective against the soft feet of camels. In more modern times, caltrops are used against wheeled vehicles with pneumatic tires.The Japanese version of the caltrop is called makibishi. Makibishi were sharp spiked objects that were used in feudal Japan to slow down pursuers and also were used in the defense of samurai fortifications. Iron makibishi were called tetsubishi while the makibishi made from the dried seed pod of the water chestnut formed a natural type of makibashi called tennenbishi. Both types of makibishi could penetrate the thin soles of the shoes such as the waraji sandals that were commonly worn in feudal Japan.Pack contains 10 caltrops.' },
-    price: 499,
-    quantity: 30,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000063_ninja-tashibishi-caltrops_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
   { name: 'Cold Steel Black Training Daito',
     description: 
      { short: 'Originally designed to imitate a live blade without the possibility of causing permanent injury.',
@@ -2211,14 +2131,6 @@ var seedItems = function() {
     quantity: 33,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000199_black-ninja-sword_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Black Blow-Dart Ninja Sword',
-    description: 
-     { short: 'Sword with scabbard that doubles as a blowgun!',
-       long: 'All black ninja sword with blowgun attached to the scabbard.  40″ overall length.All black ninja sword with blowgun attached to the scabbard.  40″ overall length.' },
-    price: 3799,
-    quantity: 23,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000175_black-blow-dart-ninja-sword_480.jpeg' ],
-    categories: [ 'blowguns' ] },
   { name: 'Masahiro Hand Forged Ninja Sword',
     description: 
      { short: 'Masahiro master sword-smiths use hundreds of years of tradition.',
@@ -2251,14 +2163,6 @@ var seedItems = function() {
     quantity: 30,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000298_exploding-cap-darts_480.jpeg' ],
     categories: [ 'blowguns' ] },
-  { name: 'Ninja Blowgun Gift Set',
-    description: 
-     { short: 'Everything you need to get started in the ninja art of stealth assassination!',
-       long: 'The Ninja blowgun line is a deluxe, super safe model. This 18" blowgun comes with the two most popular dart types, the target and stun dart. You get 12 target darts, which are sharpened 4 inch needles with a precision cone for ultimate accuracy and performance. These are used for target practice, shooting small game, and for dart board games. You also get 8 stun darts. This is a flattened dummy dart that can be used more safety indoors, to stun a small animal, or for the younger sportsman to knock over a row of cans. Ready for your use on the gun are 2 types of quivers to hold all your darts for quick access. This is an ultra safe model with the safety mouthpiece, to keep you from inhaling the dart, an extra foam grip for an extra secure hold and the most accurate shot, and the dart guard to keep your hand protected. High quality precision aluminum barrel with plastic fittings. Comes with 12 target darts and 8 stun darts. Avenger Ninja Features: 20 total darts, 12 target darts, 8 stun darts, 16 point quiver, 8 point quiver, Dart Guard Tip Protectors, Foam Grip, Aircraft Aluminum barrelThe Ninja blowgun line is a deluxe, super safe model. This 18" blowgun comes with the two most popular dart types, the target and stun dart. You get 12 target darts, which are sharpened 4 inch needles with a precision cone for ultimate accuracy and performance. These are used for target practice, shooting small game, and for dart board games. You also get 8 stun darts. This is a flattened dummy dart that can be used more safety indoors, to stun a small animal, or for the younger sportsman to knock over a row of cans. Ready for your use on the gun are 2 types of quivers to hold all your darts for quick access. This is an ultra safe model with the safety mouthpiece, to keep you from inhaling the dart, an extra foam grip for an extra secure hold and the most accurate shot, and the dart guard to keep your hand protected. High quality precision aluminum barrel with plastic fittings. Comes with 12 target darts and 8 stun darts. Avenger Ninja Features: 20 total darts, 12 target darts, 8 stun darts, 16 point quiver, 8 point quiver, Dart Guard Tip Protectors, Foam Grip, Aircraft Aluminum barrel' },
-    price: 2999,
-    quantity: 33,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000478_ninja-blowgun-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
   { name: 'Muzzle Guard with Peep Sight',
     description: 
      { short: 'Snipe out your target with a peep sight for the end of the blowgun.',
@@ -2274,7 +2178,7 @@ var seedItems = function() {
     price: 2099,
     quantity: 26,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000500_cold-steel-o-tanto-bokken_480.jpeg' ],
-    categories: [ 'swords' ] },
+    categories: [ 'swords', 'other-ninja-weapons' ] },
   { name: 'Black Dragon Naginata',
     description: 
      { short: 'Due to its massive height, the naginata was the weapon of choice for battle against horseman and swords.',
@@ -2282,7 +2186,7 @@ var seedItems = function() {
     price: 7998,
     quantity: 31,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000136_black-dragon-naginata_480.jpeg' ],
-    categories: [ 'swords' ] },
+    categories: [ 'swords', 'other-ninja-weapons' ] },
   { name: 'Ask a Ninja Presents The Ninja Handbook',
     description: 
      { short: 'This paperback by Douglas Sarine looks forward to killing you soon.',
@@ -2307,14 +2211,6 @@ var seedItems = function() {
     quantity: 17,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000132_dragon-knife-ring_480.jpeg' ],
     categories: [ 'other-ninja-weapons' ] },
-  { name: 'Sword Cleaning Kit',
-    description: 
-     { short: '',
-       long: 'The proper care and maintenance of your blades is critical to keeping up their condition in the long term. The composition of sword steel makes it very susceptible to rust. Includes everything necessary for basic sword: The proper care and maintenance of your blades is critical to keeping up their condition in the long term. The composition of sword steel makes it very susceptible to rust. Includes everything necessary for basic sword: ' },
-    price: 1399,
-    quantity: 29,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0003958_sword-cleaning-kit_480.jpeg' ],
-    categories: [ 'swords' ] },
   { name: 'Black Ninja Machete Set',
     description: 
      { short: 'Jason Voorhees, you’ve met your match with our black ninja machete in the hands of the deadliest night warrior.',
@@ -2323,22 +2219,6 @@ var seedItems = function() {
     quantity: 22,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000200_black-ninja-machete-set_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Naruto of the Hidden Leaf Gift Set',
-    description: 
-     { short: '"I\'m going to prove that in this world.. Heroes do exist!"',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 5799,
-    quantity: 13,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002887_naruto-of-the-hidden-leaf-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
-  { name: 'Kid Safe-ish Ninja Gear Gift Set',
-    description: 
-     { short: 'Short of sticking your kid in a rubber room he\'s going to find some way to hurt himself.  But here\'s our attempt at a kid safe-ish ninja gear gift set.',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 3099,
-    quantity: 13,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002784_kid-safe-ish-ninja-gear-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
   { name: 'Ninja Full Tang Tanto Knife',
     description: 
      { short: 'This massive full-tang tanto is a great blade for self-defense and tactical situations.',
@@ -2355,14 +2235,6 @@ var seedItems = function() {
     quantity: 13,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000377_gil-hibben-knife-throwing-guide_480.jpeg' ],
     categories: [ 'books' ] },
-  { name: 'Black Dragon Naginata',
-    description: 
-     { short: 'Due to its massive height, the naginata was the weapon of choice for battle against horseman and swords.',
-       long: 'Naginata is a Japanese martial art form that originated over 1,000 years ago. This piece stretches over 5 feet tall with a 21 1/4″ carbon steel blade. Includes custom blade cover with intricate dragon etching.Naginata is a Japanese martial art form that originated over 1,000 years ago. This piece stretches over 5 feet tall with a 21 1/4″ carbon steel blade. Includes custom blade cover with intricate dragon etching.' },
-    price: 7998,
-    quantity: 31,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000136_black-dragon-naginata_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
   { name: 'Full Tang Twin Ninja Swords',
     description: 
      { short: 'Two is always better than one. Double the trouble!',
@@ -2411,14 +2283,6 @@ var seedItems = function() {
     quantity: 12,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000218_highlander-connor-macleod-katana-sword_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Universal Shoulder Harness Sword Sheath',
-    description: 
-     { short: 'Keep your sword protected and portable!',
-       long: 'This fully adjustable imitation leather harness is designed to fit virtually any size sword.This fully adjustable imitation leather harness is designed to fit virtually any size sword.' },
-    price: 1998,
-    quantity: 38,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0003923_universal-shoulder-harness-sword-sheath_480.jpeg' ],
-    categories: [ 'swords' ] },
   { name: 'Revenge 2 Piece Sword Set',
     description: 
      { short: 'Revenge comes in a tidy sheath these days. Just add vengeance.',
@@ -2459,22 +2323,6 @@ var seedItems = function() {
     quantity: 33,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000197_shinwa-black-double-edge-katana-sword-black-damascus_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Naruto Gift Set',
-    description: 
-     { short: '"I\'m not gonna run away and I never go back on my word, that is my nindō! My ninja way!"',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 5999,
-    quantity: 16,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000519_naruto-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
-  { name: 'Three Section Nunchuck Staff',
-    description: 
-     { short: 'Three section black stainless steel nunchuck/staff. Can be used as three section nunchuck or screw together to form a staff. Overall length measures 6 feet long when screwed together.',
-       long: '' },
-    price: 3599,
-    quantity: 12,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000425_three-section-nunchuck-staff_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
   { name: 'Ninja Necessities Gift Set',
     description: { short: '', long: 'Gift set includes:Gift set includes:' },
     price: 2999,
@@ -2513,12 +2361,6 @@ var seedItems = function() {
     quantity: 34,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000394_cold-steel-wakizashi-bokken-sword_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Chakra Blade Knuckle Guard Knife',
-    description: { short: 'Weapon of choice by Asuma Sarutobi!', long: '' },
-    price: 1499,
-    quantity: 17,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0001629_chakra-blade-knuckle-guard-knife_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
   { name: 'Dragonfly Ninja Throwing Star',
     description: 
      { short: 'Fly by day, kill by night!',
@@ -2551,14 +2393,6 @@ var seedItems = function() {
     quantity: 47,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002856_full-tang-ninja-sword-and-2-kunai-throwing-knives_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Black Raven Blowgun Knife Combo',
-    description: 
-     { short: 'It\'s a knife! No, it\'s a blowgun! No, it\'s super-combo!',
-       long: 'This Black Raven Blowgun Knife Combo is 14 1/2″ overall with a black 440 stainless steel blade. Features a 2 piece aluminum tube that screws on to form a blowgun. Also includes is 3 steel blow darts and sheath.This Black Raven Blowgun Knife Combo is 14 1/2″ overall with a black 440 stainless steel blade. Features a 2 piece aluminum tube that screws on to form a blowgun. Also includes is 3 steel blow darts and sheath.' },
-    price: 2499,
-    quantity: 25,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000238_black-raven-blowgun-knife-combo_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
   { name: 'Cold Steel FGX Push Blade II',
     description: 
      { short: 'Black as a moonless night, silent as the grave…',
@@ -2607,14 +2441,6 @@ var seedItems = function() {
     quantity: 13,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002855_tonfa-keychain-with-handcuff-key_480.jpeg' ],
     categories: [ 'other-ninja-weapons' ] },
-  { name: 'Kid\'s Ninja Costume With Safe Ninja Weapons',
-    description: 
-     { short: 'Just in time for Halloween!  Three piece costume and eight piece plastic ninja weapon set to outfit your little ninja like a pro.',
-       long: 'The noble Ninja warrior lurks in the shadows and the corners of darkness to battle with stealth and skill. You\'re little ninja can look like the real thing on Halloween or every day just for fun. The impressive tunic adds bulk and heft to your sleek Ninja profile - overpower the enemy with ease. Made of a cotton/poly blend. Includes jacket, pants, and ninja hood.- 35% Cotton 65% polyester. - Includes jacket, pants, and hood. - Perfect for Halloween or Every Day use. - Youth Sizes Only.Plastic Ninja Set includes 8 assorted items.- Wakizashi w/ sheath - Tanto with sheath - Nunchucks - Brass knuckles - Two ninja throwing starsThe noble Ninja warrior lurks in the shadows and the corners of darkness to battle with stealth and skill. You\'re little ninja can look like the real thing on Halloween or every day just for fun. The impressive tunic adds bulk and heft to your sleek Ninja profile - overpower the enemy with ease. Made of a cotton/poly blend. Includes jacket, pants, and ninja hood.- 35% Cotton 65% polyester. - Includes jacket, pants, and hood. - Perfect for Halloween or Every Day use. - Youth Sizes Only.Plastic Ninja Set includes 8 assorted items.- Wakizashi w/ sheath - Tanto with sheath - Nunchucks - Brass knuckles - Two ninja throwing stars' },
-    price: 2998,
-    quantity: 41,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002864_kids-ninja-costume-with-safe-ninja-weapons_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
   { name: 'NINJA GAIDEN Sigma Katana Sword',
     description: { short: 'The sword of Ryu Hayabusa!', long: '' },
     price: 4999,
@@ -2677,14 +2503,6 @@ var seedItems = function() {
     quantity: 37,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002800_black-full-tang-ninja-sword_480.jpeg' ],
     categories: [ 'swords' ] },
-  { name: 'Foam Training Three Section Nunchuck Staff',
-    description: 
-     { short: 'Foam padding is safe to use for training and students.',
-       long: 'Our Martial Arts training three sectional staff is foam padded with a PVC core. Each ball bearing linkage fitting is stainless steel with a stainless steel chain. The chain extends to about 8 inches long. Overall Length: 77.5 Inches. Handle: Foam Padded, PVC Core.Our Martial Arts training three sectional staff is foam padded with a PVC core. Each ball bearing linkage fitting is stainless steel with a stainless steel chain. The chain extends to about 8 inches long. Overall Length: 77.5 Inches. Handle: Foam Padded, PVC Core.' },
-    price: 1998,
-    quantity: 49,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002785_foam-training-three-section-nunchuck-staff_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
   { name: 'Kama Set',
     description: 
      { short: 'Punctuation with an attitude!',
@@ -2805,14 +2623,6 @@ var seedItems = function() {
     quantity: 25,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002836_serrated-blade-black-neck-knife-with-sheath_480.jpeg' ],
     categories: [ 'other-ninja-weapons' ] },
-  { name: 'Bat Gear Gift Set',
-    description: 
-     { short: 'All the best Bat Gear in one tidy gift set! Includes bat throwers, throwing knives, and arm gauntlets.',
-       long: 'Gift set contains:Gift set contains:' },
-    price: 5999,
-    quantity: 6,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002884_bat-gear-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
   { name: 'Ninja Kubaton Dagger',
     description: 
      { short: 'A Tom Anderson exclusive!',
@@ -2845,22 +2655,6 @@ var seedItems = function() {
     quantity: 21,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002854_ninja-kubaton-with-four-throwing-spikes_480.jpeg' ],
     categories: [ 'other-ninja-weapons' ] },
-  { name: 'Ninja Throwing Knife Gift Set',
-    description: 
-     { short: 'Practice makes perfect!',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 5299,
-    quantity: 19,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0001596_ninja-throwing-knife-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
-  { name: 'Ninja Nunchuck Gift Set',
-    description: 
-     { short: 'Nunchaku of your choice, storage case, and zipper pull accessory.',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 1998,
-    quantity: 4,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000526_ninja-nunchuck-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
   { name: 'Grass Cutter Chokuto',
     description: 
      { short: 'Sasuke Uchiha claimed that the chokuto he wields is a Sword of Kusanagi who\'s literal English translation is Grass Mowing Sword.',
@@ -2877,22 +2671,6 @@ var seedItems = function() {
     quantity: 22,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0002838_tanto-black-neck-knife-with-sheath_480.jpeg' ],
     categories: [ 'other-ninja-weapons' ] },
-  { name: 'Cold Steel O Tanto Bokken',
-    description: 
-     { short: 'Great close contact combat training tanto!',
-       long: 'The Cold Steel O Tanto Bokken is made of the heaviest grade polypropylene available and closely duplicate a real Tanto in length, size, weight and feel. While it\'s not quite as rigid as wood, it has the advantages of being virtually unbreakable and remarkably stiff and cut resistant.The Cold Steel O Tanto Bokken is made of the heaviest grade polypropylene available and closely duplicate a real Tanto in length, size, weight and feel. While it\'s not quite as rigid as wood, it has the advantages of being virtually unbreakable and remarkably stiff and cut resistant.' },
-    price: 2099,
-    quantity: 37,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000500_cold-steel-o-tanto-bokken_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
-  { name: 'Shinobi Ninjutsu Stealth Ninja Uniform Gift Set',
-    description: 
-     { short: 'The complete ninja uniform from head to toe in one tidy package!',
-       long: 'Gift set includes:Gift set includes:' },
-    price: 10699,
-    quantity: 13,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000481_shinobi-ninjutsu-stealth-ninja-uniform-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
   { name: 'United Cutlery M48 Tactical Kama',
     description: 
      { short: 'Be the reaper!',
@@ -2925,12 +2703,6 @@ var seedItems = function() {
     quantity: 10,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000153_cold-steel-escrima-stick_480.jpeg' ],
     categories: [ 'other-ninja-weapons' ] },
-  { name: 'Ninja Kunai Knife Necklace',
-    description: { short: 'Add a kunai sneak weapon.', long: '' },
-    price: 899,
-    quantity: 18,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0002747_ninja-kunai-knife-necklace_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
   { name: 'Ninja Assassin Kyoketsu-Shoge Knife',
     description: 
      { short: 'Raizo\'s weapon from the movie Ninja Assassin!',
@@ -2938,23 +2710,7 @@ var seedItems = function() {
     price: 2799,
     quantity: 41,
     photos: [ 'http://allninjagear.com/content/images/thumbs/0000126_ninja-assassin-kyoketsu-shoge-knife_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] },
-  { name: 'Ninja Climbing Gear Gift Set',
-    description: 
-     { short: 'Essential ninja climbing gear in one convenient package!',
-       long: 'Gift set contains:Gift set contains:' },
-    price: 5999,
-    quantity: 17,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0000504_ninja-climbing-gear-gift-set_480.jpeg' ],
-    categories: [ 'ninja-gift-sets' ] },
-  { name: 'Japanese Naginata Ninja Sword',
-    description: 
-     { short: 'Naginata is a Japanese martial art form that originated over 1,000 years ago. Due to its massive height, the Naginata was the weapon of choice for battle against horseman and swords.',
-       long: 'You will not find this awesome Japanese naginata sword anywhere else. This massive weapon measures 53 1/2” overall. The blade is 27 3/4” long and equipped with deep double blood grooves. The solid hardwood handle is finished with black nylon cord wrapping. This primitive sword is constructed for functional action.You will not find this awesome Japanese naginata sword anywhere else. This massive weapon measures 53 1/2” overall. The blade is 27 3/4” long and equipped with deep double blood grooves. The solid hardwood handle is finished with black nylon cord wrapping. This primitive sword is constructed for functional action.' },
-    price: 7998,
-    quantity: 5,
-    photos: [ 'http://allninjagear.com/content/images/thumbs/0003913_japanese-naginata-ninja-sword_480.jpeg' ],
-    categories: [ 'other-ninja-weapons' ] } ];;
+    categories: [ 'other-ninja-weapons' ] } ];
 
     return Item.createAsync(items);
 }
