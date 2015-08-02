@@ -2713,92 +2713,103 @@ var seedItems = function() {
     categories: [ 'other-ninja-weapons' ] } ];
 
     return Item.createAsync(items);
-}
-
-var review1 = {
-    review: "Good items 123",
-    rating:5
 };
 
-var review2 = {
-    review: "It sucks so bad so bad",
-    rating:1
+
+var reviewsArr = [];
+var numberOfReviews = 200;
+
+var randArrayEl = function(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+
+var getReview = function() {
+  var adjective = ['awesome','breathtaking','amazing','sexy','sweet','cool','wonderful','mindblowing', 'horrible', 'terrible', 'the worst thing ever', 'dangerous', 'deadly', 'banned in 5 states', 'great for home protection'];
+  var adjective2 = ['cheaper', 'not so terrible', 'not so dangerous', 'safe for kids', 'a lethal weapon', 'not broken on arrival', 'made from a biodegradable material', 'legal in the united states', 'a different color', 'around when I was a kid', 'shipped with one-day delivery'];
+  return "This product is " + randArrayEl(adjective) + "! I wish it was " + randArrayEl(adjective2) + ".";
+};
+
+var getRating = function(){
+    return Math.floor(Math.random()*6);
+};
+
+for(var i = 0; i < numberOfReviews; i++){
+    reviewsArr[i] = {
+        review: getReview(),
+        rating: getRating()
+    };
 }
+
 connectToDb.then(function(){
-    wipeDB()
+    wipeDB();
 })
 .then(function() {
     User.findAsync({}).then(function(users) {
-            if (users.length === 0) {
-                return seedUsers();
-            } else {
-                console.log(chalk.magenta('Seems to already be user data, exiting!'));
-                process.kill(0);
-            }
-        }).then(function() {
-            return seedItems();
-        }).then(function() {
-            User.findAsync({})
-                .then(function(users) {
-                    // console.log('go here');
-                    // console.log(users);
-                    Item.findAsync({})
-                        .then(function(items) {
-                            // console.log(item);
-                            return Order.createAsync({
-                                userId: users[0]._id,
-                                items: [{
-                                    id: items[0]._id,
-                                    price: items[0].price,
-                                    quantity: items[0].quantity,
-
-                                }, {
-                                    id: items[1]._id,
-                                    price: items[1].price,
-                                    quantity: items[1].quantity,
-
-                                }]
-
-                            })
-                        })
-                })
-        })
-        .then(function() {
-            return User.findAsync({})
-                .then(function(user) {
-                    review1.userId = user[0]._id;
-                    review2.userId = user[1]._id;
-                    return Item.findOneAsync({})
-                })
-                .then(function(item) {
-                    review1.itemId = item._id;
-                    review2.itemId = item._id;
-                    return Review.createAsync(review1);
-                })
-        })
-        .then(function(review){
-            return Item.findOneAsync({_id:review.itemId})
-                .then(function(item){
-                    item.reviews.push(review._id);
-                    return item.save();
-                })
-        })
-        .then(function(){
-            return Review.createAsync(review2);
-        })
-        .then(function(review){
-            return Item.findOneAsync({_id:review.itemId})
-                .then(function(item){
-                    item.reviews.push(review._id);
-                    return item.save();
-                })
-        })
-
-        .then(function() {
-            console.log(chalk.green('Seed successful!'));
+        if (users.length === 0) {
+            return seedUsers();
+        } else {
+            console.log(chalk.magenta('Seems to already be user data, exiting!'));
             process.kill(0);
-        }).catch(function(err) {
-            console.error(err);
-            process.kill(1);
+        }
+    }).then(function() {
+        return seedItems();
+    }).then(function() {
+        User.findAsync({})
+        .then(function(users) {
+            // console.log('go here');
+            // console.log(users);
+            Item.findAsync({})
+            .then(function(items) {
+                // console.log(item);
+                return Order.createAsync({
+                    userId: users[0]._id,
+                    items: [{
+                        id: items[0]._id,
+                        price: items[0].price,
+                        quantity: items[0].quantity,
+
+                    }, {
+                        id: items[1]._id,
+                        price: items[1].price,
+                        quantity: items[1].quantity,
+
+                    }]
+
+                });
+            });
         });
+    })
+    .then(function() {
+        return User.findAsync({})
+        .then(function(user) {
+            reviewsArr.forEach(function(elem){
+                elem.userId = user[0]._id;
+            });
+
+            return Item.findAsync({});
+        })
+        .then(function(items) {
+            reviewsArr.forEach(function(elem, index){
+                elem.itemId = items[index]._id;
+            });
+            return Review.createAsync(reviewsArr);
+        });
+    })
+    .then(function(reviews){
+
+        return Promise.each(reviews, function(elem){  
+            return Item.findOneAsync({_id:elem.itemId})
+            .then(function(item){
+                item.reviews.push(elem._id);
+                return item.save();
+            });
+        });
+    })
+    .then(function() {
+        console.log(chalk.green('Seed successful!'));
+        process.kill(0);
+    }).catch(function(err) {
+        console.error(err);
+        process.kill(1);
+    });
 });
