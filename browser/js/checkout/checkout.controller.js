@@ -35,7 +35,6 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
     $scope.summary();
 
     $scope.saveInformation = function(customer) {
-        console.log(customer)
         $scope.order.userInfo = customer;
         $scope.user = customer;
     }
