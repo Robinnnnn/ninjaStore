@@ -22,6 +22,7 @@ router.param('id', function (req, res, next, id) {
 // AUTH >>> loggedIn
 router.post('/',
 	function(req, res, next) {
+		console.log(req.user);
 		if (req.user) return next();
 		res.status(401).end();
 	},

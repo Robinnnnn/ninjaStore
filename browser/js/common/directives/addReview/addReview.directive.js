@@ -12,8 +12,12 @@ app.directive('addReview', function(Review) {
         toSave.itemId = scope.item._id
         console.log(toSave)
         toSave.save()
+          .then(review => {
+            scope.item.reviews.push(review)
+            return scope.item.save()
+          })
           .then(() => {
-            console.log('saved!');
+            console.log('review saved and item updated');
           })
       }
     }
