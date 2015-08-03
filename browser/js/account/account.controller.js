@@ -1,16 +1,8 @@
-app.controller('accountCtrl', function($scope, $state, $http, User, AuthService) {
-	$scope.status= ["Created","Completed","Processing","Cancelled"];
-	AuthService.getLoggedInUser().then(function(user) {
-		if (user.isAdmin) {
-			$scope.admin = true;
-		}
-
-		$scope.user = new User(user);
-
-		$scope.user.fetchUserOrders($scope.user._id).then(function(orders) {
-			$scope.orders = orders;
-		})
-	});
+app.controller('accountCtrl', function($scope, $state, $http, User, user, orders) {
+	
+	$scope.user = user
+	$scope.order = orders
+	$scope.admin = user.isAdmin
 
 	$scope.editInformation = function() {
 		$scope.editing = true;
