@@ -22,7 +22,6 @@ router.param('id', function (req, res, next, id) {
 // AUTH >>> loggedIn
 router.post('/',
 	function(req, res, next) {
-		console.log(req.user);
 		if (req.user) return next();
 		res.status(401).end();
 	},
@@ -31,7 +30,6 @@ router.post('/',
 		review.userId = req.user._id
 	  Review.create(req.body)
 	    .then(function(review) {
-				console.log(review);
 	      res.status(201).json(review);
 	    })
 	    .then(null, next);
