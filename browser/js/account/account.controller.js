@@ -1,8 +1,9 @@
-app.controller('accountCtrl', function($scope, $state, $http, User, user, orders) {
+app.controller('accountCtrl', function($scope, $state, $http, User, user, orders,$rootScope) {
 	$scope.status = ["Created","Completed","Processing","Cancelled"];
 	$scope.user = user
-	$scope.orders = orders
-	$scope.admin = user.isAdmin
+	$scope.orders = orders;
+	console.log(orders)
+	$rootScope.admin = user.isAdmin
 
 	$scope.editInformation = function() {
 		$scope.editing = true;
@@ -10,7 +11,6 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 
 	$scope.saveInformation = function() {
 		$scope.user.save().then(function(user) {
-			console.log(user);
 			$scope.editing = false;
 		});
 	}

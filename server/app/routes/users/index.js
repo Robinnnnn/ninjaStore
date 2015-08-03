@@ -52,6 +52,7 @@ router.get('/:id/getOrders', function(req, res, next) {
 	Order.getOrdersByUser(req.params.id).then(function(orders) {
 		orders = orders.map(function(order){
 			order = order.toObject();
+			console.log(order);
 			order.items = order.items.map(function(order){
 				var temp = order._id;
 				temp.price = order.price;

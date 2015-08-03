@@ -47,6 +47,12 @@ Order.statics.getOrdersByUser = function(userId) {
     return this.find({
         userId: userId
     }).populate({path:'items._id',select:'name description photos categories'}).exec()
+        .then(function(orders){
+            return orders.map(function(order){
+                order.created;
+                return order;
+            })
+        })
 }
 
 mongoose.model('Order', Order);
