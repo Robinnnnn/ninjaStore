@@ -23,8 +23,8 @@ app.controller('accountCtrl', function($scope, $state, $http, User, AuthService)
 	$scope.saveInformation = function() {
 		$scope.user.save().then(function(user) {
 			console.log(user);
+			$scope.editing = false;
 		});
-		$scope.editing = false;
 	}
 
 	$scope.displayUsers = function() {
