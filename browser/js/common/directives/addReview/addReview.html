@@ -1,5 +1,15 @@
-<div>
-  <input ng-model='newReview.review' type='text' placeholder='What did you think about ${item.name}?'></input>
-  <input ng-model='newReview.rating' type='number' placeholder='Give it a rating, 1 to 5 ninja stars'></input>
-  <button ng-click='submitReview()'>Submit Review!</button>
+<div class='add-review'>
+  <input
+    class='review-review'
+    ng-model='newReview.review'
+    type='text'
+    placeholder='What did you think about ${item.name}?'></input>
+  <input
+    class='review-rating'
+    ng-model='newReview.rating'
+    type='number'
+    placeholder='Give it a rating, 1 to 5 ninja stars'></input>
+  <button
+    class='review-submit'
+    ng-click='submitReview()'>Submit Review!</button>
 </div>

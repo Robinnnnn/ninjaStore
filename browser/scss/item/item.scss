@@ -9,7 +9,7 @@
 }
 
 .detailDesc {
-	
+
 }
 
 .container{
@@ -41,8 +41,23 @@
     }
 }
 
-
-
 .reviewFull {
     border: 1px solid black;
+}
+
+.addReview {
+	margin: 5px;
+	border: 1px solid black;
+
+	.review-review {
+		width: 60%;
+	}
+
+	.review-rating {
+		width: 20%
+	}
+
+	.review-submit {
+		width: 20%;
+	}
 }
