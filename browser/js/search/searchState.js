@@ -18,19 +18,6 @@ app.config(function($stateProvider) {
 				return searchFactory.show($stateParams.category)
 			}
 		},
-		controller: ($scope, items) => {
-			$scope.items = items.map(item => {
-				item.shortTitle = shortenTitle(item.name, 35)
-				return item
-			})
-
-			// makes sure the name of the item doesn't expand its div height
-			function shortenTitle(title, length) {
-					if (title.length > length) {
-							return title.slice(0, length) + '...';
-					}
-					return title;
-			}
-		}
+		controller: 'MainCtrl'
 	})
 })
