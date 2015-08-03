@@ -1,7 +1,7 @@
 app.controller('accountCtrl', function($scope, $state, $http, User, user, orders) {
-	
+	$scope.status = ["Created","Completed","Processing","Cancelled"];
 	$scope.user = user
-	$scope.order = orders
+	$scope.orders = orders
 	$scope.admin = user.isAdmin
 
 	$scope.editInformation = function() {
