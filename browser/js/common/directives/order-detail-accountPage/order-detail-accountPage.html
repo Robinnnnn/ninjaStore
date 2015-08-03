@@ -16,11 +16,19 @@
                 <p>{{item.description.short}}
                 </p>
                 <strong>Price: </strong> {{item.price}}
+                <p>Order status: {{order.orderState}}</p>
             </div>
             <div class="slide-footer">
                 <span class="pull-right buttons">
                     <button class="btn btn-sm btn-default">{{item.quantity}}</button>
-                    <button class="btn btn-sm btn-danger" ng-click="removeItem(item)"><i class="fa fa-fw fa-remove-circle"></i> Remove</button>
+                    <button class="btn btn-sm btn-danger" ng-click="removeItem(item)"><i class="fa fa-fw fa-remove-circle"></i> Cancel Order</button>
+                    <button class="dropdown" dropdown >
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdown-toggle>{{order.orderState}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li ng-repeat='status in statuses'><a ng-click='changeStatus(status)'>{{status}}</a></li> 
+                    </ul>
+                    </button>
+
                 </span>
             </div>
         </div>
