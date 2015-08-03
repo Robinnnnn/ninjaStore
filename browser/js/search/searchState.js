@@ -31,8 +31,6 @@ app.config(function($stateProvider) {
 					}
 					return title;
 			}
-
-			console.log(items);
 		}
 	})
 })
