@@ -28,6 +28,7 @@ app.factory('Item', function($http) {
 		.then(res => {
 			return res.data.map(obj => new Item(obj))
 		})
+	}
 
 	Item.prototype.fetch = function() {
 		return $http.get(this.url)
