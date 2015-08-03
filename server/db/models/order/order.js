@@ -35,7 +35,8 @@ var Order = new mongoose.Schema({
 
 Order.virtual('created').get(function() {
     if (this._created) return this._created;
-    return this._created = this._id.getTimestamp();
+    this._created = this._id.getTimestamp();
+    return;
 })
 
 Order.methods.updateOrderState = function(state) {

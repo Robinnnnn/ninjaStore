@@ -46,6 +46,24 @@ router.post('/', function (req, res, next) {
 	.then(null, next);
 });
 
+router.get('/:id/getOrders',function(req, res ,next){
+	req.user.getAllOrders()
+			.then(function(user){
+				// console.log('go here')
+				console.log(user.orders)
+				res.json(user.orders);
+				// var items = user.map(function(user){return})
+			})
+})
+
+router.get('/:id/getReviews',function(req, res ,next){
+	req.user.getAllReviews()
+			.then(function(user){
+				// console.log(user)
+				res.json(req.user.reviews);
+			})
+})
+
 // Current User Or Admin
 router.use('/:id', function(req, res, next) {
 	if (req.user._id == req.requestedUser._id || req.user.isAdmin) return next()

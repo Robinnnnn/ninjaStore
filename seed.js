@@ -2776,25 +2776,29 @@ connectToDb.then(function(){
         .then(function(users) {
             // console.log('go here');
             // console.log(users);
-            Item.findAsync({})
-            .then(function(items) {
-                // console.log(item);
-                return Order.createAsync({
-                    userId: users[0]._id,
-                    items: [{
-                        id: items[0]._id,
-                        price: items[0].price,
-                        quantity: items[0].quantity,
+            return Item.findAsync({})
+                .then(function(items) {
+                    // console.log(item);
+                    return Order.createAsync({
+                        userId: users[0]._id,
+                        items: [{
+                            id: items[0]._id,
+                            price: items[0].price,
+                            quantity: items[0].quantity,
 
-                    }, {
-                        id: items[1]._id,
-                        price: items[1].price,
-                        quantity: items[1].quantity,
+                        }, {
+                            id: items[1]._id,
+                            price: items[1].price,
+                            quantity: items[1].quantity,
 
-                    }]
+                        }]
 
+                    });
+                })
+                .then(function(order){
+                    users[0].orders.push(order._id);
+                    return users[0].save();
                 });
-            });
         });
     })
     .then(function() {

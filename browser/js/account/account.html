@@ -1,0 +1,22 @@
+<div>
+    <div>
+    	<!-- <pre>{{account}}</pre> -->
+        <h2>
+        	Account Information
+        </h2>
+        <p>Name: {{account.name}}</p>
+        <p>Email: {{account.email}}</p>
+        <p>Address: {{account.displayAddress}}</p>
+    </div>
+    <div>
+    	<h3> Order Information</h3>
+    	<button class = "btn btn-default"ng-click="showOrder()">Show orders</button>
+    	<div ng-repeat="order in orders" ng-if="orders">
+            <!-- <pre>{{order}}</pre> -->
+    		<orderdetail order="order"></orderdetail>	
+    	</div>
+    </div>
+    <div>
+
+    </div>
+</div>

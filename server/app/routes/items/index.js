@@ -57,10 +57,9 @@ router.get('/:id', function(req, res, next) {
     req.item.getAllReviews()
         .then(function(reviews){
             req.item = req.item.toObject();
-            req.item.reviews = reviews;
-            req.item.rating = reviews.reduce(function(sum,review){
+            req.item.rating = req.item.reviews.reduce(function(sum,review){
                 return sum+=review.rating
-            },0)/reviews.length;
+            },0)/req.item.reviews.length;
             res.json(req.item);
         })
 })
