@@ -18,6 +18,4 @@ app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state,
 		.then(categories => {
 			$scope.categories = categories
 		})
-
-
 })
