@@ -8,10 +8,14 @@ app.config(function($stateProvider) {
 					_id: $stateParams.id
 				})
 				return item.fetch()
+			},
+			recommendations: function(item, Item){
+				return Item.getRecommendations(item.categories[0]);
 			}
 		},
-		controller: function($scope, item) {
+		controller: function($scope, item, recommendations) {
 			$scope.item = item;
+			$scope.recommendations = recommendations
 		}
 	});
 });
