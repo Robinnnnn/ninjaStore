@@ -7,6 +7,7 @@ var router = require('express').Router(),
 var HttpError = require('../../utils/HttpError');
 var User = mongoose.model('User');
 var Order = mongoose.model('Order');
+var Review = mongoose.model('Review');
 
 router.param('id', function(req, res, next, id) {
 	User.findById(id).exec()
@@ -48,26 +49,28 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:id/getOrders', function(req, res, next) {
-	// req.user.getAllOrders()
-	// 	.then(function(user) {
-	// 		console.log('go here')
-	// 		console.log(user)
-	// 		console.log(user.orders)
-	// 		res.json(user.orders);
-	// 		// var items = user.map(function(user){return})
-	// 	})
 	Order.getOrdersByUser(req.params.id).then(function(orders) {
-		console.log(orders);
+		// console.log(orders[0].items[0]._id);
+
+		orders = orders.map(function(order){
+			order = order.toObject();
+			order.items = order.items.map(function(order){
+				var temp = order._id;
+				temp.price = order.price;
+				temp.quantity = order.quantity;
+				return temp;		
+			})
+			return order;
+			
+		})
 		res.json(orders);
 	})
 })
 
 router.get('/:id/getReviews', function(req, res, next) {
-	req.user.getAllReviews()
-		.then(function(user) {
-			// console.log(user)
-			res.json(req.user.reviews);
-		})
+	Review.getReviewByUser(req.params.id).then(function(reviews){
+		res.json(reviews);
+	})
 })
 
 // Current User Or Admin

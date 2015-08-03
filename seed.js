@@ -2782,12 +2782,12 @@ connectToDb.then(function(){
                     return Order.createAsync({
                         userId: users[0]._id,
                         items: [{
-                            id: items[0]._id,
+                            _id: items[0]._id,
                             price: items[0].price,
                             quantity: items[0].quantity,
 
                         }, {
-                            id: items[1]._id,
+                            _id: items[1]._id,
                             price: items[1].price,
                             quantity: items[1].quantity,
 
