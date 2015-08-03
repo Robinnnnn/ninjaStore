@@ -49,12 +49,21 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:id/getOrders', function(req, res, next) {
-	Order.getOrdersByUser(req.params.id).then(orders => {
-		res.status(200).json(orders);
+	Order.getOrdersByUser(req.params.id).then(function(orders) {
+		orders = orders.map(function(order){
+			order = order.toObject();
+			order.items = order.items.map(function(order){
+				var temp = order._id;
+				temp.price = order.price;
+				temp.quantity = order.quantity;
+				return temp;		
+			})
+			return order;
+			
+		})
+		res.json(orders);
 	})
-	.then(null, next)
 })
-
 router.get('/:id/getReviews', function(req, res, next) {
 	Review.getReviewByUser(req.params.id).then(function(reviews){
 		res.json(reviews);
