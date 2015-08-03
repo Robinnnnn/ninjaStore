@@ -11,11 +11,6 @@ app.controller('accountCtrl', function($scope, $state, $http, User, AuthService)
 		})
 	});
 
-	// $scope.account.displayAddress = Object.keys($scope.account.addresses[0])
-	// 	.map(function(key) {
-	// 		return $scope.account.addresses[0][key]
-	// 	}).join(', ');
-
 	$scope.editInformation = function() {
 		$scope.editing = true;
 	}
