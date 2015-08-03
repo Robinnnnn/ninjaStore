@@ -72,7 +72,7 @@ router.get('/:id/getReviews', function(req, res, next) {
 
 // Current User Or Admin
 router.use('/:id', function(req, res, next) {
-	if (req.user._id == req.requestedUser._id || req.user.isAdmin) return next()
+	if (req.user._id.toString() == req.requestedUser._id.toString() || req.user.isAdmin) return next()
 	res.status(401).end()
 })
 
