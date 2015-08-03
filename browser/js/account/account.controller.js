@@ -1,4 +1,5 @@
 app.controller('accountCtrl', function($scope, $state, $http, User, AuthService) {
+	$scope.status= ["Created","Completed","Processing","Cancelled"];
 	AuthService.getLoggedInUser().then(function(user) {
 		if (user.isAdmin) {
 			$scope.admin = true;
@@ -11,11 +12,6 @@ app.controller('accountCtrl', function($scope, $state, $http, User, AuthService)
 		})
 	});
 
-	// $scope.account.displayAddress = Object.keys($scope.account.addresses[0])
-	// 	.map(function(key) {
-	// 		return $scope.account.addresses[0][key]
-	// 	}).join(', ');
-
 	$scope.editInformation = function() {
 		$scope.editing = true;
 	}
@@ -23,8 +19,8 @@ app.controller('accountCtrl', function($scope, $state, $http, User, AuthService)
 	$scope.saveInformation = function() {
 		$scope.user.save().then(function(user) {
 			console.log(user);
+			$scope.editing = false;
 		});
-		$scope.editing = false;
 	}
 
 	$scope.displayUsers = function() {

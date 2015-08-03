@@ -18,9 +18,8 @@ app.factory('Item', function($http) {
 
 	Item.fetchAll = function() {
 		return $http.get(Item.url)
-		.then(res => {
-			return res.data.map(obj => {
-				return new Item(obj)
+			.then(res => {
+				return res.data.map(obj => new Item(obj))
 			})
 		})
 	}
@@ -34,7 +33,11 @@ app.factory('Item', function($http) {
 
 	Item.prototype.fetch = function() {
 		return $http.get(this.url)
+<<<<<<< HEAD
 		.then(res => new Item(res.data))
+=======
+			.then(res => new Item(res.data))
+>>>>>>> master
 	}
 
 	Item.prototype.addToCart = function() {
@@ -56,7 +59,30 @@ app.factory('Item', function($http) {
 		.then(res => new Item(res.data))
 	}
 
+<<<<<<< HEAD
 	Item.prototype.destroy = function() { return $http.delete(this.url) }
 
 	return Item
 })
+=======
+	Item.prototype.save = function() {
+		let verb
+		let url
+		if (this.isNew()) {
+			verb = 'post'
+			url = Item.url
+		} else {
+			verb = 'put'
+			url = this.url
+		}
+		return $http[verb](url, this)
+			.then(res => new Item(res.data))
+	}
+
+	Item.prototype.destroy = function() {
+		return $http.delete(this.url)
+	}
+
+	return Item
+})
+>>>>>>> master
