@@ -1,6 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
-var Review = mongoose.model('Review');
+// var Review = mongoose.model('Review');
 
 var Item = new mongoose.Schema({
     name: {
@@ -61,14 +61,16 @@ Item.statics.getAllCategories = function() {
 }
 
 Item.methods.getAllReviews = function() {
-    var self = this;
-    return Review.find({
-            _id: {
-                $in: self.reviews
-            }
-        })
-        .populate('userId', 'email')
-        .exec()
+    // var self = this;
+    return this.populate('reviews').execPopulate();
+
+    // Review.find({
+    //         _id: {
+    //             $in: self.reviews
+    //         }
+    //     })
+    //     .populate('userId', 'email')
+    //     .exec()
 }
 
 mongoose.model('Item', Item);

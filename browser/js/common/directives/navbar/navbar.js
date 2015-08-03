@@ -30,6 +30,10 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state) {
                 });
             };
 
+            scope.manageAccount = function(){
+                $state.go('manage',{id:scope.user._id})
+            }
+
             var setUser = function() {
                 AuthService.getLoggedInUser().then(function(user) {
                     scope.user = user;
