@@ -5,8 +5,8 @@ app.directive('itemThumbnail', function() {
 		scope: {
 			item: '='
 		},
-		link: function($scope) {
-			$scope.item.price /= 100;
+		link: function(scope) {
+			scope.item.price /= 100;
 		}
 	};
 });
