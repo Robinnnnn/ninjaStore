@@ -1,4 +1,4 @@
-app.factory('User', function($http) {
+app.factory('User', function($http, Order) {
 	function User(props) {
 		angular.extend(this, props)
 		return this
@@ -30,10 +30,14 @@ app.factory('User', function($http) {
 			.then(res => new User(res.data))
 	}
 
-	User.prototype.fetchUserOrders = function(userId) {
-		return $http.get('/api/users/' + userId + '/getOrders')
-			.then(function(res) {
-				return res.data;
+	User.prototype.fetchUserOrders = function() {
+		return $http.get(this.url + '/getOrders')
+			.then(res => {
+				return res.data.map(obj => new Order(obj))
+			})
+			.then(orders => {
+				console.log(orders);
+				return orders
 			})
 	}
 
