@@ -46,18 +46,19 @@
 }
 
 .addReview {
-	margin: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	border: 1px solid black;
+}
 
-	.review-review {
-		width: 60%;
-	}
+.review-review {
+	width: 60%;
+}
 
-	.review-rating {
-		width: 20%
-	}
+.review-rating {
+	width: 20%
+}
 
-	.review-submit {
-		width: 20%;
-	}
+.review-submit {
+	width: 19%;
 }
