@@ -1,23 +1,51 @@
 <div>
-    <div>
+    <div ng-if="admin">
+        <h2>I am an admin</h2>
+        <button class="btn btn-default" ng-click="displayUsers()">
+            Display All Users
+        </button>
+        <div ng-repeat="user in usersDisplay" ng-if="usersDisplay">
+            <a ng-click="switchUser(user)"> {{user.name}}, {{user._id}}</a>
+        </div>
+    </div>
+    <div ng-if="!editing">
     	<!-- <pre>{{account}}</pre> -->
         <h2>
         	Account Information
         </h2>
-        <p>Name: {{account.name}}</p>
-        <p>Email: {{account.email}}</p>
-        <p>Address: {{account.displayAddress}}</p>
+        <p>Name: {{user.name}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Address: {{user.addresses[0]}}</p>
+        <button class="btn btn-default" ng-click="editInformation()">
+                Edit
+        </button>
     </div>
+    <form class="form-group" ng-if="editing">
+
+            <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name">
+            <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].address" placeholder="Street Address">
+            <input name="city" type="text" class="form-control" ng-model="user.addresses[0].city" placeholder="City">
+            <input name="state" type="text" class="form-control" ng-model="user.addresses[0].state" placeholder="State / Province / Region">
+            <input name="zipcode" type="text" class="form-control" ng-model="user.addresses[0].zipcode" placeholder="Zip Code">
+            <input name="country" type="text" class="form-control" ng-model="user.addresses[0].country" placeholder="Country">
+            <input name="email" type="text" class="form-control" ng-model="user.email" placeholder="E-mail">
+            <input name="phone" type="text" class="form-control" ng-model="user.addresses[0].phone" placeholder="Phone Number">
+
+            <button class="btn btn-success" ng-click="saveInformation(customer)" type="submit">
+                Save
+            </button>
+
+
+        </form>
     <div>
     	<h3>Your Orders</h3>
-    	<button class = "btn btn-default" ng-click="showOrder()">Show Orders</button>
     	<div ng-repeat="order in orders" ng-if="orders">
-    		<orderdetail order="order"></orderdetail>	
+    		<orderdetail order="order"></orderdetail>
     	</div>
     </div>
     <div>
 
-        
+
 
     </div>
 </div>
