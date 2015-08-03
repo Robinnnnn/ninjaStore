@@ -1,4 +1,4 @@
-app.controller("checkoutCtrl", function($scope, order, AuthService, Order) {
+app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $state) {
     $scope.order = order;
     $scope.customer = {};
     AuthService.getLoggedInUser().then(function(user) {
@@ -6,12 +6,12 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order) {
         if (user) {
             $scope.order.userId = user._id;
             console.log(user)
-            // $scope.customer.name = user.name;
-            // $scope.customer.email = user.email;
-            // $scope.customer.addressStreet = user.addresses[0].address
-            // $scope.customer.state = user.addresses[0].state
-            // $scope.customer.zipcode = user.addresses[0].zipcode
-            // $scope.customer.city = user.addresses[0].city
+                // $scope.customer.name = user.name;
+                // $scope.customer.email = user.email;
+                // $scope.customer.addressStreet = user.addresses[0].address
+                // $scope.customer.state = user.addresses[0].state
+                // $scope.customer.zipcode = user.addresses[0].zipcode
+                // $scope.customer.city = user.addresses[0].city
 
         }
     });
@@ -48,7 +48,8 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order) {
     $scope.placeOrder = function() {
         if ($scope.order.userInfo || $scope.order.userId) {
             $scope.order.save().then(function(order) {
-                $state.go('orderConfirmation', order)
+                console.log(order)
+                    // $state.go('orderConfirmation', order)
             })
         }
     }

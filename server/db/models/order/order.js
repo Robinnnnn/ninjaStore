@@ -43,4 +43,10 @@ Order.methods.updateOrderState = function(state) {
     this.orderState = state;
 }
 
+Order.statics.getOrdersByUser = function(userId) {
+    return this.find({
+        userId: userId
+    }).exec()
+}
+
 mongoose.model('Order', Order);
