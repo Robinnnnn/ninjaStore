@@ -25,9 +25,7 @@ app.factory('Item', function($http) {
 
 	Item.getCategories = function() {
 		return $http.get(Item.url + 'categories')
-		.then(res => {
-			return res.data.map(obj => new Item(obj))
-		})
+			.then(res => res.data)
 	}
 
 	Item.prototype.fetch = function() {
