@@ -10,7 +10,7 @@ app.factory('Review', function($http) {
     get: function() { return Review.url + this._id }
   })
 
-  Review.isNew = function() { return !this._id }
+  Review.prototype.isNew = function() { return !this._id }
 
   Review.fetchAll = () => {
     return $http.get(Review.url)
@@ -34,6 +34,7 @@ app.factory('Review', function($http) {
   Review.prototype.save = function() {
     let verb
     let url
+    console.log(this);
     if (this.isNew()) {
       verb = 'post'
       url = Review.url

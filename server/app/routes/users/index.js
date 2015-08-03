@@ -50,10 +50,9 @@ router.post('/', function(req, res, next) {
 
 router.get('/:id/getOrders', function(req, res, next) {
 	Order.getOrdersByUser(req.params.id).then(function(orders) {
-		// console.log(orders[0].items[0]._id);
-
 		orders = orders.map(function(order){
 			order = order.toObject();
+			console.log(order);
 			order.items = order.items.map(function(order){
 				var temp = order._id;
 				temp.price = order.price;
@@ -66,7 +65,6 @@ router.get('/:id/getOrders', function(req, res, next) {
 		res.json(orders);
 	})
 })
-
 router.get('/:id/getReviews', function(req, res, next) {
 	Review.getReviewByUser(req.params.id).then(function(reviews){
 		res.json(reviews);
@@ -75,7 +73,7 @@ router.get('/:id/getReviews', function(req, res, next) {
 
 // Current User Or Admin
 router.use('/:id', function(req, res, next) {
-	if (req.user._id == req.requestedUser._id || req.user.isAdmin) return next()
+	if (req.user._id.toString() == req.requestedUser._id.toString() || req.user.isAdmin) return next()
 	res.status(401).end()
 })
 

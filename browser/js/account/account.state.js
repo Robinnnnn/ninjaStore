@@ -3,11 +3,12 @@ app.config(function($stateProvider) {
 		url: '/account/:id',
 		templateUrl: 'js/account/account.html',
 		resolve: {
-			account: function($http, $stateParams) {
-				return $http.get('/api/users/'+$stateParams.id)
-							.then(function(res){
-								return res.data;
-							});
+			user: (AuthService, User) => {
+				return AuthService.getLoggedInUser()
+					.then(user => new User(user))
+			},
+			orders: (user) => {
+				return user.fetchUserOrders()
 			}
 		},
 		controller: "accountCtrl"

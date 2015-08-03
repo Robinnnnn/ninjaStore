@@ -40,8 +40,14 @@
     <div>
     	<h3>Your Orders</h3>
     	<div ng-repeat="order in orders" ng-if="orders">
-    		<orderdetail order="order"></orderdetail>
-    	</div>
+    		<orderdetail-account-page order="order" statuses="status"></orderdetail-account-page>
+<!--             <button ng-if=""class="btn btn-sm btn-default" ng-click="updateStatus(item)">Update Status</button>
+
+ -->            
+            <!-- <button class="btn btn-success" style="float: right; display:block;" ng-click="saveInformation(customer)" type="submit">
+                Update
+            </button>
+ -->    	</div>
     </div>
 
     <div>

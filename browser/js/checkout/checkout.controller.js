@@ -35,7 +35,6 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
     $scope.summary();
 
     $scope.saveInformation = function(customer) {
-        console.log(customer)
         $scope.order.userInfo = customer;
         $scope.user = customer;
     }
@@ -48,8 +47,7 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
     $scope.placeOrder = function() {
         if ($scope.order.userInfo || $scope.order.userId) {
             $scope.order.save().then(function(order) {
-                console.log(order)
-                    // $state.go('orderConfirmation', order)
+                $state.go('manage')
             })
         }
     }

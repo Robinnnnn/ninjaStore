@@ -13,10 +13,6 @@ app.config(function($stateProvider) {
           .then(() => {
             $state.go('home')
           })
-      }
-      $scope.checkOut = () => {
-            $state.go('checkOut');
-      };
-    }
+      }    }
   })
 })

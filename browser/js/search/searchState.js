@@ -18,8 +18,6 @@ app.config(function($stateProvider) {
 				return searchFactory.show($stateParams.category)
 			}
 		},
-		controller: ($scope, items) => {
-			$scope.items = items
-		}
+		controller: 'MainCtrl'
 	})
 })
