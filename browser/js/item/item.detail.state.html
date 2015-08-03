@@ -1,6 +1,52 @@
 <div>
-	<item-detail item="item">
+	<!-- <item-detail item="item"></item-detail> -->
+	<div class="container">
+	    <div>
+	        <div>
+	            <img class="detailImage" src="{{item.photos[0]}}">
+	        </div>
 
-	</item-detail>
+	        <div class="detailOverview">
+		        <div class="detailTitle">
+		            <h2>
+		            {{item.name}}
+		            </h2>
+		        </div>
+		        <div class="detailDesc">
+		            <p>{{item.description.short}}</p>
+		        </div>
 
+		        <div> <span ng-model="rating">{{item.rating}} out of 5
+			        <div star-rating rating-value="item.rating" max="5" ></div>
+			        </span>
+			    </div>
+
+		        <div class="detailPrice">
+		            <p>Price:{{item.price / 100 | currency}}</p>
+		        </div>
+		        <add-to-cart item='item'></add-to-cart>
+			    <div>
+			        {{item.description.long}}
+			    </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="container">
+		<h2>
+	    	Customer Reviews:
+		</h2>
+	    <div class="reviewFull" ng-repeat="review in item.reviews">
+	        <ul>
+	            <li>
+	                <p>From: {{review.userId.email}}</p>
+	            </li>
+	            <li>
+	                <p>{{review.review}}</p>
+	                <p>Rating:{{review.rating}} </p>
+	            </li>
+	        </ul>
+	    </div>
+	    <br>
+	    <add-review item='item'></add-review>
+	</div>
 </div>

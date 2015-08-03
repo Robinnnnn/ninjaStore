@@ -26,7 +26,7 @@ app.factory('Item', function($http) {
 	}
 
 	Item.getCategories = function() {
-		return $http.get(Item.url + '/categories')
+		return $http.get(Item.url + 'categories')
 			.then(res => {
 				return res.data
 			})

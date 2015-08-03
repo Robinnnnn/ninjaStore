@@ -26,8 +26,11 @@ router.post('/',
 		res.status(401).end();
 	},
 	function(req, res, next) {
+		let review = req.body
+		review.userId = req.user._id
 	  Review.create(req.body)
 	    .then(function(review) {
+				console.log(review);
 	      res.status(201).json(review);
 	    })
 	    .then(null, next);
