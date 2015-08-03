@@ -11,7 +11,6 @@ app.config(function($stateProvider) {
 			}
 		},
 		controller: function($scope, item) {
-			console.log(item);
 			$scope.item = item;
 		}
 	});

@@ -24,11 +24,10 @@ app.factory('Item', function($http) {
 	}
 
 	Item.getCategories = function() {
-		return $http.get(Item.url + '/categories')
+		return $http.get(Item.url + 'categories')
 		.then(res => {
-			return res.data
+			return res.data.map(obj => new Item(obj))
 		})
-	}
 
 	Item.prototype.fetch = function() {
 		return $http.get(this.url)

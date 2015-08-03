@@ -10,7 +10,6 @@ app.directive('addReview', function(Review) {
       scope.submitReview = () => {
         let toSave = new Review(scope.newReview)
         toSave.itemId = scope.item._id
-        console.log(toSave)
         toSave.save()
           .then(review => {
             scope.item.reviews.push(review)
