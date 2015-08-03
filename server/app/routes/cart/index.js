@@ -2,6 +2,8 @@
 var router = require('express').Router();
 module.exports = router;
 
+var HttpError = require('../../utils/HttpError');
+
 // middleware for getting current order information
 router.use('/', function(req, res, next) {
   if (req.session.cart) return next()

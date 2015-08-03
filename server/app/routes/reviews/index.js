@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 
 var _ = require('lodash');
 var Review = mongoose.model('Review');
+var HttpError = require('../../utils/HttpError');
 
 router.param('id', function (req, res, next, id) {
 	Review.findById(id).exec()

@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 
 var _ = require('lodash');
 var Order = mongoose.model('Order')
+var HttpError = require('../../utils/HttpError');
 
 router.param('id', function(req, res, next, id) {
     Order.findById(id).then(function(order) {
