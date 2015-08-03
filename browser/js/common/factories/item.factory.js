@@ -4,7 +4,7 @@ app.factory('Item', function($http) {
 		return this
 	}
 
-Item.url = '/api/items/'
+	Item.url = '/api/items/'
 
 	Object.defineProperty(Item.prototype, 'url', {
 		get: function() {
