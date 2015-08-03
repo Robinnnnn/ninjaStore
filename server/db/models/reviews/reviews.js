@@ -31,4 +31,12 @@ Review.path('review').validate(function(v) {
   return v.length > 10;
 })
 
+Review.statics.getReviewByUser = function(userId) {
+    return this.find({
+        userId: userId
+    }).populate({path:'itemId._id',select:'name description photos categories'}).exec()
+}
+
+
+
 mongoose.model('Review', Review);

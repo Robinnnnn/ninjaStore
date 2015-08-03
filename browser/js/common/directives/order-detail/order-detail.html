@@ -20,7 +20,8 @@
             <div class="slide-footer">
                 <span class="pull-right buttons">
                     <button class="btn btn-sm btn-default">{{item.quantity}}</button>
-                    <button class="btn btn-sm btn-default" ng-click="removeItem(item)"><i class="fa fa-fw fa-remove-circle"></i> Remove</button>
+                    <button class="btn btn-sm btn-danger" ng-click="removeItem(item)"><i class="fa fa-fw fa-remove-circle"></i> Remove</button>
+                    <button class="btn btn-sm btn-default" ng-click="updateStatus(item)">Update Status</button>
                 </span>
             </div>
         </div>

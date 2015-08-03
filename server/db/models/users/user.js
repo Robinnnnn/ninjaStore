@@ -1,7 +1,9 @@
 'use strict';
 var crypto = require('crypto');
 var mongoose = require('mongoose');
-
+// var Review = mongoose.model('Review');
+// var Order = mongoose.model('Order');
+// var Item = mongoose.model('Item');
 var User = new mongoose.Schema({
   name: {
     type: String
@@ -56,11 +58,10 @@ var User = new mongoose.Schema({
     ref: 'Review',
     default: []
   },
-  orders: {
-    type: Array,
-    ref: 'Order',
-    default: []
-  },
+  orders: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order'
+    }],
   isAdmin: {
     type: Boolean,
     default: false
@@ -105,5 +106,27 @@ User.statics.encryptPassword = encryptPassword;
 User.method('correctPassword', function(candidatePassword) {
   return encryptPassword(candidatePassword, this.salt) === this.password;
 });
+
+User.methods.getAllOrders = function(){
+    return this.populate('orders').execPopulate()
+      // .then(function(user){
+      //   console.log(user.orders)
+        // return user.populate('orders.items.id').execPopulate()
+        // return Order.populate(user.orders,{path:'items.id',model:'Item'}).exec();
+      // });
+    // this.populate('orders').execPopulate()
+    //         .then(function(user){
+    //           // console.log(user);
+    //           return Item.populate(user.orders,{path:'orders.items',model:'Item'},function(err,doc){
+    //             console.log(user.orders);
+    //           })
+    //         });
+}
+
+User.methods.getAllReviews = function(){
+    return this.populate('reviews').execPopulate()
+}
+
+
 
 mongoose.model('User', User);
