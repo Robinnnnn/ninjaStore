@@ -32,6 +32,15 @@ app.factory('Item', function($http) {
 			})
 	}
 
+	Item.getRecommendations = function(category){
+		return $http.get(Item.url + '/show/' + category)
+		.then(res => {
+			
+			Math.random()
+			return res.data;
+		});
+	};
+
 	Item.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => new Item(res.data))
