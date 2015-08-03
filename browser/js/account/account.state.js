@@ -3,11 +3,8 @@ app.config(function($stateProvider) {
 		url: '/account/:id',
 		templateUrl: 'js/account/account.html',
 		resolve: {
-			account: function($http, $stateParams) {
-				return $http.get('/api/users/'+$stateParams.id)
-							.then(function(res){
-								return res.data;
-							});
+			account: function(User, $stateParams) {
+				return new User({_id:$stateParams.id}).fetch();
 			}
 		},
 		controller: "accountCtrl"
