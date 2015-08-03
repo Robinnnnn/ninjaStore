@@ -8,7 +8,9 @@ app.factory('searchFactory', function($http, Item) {
         },
         show: function(category) {
           return $http.get('/api/items/show/' + category)
-            .then(items => items.data)
+            .then(items => {
+              return items.data.map(item => new Item(item))
+            })
         }
     }
 
