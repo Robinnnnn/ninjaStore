@@ -1,4 +1,5 @@
 app.controller('accountCtrl', function($scope, $state, $http, User, AuthService) {
+	$scope.status= ["Created","Completed","Processing","Cancelled"];
 	AuthService.getLoggedInUser().then(function(user) {
 		if (user.isAdmin) {
 			$scope.admin = true;
