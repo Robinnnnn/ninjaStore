@@ -19,7 +19,7 @@ var Order = new mongoose.Schema({
         phone: String
     },
     items: [{
-        id: {
+        _id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Item'
         },
@@ -46,7 +46,7 @@ Order.methods.updateOrderState = function(state) {
 Order.statics.getOrdersByUser = function(userId) {
     return this.find({
         userId: userId
-    }).exec()
+    }).populate({path:'items._id',select:'name description photos categories'}).exec()
 }
 
 mongoose.model('Order', Order);
