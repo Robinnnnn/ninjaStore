@@ -5,16 +5,14 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
         $scope.user = user;
         if (user) {
             $scope.order.userId = user._id;
-            console.log(user)
-                // $scope.customer.name = user.name;
-                // $scope.customer.email = user.email;
-                // $scope.customer.addressStreet = user.addresses[0].address
-                // $scope.customer.state = user.addresses[0].state
-                // $scope.customer.zipcode = user.addresses[0].zipcode
-                // $scope.customer.city = user.addresses[0].city
-
+            $scope.fieldCompleted = true;
         }
     });
+
+    $scope.checkOut = function() {
+        $scope.order.items.length ? $state.go('checkOut') :
+            alert('You don\'t have any items though')
+    }
 
     function updateSummary(summary) {
         summary.shipping = summary.itemPrice * 0.03;
@@ -32,11 +30,13 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
         }
         updateSummary($scope.summary);
     }
-    $scope.summary();
+
+    if ($scope.order.items) $scope.summary();
 
     $scope.saveInformation = function(customer) {
         $scope.order.userInfo = customer;
         $scope.user = customer;
+        $scope.fieldCompleted = true;
     }
 
     $scope.editInformation = function(customer) {
@@ -44,11 +44,27 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
         $scope.user = null;
     }
 
-    $scope.placeOrder = function() {
-        if ($scope.order.userInfo || $scope.order.userId) {
-            $scope.order.save().then(function(order) {
-                $state.go('manage')
+    $scope.clearCart = () => {
+        Order.clearCart()
+            .then(() => {
+                $scope.order = null;
             })
+    }
+
+    $scope.placeOrder = function() {
+        if ($scope.fieldCompleted) {
+            $scope.order.save().then(function(order) {
+                $scope.clearCart();
+                if ($scope.order.userInfo) {
+                    $state.go('home')
+                } else {
+                    $state.go('manage')
+                }
+            })
+        } else {
+            alert('fill in your address tho')
         }
     }
+
+
 })
