@@ -1,10 +1,17 @@
-app.controller('itemDetailCtrl', function($scope, item, recommendations, user, Item) {
+app.controller('itemDetailCtrl', function($scope, item, recommendations, user, Item, $state) {
 	$scope.item = item;
 	$scope.recommendations = recommendations
 	if (user) {
 		$scope.user = user;
 		$scope.admin = user.isAdmin
 	}
+
+	$scope.deleteItem = function() {
+		item.destroy().then(function() {
+			$state.go('home')
+		})
+	}
+
 	$scope.editOrSave = "Edit"
 
 	$scope.editOrSaveToggle = function(item) {

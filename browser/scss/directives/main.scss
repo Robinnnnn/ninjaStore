@@ -1,2 +1,19 @@
 @import "ninja-store-logo";
 @import "navbar";
+@import "footer";
+
+.vcenter {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	&::before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+}
+
+.muted {
+	opacity: 0.5;
+}
