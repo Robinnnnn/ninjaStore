@@ -1,7 +1,7 @@
-app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state, Item) {
+app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state, Item, Order) {
 	$scope.query;
 	$scope.items;
-
+	Order.fetchCurrent();
 	$scope.show = (category) => {
 		$state.go('showResult', {
 			category: category

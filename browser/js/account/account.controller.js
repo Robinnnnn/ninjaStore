@@ -33,12 +33,20 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 			$scope.orders = orders;
 		})
 	}
+
+	$scope.setAdmin = function(user,isAdmin){
+		user.isAdmin = isAdmin;
+		user.save();
+	}
+
 	$scope.deleteUser = function(user){
 		$scope.usersDisplay.splice($scope.usersDisplay.indexOf(user),1);
 		new User({_id:user._id}).destroy().then(function(){
 			$state.go('manage')
 		})		
 	}
+
+
 	$scope.resetPassword = function(user){
 		user.password = 'hello';
 		user.passwordReset = true;
