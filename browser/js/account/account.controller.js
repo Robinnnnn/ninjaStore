@@ -2,7 +2,7 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	$scope.status = ["Created","Completed","Processing","Cancelled"];
 	$scope.user = user
 	$scope.orders = orders;
-	$scope.toggleDisplay = "Hide";
+	$scope.toggleDisplay = "Display";
 	$rootScope.admin = user.isAdmin
 
 	$scope.editInformation = function() {
@@ -33,4 +33,18 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 			$scope.orders = orders;
 		})
 	}
+	$scope.deleteUser = function(user){
+		$scope.usersDisplay.splice($scope.usersDisplay.indexOf(user),1);
+		new User({_id:user._id}).destroy().then(function(){
+			$state.go('manage')
+		})		
+	}
+	$scope.resetPassword = function(user){
+		user.password = 'hello';
+		user.passwordReset = true;
+		user.save().then(function(){
+			$state.go('manage')
+		})
+	}
+
 })
