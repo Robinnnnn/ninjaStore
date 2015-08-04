@@ -4,11 +4,19 @@ navbar {
   background: white;
   border-bottom: 1px solid black;
   box-shadow: 1px 1px 14px -3px black;
+  height: 55px;
+
+  .navbar-brand {
+    padding: 10px;
+
+    img {
+      height: 100%;
+    }
+  }
 
   .container {
     width: 91%;
     max-width: 1340px;
-    padding-top: 20px;
   }
 
   ninja-store-logo {
@@ -66,4 +74,33 @@ navbar {
       cursor: pointer;
     }
   }
+}
+
+@-webkit-keyframes spinnerRotate {
+  from{-webkit-transform:rotate(0deg);}
+  to{-webkit-transform:rotate(360deg);}
+}
+@-moz-keyframes spinnerRotate {
+  from{-moz-transform:rotate(0deg);}
+  to{-moz-transform:rotate(360deg);}
+}
+
+@-ms-keyframes spinnerRotate {
+  from{-ms-transform:rotate(0deg);}
+  to{-ms-transform:rotate(360deg);}
+}
+
+.spin {
+  -webkit-animation-name: spinnerRotate;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spinnerRotate;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spinnerRotate;
+  -ms-animation-duration: 1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
 }
