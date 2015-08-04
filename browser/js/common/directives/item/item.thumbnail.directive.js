@@ -7,6 +7,15 @@ app.directive('itemThumbnail', function() {
 			admin: '='
 		},
 		link: function(scope, $rootScope) {
+			function shortenTitle(title, length) {
+				if (title.length > length) {
+					return title.slice(0, length) + '...';
+				}
+				return title;
+			}
+
+			scope.item.shortTitle = shortenTitle(scope.item.name, 35);
+
 			scope.item.price /= 100;
 		}
 	};
