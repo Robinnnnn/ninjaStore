@@ -2,7 +2,7 @@ app.controller('MainCtrl', ($scope, items) => {
     $scope.activeCategory = '';
 
 
-    var itemsPerPage = 12;
+    var itemsPerPage = 16;
     $scope.numItems = items.length;
     $scope.numPages = Math.ceil($scope.numItems/itemsPerPage);
     $scope.pages = [];
@@ -16,10 +16,8 @@ app.controller('MainCtrl', ($scope, items) => {
         return acc;
     }, []);
 
-    $scope.itemsArr = itemsArr;
-
-
     $scope.activePage = 1;
+    $scope.items = itemsArr[0];
 
     $scope.onPage = function(page){
         if(page === $scope.activePage) return true;
@@ -27,11 +25,20 @@ app.controller('MainCtrl', ($scope, items) => {
     };
 
     $scope.currentPage = function(page){
-        console.log("Current page", page)
         $scope.activePage = page;
+        $scope.items = itemsArr[page-1];
     };
 
-    $scope.items = items.slice(0,itemsPerPage);
+    $scope.previousPage = function(){
+        $scope.activePage--;
+        $scope.items = itemsArr[$scope.activePage-1];
+    };
+
+    $scope.nextPage = function(){
+        $scope.activePage++;
+        $scope.items = itemsArr[$scope.activePage-1];
+    };
+
 
     // makes sure the name of the item doesn't expand its div height
     function shortenTitle(title, length) {
@@ -46,19 +53,4 @@ app.controller('MainCtrl', ($scope, items) => {
         return item;
     })
 
-
-    // $scope.totalItems = items.length;
-    // $scope.currentPage = 1;
-
-    // $scope.setPage = function (pageNo) {
-    //     $scope.currentPage = pageNo;
-    // };
-
-    // $scope.pageChanged = function() {
-    //     $log.log('Page changed to: ' + $scope.currentPage);
-    // };
-
-    // $scope.maxSize = 8;
-    // $scope.bigTotalItems = 175;
-    // $scope.bigCurrentPage = 1;
 })
