@@ -5,11 +5,9 @@
 
 .signin-container {
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	> * {
-		width: 33%;
-	}
+  margin: 0 auto;
+
 	.local {
 		max-width: 18em;
 		text-align: left;
@@ -20,12 +18,10 @@
 	.oauth {
 		max-width: 18em;
 	}
-	.btn-social {
-		text-align: center;
-		width: 100%;
-	}
 	min-width: -webkit-min-content;
 }
+
+
 
 @media (max-width: 600px) {
 	.signin-container {
