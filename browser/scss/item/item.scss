@@ -18,7 +18,7 @@
 }
 
 .detailOverview{
-	display: inline;
+    float:right;
 	padding-left: 20px;
 }
 
@@ -61,4 +61,9 @@
 
 .review-submit {
 	width: 19%;
+}
+
+.edit {
+    float: right;
+    margin: 10px;
 }

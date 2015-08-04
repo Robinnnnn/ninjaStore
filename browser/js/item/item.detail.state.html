@@ -2,18 +2,43 @@
 	<!-- <item-detail item="item"></item-detail> -->
 	<div class="container">
 	    <div>
-	        <div>
+	        <div class="col-lg-4">
 	            <img class="detailImage" src="{{item.photos[0]}}">
 	        </div>
 
-	        <div class="detailOverview">
-		        <div class="detailTitle">
+	        <div class="detailOverview col-lg-5 list-group" ng-if="editOrSave === 'edit'">
+		        <div class="detailTitle list-group-item">
 		            <h2>
 		            {{item.name}}
 		            </h2>
 		        </div>
-		        <div class="detailDesc">
+		        <div class="detailDesc list-group-item">
 		            <p>{{item.description.short}}</p>
+		        </div>
+
+		        <div class="list-group-item"> <span ng-model="rating">{{item.rating}} out of 5
+			        <div star-rating rating-value="item.rating" max="5" ></div>
+			        </span>
+			    </div>
+
+		        <div class="detailPrice list-group-item">
+		            <p>Price:{{item.price / 100 | currency}}</p>
+		        </div>
+		        <add-to-cart item='item'></add-to-cart>
+			    <div class="list-group-item">
+			        {{item.description.long}}
+			    </div>
+			    <button class="btn btn-primary edit" ng-if="admin" ng-click="editOrSaveToggle(item)">{{editOrSave}}</button>
+	        </div>
+
+	        <div class="detailOverview col-lg-5" ng-if="editOrSave === 'save'">
+		        <div class="detailTitle">
+		            <h3>EDIT MODE. Directly make your changes in each field!</h3> <h2 contenteditable ng-model="item.name">
+		            {{item.name}}
+		            </h2>
+		        </div>
+		        <div class="detailDesc">
+		            Short Description: <p contenteditable ng-model="item.description.short">{{item.description.short}}</p>
 		        </div>
 
 		        <div> <span ng-model="rating">{{item.rating}} out of 5
@@ -26,8 +51,12 @@
 		        </div>
 		        <add-to-cart item='item'></add-to-cart>
 			    <div>
-			        {{item.description.long}}
+			        Long Description: <p contenteditable ng-model="item.description.long">{{item.description.long}}</p>
 			    </div>
+			    <div>
+			    	Update Quantity Remaining: <p contenteditable ng-model="item.quantity">{{item.quantity}}</p>
+			    </div>
+			    <button class="btn btn-primary edit" ng-if="admin" ng-click="editOrSaveToggle(item)" type="number">{{editOrSave}}</button>
 	        </div>
 	    </div>
 	</div>
