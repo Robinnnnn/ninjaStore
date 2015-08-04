@@ -6,6 +6,15 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 var Order = mongoose.model('Order')
 
+var emailer = require('./../../utils/email.js');
+
+var bool = false;
+var emailTrue = function(bool, func, to_name, to_email, subject, message_html){
+    if(bool) {
+        func(to_name, to_email, subject, message_html);
+    }
+};
+
 router.param('id', function(req, res, next, id) {
     Order.findById(id).then(function(order) {
         if (order) {
@@ -41,6 +50,11 @@ router.post('/', function(req, res, next) {
         .then(function(order) {
             if (req.user) req.user.orders.push(order);
             req.user.save().then(function() {
+                var buffer = "Your item order consists of: \n\r";
+                for(var i = 0; i < req.body.items.length; i++){
+                    buffer += "" + req.body.items[i].quantity + " " + req.body.items[i].name + " for " + req.body.items[i].price + "\n";
+                }
+                emailTrue(bool,emailer(req.user.name, req.user.email, "Your order is confirmed!  Get ready to fight some pirates.", buffer));
                 res.status(201).json(order)
             });
         })
@@ -59,6 +73,12 @@ router.put('/:id', function(req, res, next) {
         req.order[key] = req.body[key];
     }
     req.order.save().then(function(order) {
+        var buffer = "Your order has changed: \n\r";
+        for(var i = 0; i < req.body.items.length; i++){
+            buffer += "" + req.body.items[i].quantity + " " + req.body.items[i].name + " for " + req.body.items[i].price + "\n";
+        }
+        emailTrue(bool,emailer(req.user.name, req.user.email, "Your order is confirmed!  Get ready to fight some pirates.", buffer));
+
         res.status(200).json(order);
     })
 })

@@ -4,19 +4,6 @@
             <ninja-store-logo></ninja-store-logo>
         </div>
 
-<!--             <div class="btn-group" dropdown is-open="status.isopen">
-      <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
-        Button dropdown <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
-        <li role="menuitem"><a href="#">Action</a></li>
-        <li role="menuitem"><a href="#">Another action</a></li>
-        <li role="menuitem"><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li role="menuitem"><a href="#">Separated link</a></li>
-      </ul>
-    </div> -->
-
         <div class="navbar navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a ui-sref='home'>Home</a></li>
@@ -33,11 +20,9 @@
                 </div>
                 <button ng-click="search()" type="submit" class="btn btn-default">Go!</button>
               </form>
-            <!-- <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li> -->
+    
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
-            <button ng-show="!user" ui-sref="#" class="btn login-button">Sign Up</button>
+            <button ng-show="!user" ui-sref="signup" class="btn login-button">Sign Up</button>
             <button ui-sref="cart" class="btn login-button">
               <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             </button>
