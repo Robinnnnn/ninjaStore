@@ -39,8 +39,10 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 			$state.go('manage')
 		})		
 	}
-	$scope.resetPassword = function(id){
-		new User({_id:user._id}).save({password:'hello'}).then(function(){
+	$scope.resetPassword = function(user){
+		user.password = 'hello';
+		user.passwordReset = true;
+		user.save().then(function(){
 			$state.go('manage')
 		})
 	}

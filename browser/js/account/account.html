@@ -4,10 +4,13 @@
         <button class="btn btn-default" ng-click="displayUsers()">
             {{toggleDisplay}} All Users
         </button>
-        <div ng-repeat="user in usersDisplay" ng-if="usersDisplay">
-            <a ng-click="switchUser(user)" style="width:200px"> {{user.name}}</a>
-            <button class="btn btn-danger floatRight" ng-click="deleteUser(user)">Delete</button>
-            <button class="btn btn-danger floatRight" ng-click="resetPassword(user)">Reset password</button>
+        <div ng-repeat="user in usersDisplay" ng-if="usersDisplay" class="userDisplay">
+            <a ng-click="switchUser(user)"> {{user.name}}</a>
+            <div class="floatRight">
+                <button class="btn btn-danger" ng-click="deleteUser(user)">Delete</button>
+                <button class="btn btn-danger" ng-click="resetPassword(user)">Reset password</button>
+
+            </div>
         </div>
     </div>
     <div ng-if="!editing" class="row">

@@ -91,14 +91,14 @@ var encryptPassword = function(plainText, salt) {
 
 User.pre('save', function(next) {
 
-  if (this.isModified('password')) {
+  if (this.isModified('password')||this.passwordReset) {
     this.salt = this.constructor.generateSalt();
     this.password = this.constructor.encryptPassword(this.password, this.salt);
   }
-
   next();
 
 });
+
 
 User.statics.generateSalt = generateSalt;
 User.statics.encryptPassword = encryptPassword;
@@ -109,24 +109,10 @@ User.method('correctPassword', function(candidatePassword) {
 
 User.methods.getAllOrders = function(){
     return this.populate('orders').execPopulate()
-      // .then(function(user){
-      //   console.log(user.orders)
-        // return user.populate('orders.items.id').execPopulate()
-        // return Order.populate(user.orders,{path:'items.id',model:'Item'}).exec();
-      // });
-    // this.populate('orders').execPopulate()
-    //         .then(function(user){
-    //           // console.log(user);
-    //           return Item.populate(user.orders,{path:'orders.items',model:'Item'},function(err,doc){
-    //             console.log(user.orders);
-    //           })
-    //         });
 }
 
 User.methods.getAllReviews = function(){
     return this.populate('reviews').execPopulate()
 }
-
-
 
 mongoose.model('User', User);
