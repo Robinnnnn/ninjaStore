@@ -36,6 +36,7 @@ app.factory('Order', function($http, Item,$rootScope) {
   }
 
   Order.clearCart = () => {
+    $rootScope.cartContent = 0;
     return $http.delete('/api/cart')
       .then(res => res.data)
   }
