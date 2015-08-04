@@ -1,0 +1,31 @@
+add-review{
+	.input-group{
+		padding: 5px;
+	}
+
+	.opaque{
+		opacity: 0.4;
+	}
+
+	.opaque:hover{
+		opacity:1;
+	}
+
+	.rotateHover{
+		transition: 2s;
+	}
+
+	.rotateHover:hover{
+		transform: rotate(360deg);
+	}
+
+	.rotate{
+		transition: 2s;
+		opacity:1;
+	}
+
+	.opaqueRemove{
+		transition: 2s;
+		opacity:1;
+	}
+}

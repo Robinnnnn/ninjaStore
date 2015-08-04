@@ -1,17 +1,16 @@
-<div class='add-review'>
+<div class='input-group'>
+	<span class='input-group-addon' id="basic-addon1">Review:</span>
   <input
-    class='review-review'
+    class='form-control'
     ng-model='newReview.review'
     type='text'
-    placeholder='What did you think about ${item.name}?'>
-  <input
-    class='review-rating'
-    ng-model='newReview.rating'
-    type='number'
-    placeholder='Give it a rating, 1 to 5 ninja stars'
-    min: '0'
-    max: '5'>
+    placeholder='Let others know how tubular the {{item.name}} is.'>
+</div>
+<div class = "input-group">
+    <a ng-mouseover="applyHoverClass(star)" ng-mouseleave="removeHoverClass()" ng-repeat="star in stars" ng-click="saveReview(star)">
+	    <img class="ratingStar opaque rotateHover" ng-class="{'rotate': starTrue[star], 'opaqueRemove': starPermTrue[star]}" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
+    </a>
+</div>
   <button
     class='review-submit'
     ng-click='submitReview()'>Submit</button>
-</div>
