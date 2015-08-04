@@ -45,19 +45,22 @@
 
     <div id="paymentMethod" class="col-lg-6 css-form" novalidate>
         <h3> Payment Method</h3>
-        <form method="POST" id="payment-form" class="form-group" name="form">
+        <form method="POST" id="payment-form" class="form-group" name="form" ng-if="editingCard">
           <span class="payment-errors"></span>
 
           <!-- css not working -->
           <div class="form-row">
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="16" data-stripe="number" name="cardNumber" class="form-control" id="card-number" placeholder="Credit Card Number" ng-model="cardNumber" maxlength="16" required/>
+              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="16" data-stripe="number" name="cardNumber" class="form-control" id="card-number" placeholder="Credit Card Number" ng-model="card.number" maxlength="16" required/>
           </div>
           <div>
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="3" maxlength="3" data-stripe="cvc" name="cvv" ng-model="cvv" class="form-control" placeholder="CVV" id="cvv" required/>
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="2"maxlength="2" data-stripe="exp-month" class="form-control" placeholder="MM" id="month" name="month" ng-model="month" required/> / 
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="4" maxlength="4" data-stripe="exp-year" class="form-control" placeholder="YYYY" id="year" name="year" ng-model="year" required/>
-              <button class="btn btn-success" ng-click="saveCardInformation()">
+              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="3" maxlength="3" data-stripe="cvc" name="cvv" ng-model="card.cvv" class="form-control" placeholder="CVV" id="cvv" required/>
+              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="2"maxlength="2" data-stripe="exp-month" class="form-control" placeholder="MM" id="month" name="month" ng-model="card.month" required/> / 
+              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="4" maxlength="4" data-stripe="exp-year" class="form-control" placeholder="YYYY" id="year" name="year" ng-model="card.year" required/>
+              <button class="btn btn-success" ng-click="editCardInformation(false)">
                 Save
+              </button>
+              <button class="btn btn-success" ng-click="editCardInformation(true)">
+                Edit
               </button>
           </div>
         <!--   <span ng-show="form.cardNumber.$error.maxlength || form.cvv.$error.minlength || form.cvv.$error.maxlength || form.month.$error.maxlength || form.year.$error.maxlength">
