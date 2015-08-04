@@ -6,15 +6,17 @@ app.directive('orderdetail', function($rootScope, AuthService, AUTH_EVENTS, $sta
             order: '='
         },
         templateUrl: 'js/common/directives/order-detail/order-detail.html',
-        controller: function($scope, Order, $state){
-        	$scope.removeItem = function(item){
-        		Order.removeItem(item)
-        		.then(() => {
-        			$state.go('home');
-        		})
-        	};
+        controller: function($scope, Order, $state) {
+                $scope.removeItem = function(item) {
+                    Order.removeItem(item)
+                        .then(() => {
+                            $state.go('home');
+                        })
+                };
 
-        }
+            }
+            // why can't this work with checkout.controller.js?
+            // controller: 'checkoutCtrl'
 
     };
 
