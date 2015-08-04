@@ -1,17 +1,26 @@
-<div class='add-review'>
+<div class='input-group'>
+	<span class='input-group-addon' id="basic-addon1">Review:</span>
   <input
-    class='review-review'
+    class='form-control'
     ng-model='newReview.review'
     type='text'
-    placeholder='What did you think about ${item.name}?'>
-  <input
-    class='review-rating'
+    placeholder='Let others know how tubular the {{item.name}} is.'>
+</div>
+<div class = "input-group">
+	<!-- <span class="input-group-addon" id="basic-addon1">Ninja Stars:</span> -->
+<!--   <input
+    class='form-control'
     ng-model='newReview.rating'
     type='number'
     placeholder='Give it a rating, 1 to 5 ninja stars'
     min: '0'
-    max: '5'>
+    max: '5'> -->
+    <img class="ratingStar opaque" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
+    <img class="ratingStar opaque" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
+    <img class="ratingStar opaque" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
+    <img class="ratingStar opaque" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
+    <img class="ratingStar opaque" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
+</div>
   <button
     class='review-submit'
     ng-click='submitReview()'>Submit</button>
-</div>
