@@ -9,6 +9,14 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
         }
     });
 
+    $scope.removeItem = function(item) {
+        Order.removeItem(item)
+            .then(() => {
+                console.log('inside controller')
+                $state.go('home');
+            })
+    };
+
     $scope.checkOut = function() {
         $scope.order.items.length ? $state.go('checkOut') :
             alert('You don\'t have any items though')
@@ -65,6 +73,4 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
             alert('fill in your address tho')
         }
     }
-
-
 })
