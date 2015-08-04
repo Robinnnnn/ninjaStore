@@ -3,12 +3,13 @@ app.config(function($stateProvider) {
 		url: '/items/:id',
 		templateUrl: 'js/item/item.detail.state.html',
 		resolve: {
-			item: function(Item, $stateParams) {
+			item: (Item, $stateParams) => {
 				let item = new Item({
 					_id: $stateParams.id
 				})
 				return item.fetch()
 			},
+<<<<<<< HEAD
 			recommendations: function(item, Item){
 				return Item.getRecommendations(item.categories[0]);
 			}
@@ -16,6 +17,13 @@ app.config(function($stateProvider) {
 		controller: function($scope, item, recommendations) {
 			$scope.item = item;
 			$scope.recommendations = recommendations
+=======
+			user: (AuthService) => AuthService.getLoggedInUser()
+		},
+		controller: function($scope, item, user) {
+			$scope.item = item;
+			$scope.user = user;
+>>>>>>> master
 		}
 	});
 });
