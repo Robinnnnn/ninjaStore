@@ -22,9 +22,9 @@
 		            <h4>{{item.price / 100 | currency}}</h4>
 		        </div>
 		        <add-to-cart item='item'></add-to-cart>
-			    <div ng-if="item.description.long" class="list-group-item">
+			    <!-- <div ng-if="item.description.long" class="list-group-item">
 			        {{item.description.long}}
-			    </div>
+			    </div> -->
 			    <button class="btn btn-primary edit" ng-if="admin" ng-click="editOrSaveToggle(item)">{{editOrSave}}</button>
 	        </div>
 
@@ -47,9 +47,9 @@
 		            <h4>{{item.price / 100 | currency}}</h4>
 		        </div>
 		        <add-to-cart item='item'></add-to-cart>
-			    <div class="list-group-item">
+			    <!-- <div class="list-group-item">
 			        Long Description: <p contenteditable ng-model="item.description.long">{{item.description.long}}</p>
-			    </div>
+			    </div> -->
 			    <div class="list-group-item">
 			    	Update Quantity Remaining: <p contenteditable ng-model="item.quantity">{{item.quantity}}</p>
 			    </div>
