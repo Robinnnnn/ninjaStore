@@ -15,10 +15,5 @@ module.exports = {
     "clientID": "853502665892-bu9golih10gctphqoriueivhgjc5fthg.apps.googleusercontent.com",
     "clientSecret": "JtCswpqmsSCMjxbP004wikPb",
     "callbackURL": "http://localhost:1337/oauth2callback"
-  },
-  "GITHUB": {
-    "clientID": "INSERT_GOOGLE_CLIENTID_HERE",
-    "clientSecret": "INSERT_GOOGLE_CLIENT_SECRET_HERE",
-    "callbackURL": "INSERT_GOOGLE_CALLBACK_HERE"
   }
 };
