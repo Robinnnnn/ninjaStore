@@ -10,4 +10,18 @@ add-review{
 	.opaque:hover{
 		opacity:1;
 	}
+
+	.rotateHover{
+		transition: 2s;
+	}
+
+	.rotateHover:hover{
+		transform: rotate(360deg);
+	}
+
+	.rotate{
+		transition: 2s;
+		transform: rotate(360deg);
+		opacity:1;
+	}
 }

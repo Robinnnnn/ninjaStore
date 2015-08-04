@@ -19,6 +19,18 @@ app.directive('addReview', function(Review) {
             console.log('review saved and item updated');
           })
       }
+
+      scope.stars = [0, 1, 2, 3, 4];
+
+      scope.applyHoverClass = function(item){
+        alert(item);
+        for(var i = 0; i < item; i++){
+          scope.star[i].addClass('rotate');
+        }
+      };
+    },
+    controller: function($scope){
+
     }
-  }
-})
+  };
+});
