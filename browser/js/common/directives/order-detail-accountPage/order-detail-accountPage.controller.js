@@ -5,7 +5,10 @@ app.controller('orderdetailAccountPageCtrl', function($scope, Order, $state, $ro
     	$scope.order.save();
     }
     $scope.cancelOrder = function(){
+    	console.log('go here')
     	// console.log(item);
-    	$scope.order.save({orderState:'Cancelled'})
+    	// $scope.order.save({orderState:'Cancelled'})
+    	$scope.order.orderState = "Cancelled";
+    	$scope.order.save();
     }
 })
