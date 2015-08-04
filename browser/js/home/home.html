@@ -3,3 +3,11 @@
     	<item-thumbnail item='item'></item-thumbnail>
     </div>
 </div>
+
+<nav class='paginationContainer'>
+  <ul class="pagination">
+  	<li ng-if="activePage!==1"><a aria-label="Previous" ng-click="previousPage()"><span aria-hidden="true">&laquo;</span></a></li>
+  	<li ng-class="{'active': onPage(page)}" ng-repeat="page in pages"><a ng-click="currentPage(page)">{{page}}</a></li>
+  	<li ng-if="activePage!==numPages"><a aria-label="Previous" ng-click="nextPage()"><span aria-hidden="true">»</span></a></li>
+  </ul>
+</nav>
