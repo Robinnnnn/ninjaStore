@@ -54,20 +54,24 @@
 	        </div>
 	    </div>
 	</div>
-	<recommendations item='item' recommendations='recommendations'></recommendations>
-	<div class="container">
-		<h2>
-	    	Customer Reviews:
-		</h2>
-	    <div class="reviewFull" ng-repeat="review in item.reviews">
-	        <ul>
-	            <li>
-	                <p>{{review.review}}</p>
-	                <p>Rating:{{review.rating}} </p>
-	            </li>
-	        </ul>
-	    </div>
-	    <br>
-	    <add-review ng-if='user' item='item'></add-review>
+		<recommendations item='item' recommendations='recommendations'></recommendations>
+		<div class="list-group">
+		<div class="container">
+			<div class="list-group-item">
+			<h2>
+		    	Customer Reviews:
+			</h2>
+			</div>
+		    <div class="list-group-item" ng-repeat="review in item.reviews">
+		        <ul>
+		            <li>
+		                <p>{{review.review}}</p>
+		                <p>Rating:{{review.rating}} </p>
+		            </li>
+		        </ul>
+		    </div>
+		    <br>
+		    <add-review ng-if='user' item='item'></add-review>
+		</div>
 	</div>
 </div>
