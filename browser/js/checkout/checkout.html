@@ -42,15 +42,30 @@
             </button>
         </div>
     </div>
-    <div id="paymentMethod">
+    <div id="paymentMethod" class="col-lg-6">
         <h3> Payment Method</h3>
+        <form method="POST" id="payment-form" class="form-group">
+          <span class="payment-errors"></span>
+
+          <!-- css not working -->
+          <div class="form-row">
+              <input type="text" size="20" data-stripe="number" class="form-control" id="card-number" placeholder="Credit Card Number"/>
+          </div>
+
+          <div class="form-row">
+              <input type="text" size="4" data-stripe="cvc" class="form-control" placeholder="CVV" id="cvv"/> 
+              <input type="text" size="2" data-stripe="exp-month" class="form-control" placeholder="MM"/> / <input type="text" size="4" data-stripe="exp-year" class="form-control" placeholder="YYYY"/>
+            </div>
+
+            
+        </form>
     </div>
-    <div id="confirmItemShipping">
-        <h3>Review items and shipping</h3>
+    <div id="confirmItemShipping" class="col-lg-12">
+        <h3>Review Your Purchase</h3>
         <orderdetail order="order"></orderdetail>
     </div>
 
-    <div id="orderTotal">
+    <div id="orderTotal" class="col-lg-12">
     	<h3> Order summary</h3>
     	<ul class="removeDot">
     		<li> Items({{summary.numItem}}): {{summary.itemPrice |currency}} </li>
@@ -62,11 +77,12 @@
     	____________________________________________
     		<h4> Order Total: {{summary.total| currency}}</h4>
 
-    </div>
-    <button class="btn btn-success" ng-click="placeOrder()" type="submit">
+        <button class="btn btn-success" ng-click="placeOrder()" type="submit">
         Place order
     </button>
 
+    </div>
+    
 
 
 
