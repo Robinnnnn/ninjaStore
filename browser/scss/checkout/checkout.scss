@@ -19,14 +19,33 @@
   text-align: center; 
 }
 
+#paymentMethod input {
+	margin: 10px;
+	display:inline;
+}
+
 #cvv {
-	width: 20%
+	width: 14%
 }
 
 #year {
-	width: 20%
+	width: 16%
 }
 
 #month {
-	width: 10%
+	width: 13%
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.css-form input.ng-invalid.ng-touched {
+	border: solid 1px #ffb2b2;
+}
+
+.css-form input.ng-valid.ng-touched {
+	border: solid 1px #6ae066;
 }
