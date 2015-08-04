@@ -1,19 +1,23 @@
 app.controller("signupCtrl", function($scope, $state, User, AuthService) {
-    $scope.customer = {};
+    // $scope.customer = {};
+        $scope.error = null;
 
     // fix the way address is saved
-    $scope.saveInformation = function(customer) {
-        $scope.error = null;
-        $scope.user = new User(customer);
-        $scope.password = customer.password
-        $scope.user.save().then(function(user) {
+    $scope.signUp = function() {
+        //combine street and apt address to get correct address
+        $scope.user.addresses.address = $scope.user.addresses.street + ' ' + $scope.user.addresses.apt;
+        var tempAddress = $scope.user.addresses;
+        $scope.user.addresses = [];
+        $scope.user.addresses.push(tempAddress);
+        new User($scope.user).save().then(function(user) {
             AuthService.login({
-                email: customer.email,
-                password: customer.password
+                email: $scope.user.email,
+                password: $scope.user.password
             }).then(function() {
                 $state.go('home')
-            }).catch(function() {
-                $scope.error = 'Invalid login credentials.';
+            }).catch(function(err) {
+                $scope.error = err;
+                // $scope.error = 'Invalid login credentials.';
             })
         })
     }
