@@ -1,23 +1,31 @@
-<div class="container centered">
+<div class='col-md-6'>
 <h3>Sign Up</h3>
     <form class="centered form-group col-lg-6 signup">
 
-        <input name="name" type="text" class="form-control" ng-model="customer.name" placeholder="Full Name">
-        <input name="email" type="text" class="form-control" ng-model="customer.email" placeholder="E-mail">
-        <input name="password" type="text" class="form-control" ng-model="customer.password" placeholder="Password">
-        <input name="streetAddress" type="text" class="form-control" ng-model="customer.addressStreet" placeholder="Street Address">
-        <input name="streetAddress" type="text" class="form-control" ng-model="customer.addressApt" placeholder="Apartment #">
-        <input name="city" type="text" class="form-control" ng-model="customer.city" placeholder="City">
-        <input name="state" type="text" class="form-control" ng-model="customer.state" placeholder="State / Province / Region">
-        <input name="zipcode" type="text" class="form-control" ng-model="customer.zipcode" placeholder="Zip Code">
-        <input name="country" type="text" class="form-control" ng-model="customer.country" placeholder="Country">
+        <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name" required="required">
+        <input name="email" type="text" class="form-control" ng-model="user.email" placeholder="E-mail" required="required">
+        <input name="password" type="text" class="form-control" ng-model="user.password" placeholder="Password">
+        <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses.street" placeholder="Street Address">
+        <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses.apt" placeholder="Apartment #">
+        <input name="city" type="text" class="form-control" ng-model="user.addresses.city" placeholder="City" required="required">
+        <input name="state" type="text" class="form-control" ng-model="user.addresses.state" placeholder="State / Province / Region" required="required">
+        <input name="zipcode" type="text" class="form-control" ng-model="user.addresses.zipcode" placeholder="Zip Code" required="required">
+        <input name="country" type="text" class="form-control" ng-model="user.addresses.country" placeholder="Country" required="required">
         
-        <input name="phone" type="text" class="form-control" ng-model="customer.phone" placeholder="Phone Number">
+        <input name="phone" type="text" class="form-control" ng-model="user.addresses.phone" placeholder="Phone Number">
 
-         <button class="btn btn-success" ng-click="saveInformation(customer)" type="submit">
+         <button class="btn btn-success" ng-click="signUp()" type="submit">
             Save
         </button>
-
-
     </form>
+    <div ng-if="error">
+        {{error}}
+    </div>
 </div>
+<div class='col-md-6'>
+      <div class="buffer oauth">
+        <p><oauth-button provider-name="Facebook"></oauth-button></p>
+            <p><oauth-button provider-name="Google"></oauth-button></p>
+            <p><oauth-button provider-name="Twitter"></oauth-button></p>
+        </div>
+    </div>
