@@ -5,6 +5,10 @@ app.config(function($stateProvider) {
         resolve: {
             items: function(Item) {
                 return Item.fetchAll();
+            },
+            user: (AuthService, User) => {
+                return AuthService.getLoggedInUser()
+                    .then(user => new User(user))
             }
         },
         controller: 'MainCtrl'

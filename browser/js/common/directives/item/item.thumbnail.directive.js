@@ -3,9 +3,10 @@ app.directive('itemThumbnail', function() {
 		restrict: 'E',
 		templateUrl: 'js/common/directives/item/item.thumbnail.html',
 		scope: {
-			item: '='
+			item: '=',
+			admin: '='
 		},
-		link: function(scope) {
+		link: function(scope, $rootScope) {
 			scope.item.price /= 100;
 		}
 	};
