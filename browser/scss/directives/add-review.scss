@@ -1,6 +1,6 @@
 add-review{
 	.input-group{
-		padding: 5px
+		padding: 5px;
 	}
 
 	.opaque{
@@ -21,7 +21,12 @@ add-review{
 
 	.rotate{
 		transition: 2s;
-		transform: rotate(360deg);
+		// transform: rotate(360deg);
+		opacity:1;
+	}
+
+	.opaqueRemove{
+		transition: 1s;
 		opacity:1;
 	}
 }

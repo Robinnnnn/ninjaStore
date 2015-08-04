@@ -7,32 +7,9 @@
     placeholder='Let others know how tubular the {{item.name}} is.'>
 </div>
 <div class = "input-group">
-	<!-- <span class="input-group-addon" id="basic-addon1">Rating: </span> -->
-<!--   <input
-    class='form-control'
-    ng-model='newReview.rating'
-    type='number'
-    placeholder='Give it a rating, 1 to 5 ninja stars'
-    min: '0'
-    max: '5'> -->
-    <a ng-mouseover="applyHoverClass(star)" ng-repeat="star in stars">
-	    <img class="ratingStar opaque rotateHover" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
+    <a ng-mouseover="applyHoverClass(star)" ng-mouseleave="removeHoverClass()" ng-repeat="star in stars" ng-click="saveReview(star)">
+	    <img class="ratingStar opaque rotateHover" ng-class="{'rotate': starTrue[star], 'opaqueRemove': starPermTrue[star]}" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
     </a>
-<!--     <a ng-mouseover="applyHoverClass(1)">
-	    <img class="ratingStar opaque rotateHover" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
-    </a>
-    <a>
-	    <img class="ratingStar opaque rotateHover" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
-    </a>
-    <a>
-	    <img class="ratingStar opaque rotateHover" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
-    </a>
-    <a>
-	    <img class="ratingStar opaque rotateHover" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
-    </a>
-    <a>
-	    <img class="ratingStar opaque rotateHover" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
-    </a> -->
 </div>
   <button
     class='review-submit'

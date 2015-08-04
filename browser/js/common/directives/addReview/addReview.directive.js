@@ -8,6 +8,7 @@ app.directive('addReview', function(Review) {
     link: (scope, elem, attr) => {
       // scope.newReview = {}
       scope.submitReview = () => {
+        if(!scope.newReview.rating) scope.newReview.Rating = 0;
         let toSave = new Review(scope.newReview)
         toSave.itemId = scope.item._id
         toSave.save()
@@ -21,12 +22,34 @@ app.directive('addReview', function(Review) {
       }
 
       scope.stars = [0, 1, 2, 3, 4];
+      scope.starTrue = [false, false, false, false, false];
+      scope.starPermTrue = [false, false, false, false, false];
 
-      scope.applyHoverClass = function(item){
-        alert(item);
-        for(var i = 0; i < item; i++){
-          scope.star[i].addClass('rotate');
+      scope.applyHoverClass = function(star){
+        for(var i = 0; i < star; i++){
+          scope.starTrue[i]=true;
         }
+      };
+
+      scope.removeHoverClass = function(){
+        for(var i = 0; i < scope.stars.length; i++){
+          scope.starTrue[i] = false;
+        }
+      };
+
+      scope.saveReview = function(star){
+        // alert('clicked')
+        for(var i = 0; i < scope.stars.length; i++){
+          scope.starPermTrue[i] = false;
+        }
+
+        // alert(scope.starPermTrue)
+
+        for(var i = 0; i <= star; i++){
+          scope.starPermTrue[i] = true;
+        }
+
+        scope.newReview.rating = star+1;
       };
     },
     controller: function($scope){
