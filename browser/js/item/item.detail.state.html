@@ -55,23 +55,43 @@
 	    </div>
 	</div>
 		<recommendations item='item' recommendations='recommendations'></recommendations>
+
 		<div class="list-group">
-		<div class="container">
-			<div class="list-group-item">
-			<h2>
-		    	Customer Reviews:
-			</h2>
+			<div class="container">
+				<div class="col-xs-8 col-xs-offset-2 slide-row">
+					<div class="list-group-item row carousel-row">
+						<h3>
+					    	Reviews by other ninjas
+						</h3>
+					</div>
+				</div>
+			    <!-- <div class="list-group-item row carousel-row"> -->
+			        <div class="col-xs-8 col-xs-offset-2 slide-row">
+			            <div class="list-group-item row carousel-row" ng-repeat = "review in item.reviews">
+			                <h4>{{review.rating}}</h4>
+			                <p>
+			                    {{review.review}}
+			                </p>
+			            </div>
+			        </div>
+			    <!-- </div> -->
+			    <br>
 			</div>
-		    <div class="list-group-item" ng-repeat="review in item.reviews">
-		        <ul>
-		            <li>
-		                <p>{{review.review}}</p>
-		                <p>Rating:{{review.rating}} </p>
-		            </li>
-		        </ul>
-		    </div>
-		    <br>
-		    <add-review ng-if='user' item='item'></add-review>
 		</div>
-	</div>
+
+		<div class="list-group">
+			<div class="container">
+				<div class="col-xs-8 col-xs-offset-2 slide-row">
+
+				<div class="list-group-item row carousel-row">
+				<h3>
+					Happy with your ninja swag? Write a review!
+				</h3>
+				</div>
+				<div class="list-group-item row carousel-row">
+				    <add-review ng-if='user' item='item'></add-review>
+			    </div>
+		    </div>
+		    </div>
+	    </div>
 </div>
