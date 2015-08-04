@@ -9,21 +9,15 @@ app.config(function($stateProvider) {
 				})
 				return item.fetch()
 			},
-<<<<<<< HEAD
+			user: (AuthService) => AuthService.getLoggedInUser(),
 			recommendations: function(item, Item){
 				return Item.getRecommendations(item.categories[0]);
 			}
 		},
-		controller: function($scope, item, recommendations) {
+		controller: function($scope, item, recommendations, user) {
 			$scope.item = item;
 			$scope.recommendations = recommendations
-=======
-			user: (AuthService) => AuthService.getLoggedInUser()
-		},
-		controller: function($scope, item, user) {
-			$scope.item = item;
 			$scope.user = user;
->>>>>>> master
 		}
 	});
 });
