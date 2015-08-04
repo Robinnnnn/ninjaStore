@@ -28,7 +28,7 @@
 			    <button class="btn btn-primary edit" ng-if="admin" ng-click="editOrSaveToggle(item)">{{editOrSave}}</button>
 	        </div>
 
-	        <div class="detailOverview col-lg-5 list-group" ng-if="editOrSave === 'Save Changes'">
+	        <div class="detailOverview col-lg-5 list-group" ng-if="editOrSave === 'Save'">
 		        <div class="detailTitle list-group-item">
 		            <h3>EDITOR MODE: Directly make your changes in each field!</h3> 
 		        </div>
@@ -54,7 +54,7 @@
 			    	Update Quantity Remaining: <p contenteditable ng-model="item.quantity">{{item.quantity}}</p>
 			    </div>
 			    <button class="btn btn-primary edit" ng-if="admin" ng-click="editOrSaveToggle(item)">{{editOrSave}}</button>
-			    <button class="btn btn-danger edit" ng-if="admin && editOrSave === 'Save Changes'" ng-click="deleteItem()">Delete Item</button>
+			    <button class="btn btn-danger edit" ng-if="admin && editOrSave === 'Save'" ng-click="deleteItem()">Delete Item</button>
 	        </div>
 	    </div>
 	</div>

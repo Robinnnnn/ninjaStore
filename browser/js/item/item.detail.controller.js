@@ -1,4 +1,4 @@
-app.controller('itemDetailCtrl', function($scope, item, recommendations, user, Item) {
+app.controller('itemDetailCtrl', function($scope, item, recommendations, user, Item, $state) {
 	$scope.item = item;
 	$scope.recommendations = recommendations
 	if (user) {
@@ -7,14 +7,16 @@ app.controller('itemDetailCtrl', function($scope, item, recommendations, user, I
 	}
 
 	$scope.deleteItem = function() {
-		$scope.item.
+		item.destroy().then(function() {
+			$state.go('home')
+		})
 	}
 
 	$scope.editOrSave = "Edit"
 
 	$scope.editOrSaveToggle = function(item) {
 		if ($scope.editOrSave === "Edit") {
-			$scope.editOrSave = "Save Changes"
+			$scope.editOrSave = "Save"
 		} else {
 			$scope.item.name = $scope.item.name.trim()
 			$scope.item.quantity = Number($scope.item.quantity)
