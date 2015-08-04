@@ -4,4 +4,8 @@ app.controller('orderdetailAccountPageCtrl', function($scope, Order, $state, $ro
     	$scope.order.orderState = status;
     	$scope.order.save();
     }
+    $scope.cancelOrder = function(){
+    	// console.log(item);
+    	$scope.order.save({orderState:'Cancelled'})
+    }
 })
