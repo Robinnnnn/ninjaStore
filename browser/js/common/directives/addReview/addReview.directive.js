@@ -38,13 +38,9 @@ app.directive('addReview', function(Review) {
       };
 
       scope.saveReview = function(star){
-        // alert('clicked')
         for(var i = 0; i < scope.stars.length; i++){
           scope.starPermTrue[i] = false;
         }
-
-        // alert(scope.starPermTrue)
-
         for(var i = 0; i <= star; i++){
           scope.starPermTrue[i] = true;
         }

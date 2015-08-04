@@ -21,12 +21,11 @@ add-review{
 
 	.rotate{
 		transition: 2s;
-		// transform: rotate(360deg);
 		opacity:1;
 	}
 
 	.opaqueRemove{
-		transition: 1s;
+		transition: 2s;
 		opacity:1;
 	}
 }
