@@ -5,4 +5,14 @@
     	<item-thumbnail item='item'></item-thumbnail>
     </div>
 </div>
-<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+<!-- <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination> -->
+
+
+<nav>
+  <ul class="pagination">
+  	<li ng-class="{'active': onPage(page)}" ng-repeat="page in pages"><a ng-click="currentPage(page)">{{page}}</a></li>
+<!--     <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+    ... -->
+  </ul>
+</nav>
