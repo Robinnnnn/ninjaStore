@@ -5,8 +5,10 @@
             {{toggleDisplay}} All Users
         </button>
         <div ng-repeat="user in usersDisplay" ng-if="usersDisplay" class="userDisplay">
-            <a ng-click="switchUser(user)"> {{user.name}}</a>
+            <a ng-click="switchUser(user)" style="cursor:pointer"> {{user.name}}</a><a ng-if="user.isAdmin"> (admin)</a>
             <div class="floatRight">
+                <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">set Admin</button>
+                <button class="btn btn-danger" ng-if="user.isAdmin"ng-click="setAdmin(user,false)">revoke Admin</button>
                 <button class="btn btn-danger" ng-click="deleteUser(user)">Delete</button>
                 <button class="btn btn-danger" ng-click="resetPassword(user)">Reset password</button>
 
@@ -44,7 +46,7 @@
             </button>
     </form>
     <div class="row">
-        <div >
+        <div>
         	<h3>Your Orders</h3>
         	<div ng-repeat="order in orders" ng-if="orders">
         		<orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>

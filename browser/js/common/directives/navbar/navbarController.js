@@ -1,10 +1,7 @@
 app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state, Item, Order) {
 	$scope.query;
 	$scope.items;
-	$rootScope.cartContent = $rootScope.cartContent||0;
-	// console.log($rootScope.cartContent);
-	// $scope.cartContent = $rootScope.cartContent;
-	console.log($rootScope.cartContent)
+	Order.fetchCurrent();
 	$scope.show = (category) => {
 		$state.go('showResult', {
 			category: category

@@ -25,8 +25,8 @@ app.factory('Order', function($http, Item,$rootScope) {
     return $http.get('/api/cart')
       .then(res => {
         let order = new Order(res.data)
+        $rootScope.cartContent=order.items?order.items.length:0;
         if (order.items) {
-          $rootScope.cartContent=order.items.length;
           order.items.map(obj => {
             return new Item(obj)
           })

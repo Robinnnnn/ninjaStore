@@ -10,6 +10,7 @@ app.directive('orderdetail', function($rootScope, AuthService, AUTH_EVENTS, $sta
         	$scope.removeItem = function(item){
         		Order.removeItem(item)
         		.then(function(){
+                    $rootScope.cartContent--;
                     $scope.order.items.splice($scope.order.items.indexOf(item),1);
                     if(!$scope.order.items.length) {
                         $state.go('home')
