@@ -1,8 +1,10 @@
 app.controller('itemDetailCtrl', function($scope, item, recommendations, user, Item) {
 	$scope.item = item;
 	$scope.recommendations = recommendations
-	$scope.user = user;
-	$scope.admin = user.isAdmin;
+	if (user) {
+		$scope.user = user;
+		$scope.admin = user.isAdmin
+	}
 	$scope.editOrSave = "Edit"
 
 	$scope.editOrSaveToggle = function(item) {
