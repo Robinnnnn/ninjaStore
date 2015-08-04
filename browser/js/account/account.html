@@ -5,7 +5,9 @@
             {{toggleDisplay}} All Users
         </button>
         <div ng-repeat="user in usersDisplay" ng-if="usersDisplay">
-            <a ng-click="switchUser(user)"> {{user.name}}, {{user._id}}</a>
+            <a ng-click="switchUser(user)" style="width:200px"> {{user.name}}</a>
+            <button class="btn btn-danger floatRight" ng-click="deleteUser(user)">Delete</button>
+            <button class="btn btn-danger floatRight" ng-click="resetPassword(user)">Reset password</button>
         </div>
     </div>
     <div ng-if="!editing" class="row">
