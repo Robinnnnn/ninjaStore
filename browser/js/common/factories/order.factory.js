@@ -1,4 +1,4 @@
-app.factory('Order', function($http, Item) {
+app.factory('Order', function($http, Item,$rootScope) {
   function Order(props) {
     angular.extend(this, props)
     return this
@@ -26,6 +26,7 @@ app.factory('Order', function($http, Item) {
       .then(res => {
         let order = new Order(res.data)
         if (order.items) {
+          $rootScope.cartContent=order.items.length;
           order.items.map(obj => {
             return new Item(obj)
           })
