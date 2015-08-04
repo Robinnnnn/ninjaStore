@@ -9,10 +9,14 @@ app.config(function($stateProvider) {
 				})
 				return item.fetch()
 			},
-			user: (AuthService) => AuthService.getLoggedInUser()
+			user: (AuthService) => AuthService.getLoggedInUser(),
+			recommendations: function(item, Item){
+				return Item.getRecommendations(item.categories[0]);
+			}
 		},
-		controller: function($scope, item, user) {
+		controller: function($scope, item, recommendations, user) {
 			$scope.item = item;
+			$scope.recommendations = recommendations
 			$scope.user = user;
 		}
 	});
