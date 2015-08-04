@@ -1,10 +1,12 @@
 app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $state) {
     $scope.order = order;
     $scope.customer = {};
+    $scope.editing=false;
     AuthService.getLoggedInUser().then(function(user) {
         $scope.user = user;
         if (user) {
             $scope.order.userId = user._id;
+            $scope.user.addresses[0].addressStreet = $scope.user.addresses[0].address;
             $scope.fieldCompleted = true;
         }
     });
@@ -42,15 +44,18 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
 
     if ($scope.order.items) $scope.summary();
 
-    $scope.saveInformation = function(customer) {
-        $scope.order.userInfo = customer;
-        $scope.user = customer;
-        $scope.fieldCompleted = true;
+    $scope.saveInformation = function(user) {
+        $scope.order.userInfo = user;
+        $scope.user = user;
+        $scope.editing=false;
+        // $scope.fieldCompleted = true;
     }
 
     $scope.editInformation = function(customer) {
-        $scope.customer = $scope.user;
-        $scope.user = null;
+        console.log($scope.user);
+        // $scope.customer = $scope.user;
+        // $scope.user = null;
+        $scope.editing=true;
     }
 
     $scope.clearCart = () => {

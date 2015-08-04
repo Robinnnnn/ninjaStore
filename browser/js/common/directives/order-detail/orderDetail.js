@@ -9,9 +9,13 @@ app.directive('orderdetail', function($rootScope, AuthService, AUTH_EVENTS, $sta
         controller: function($scope, Order, $state){
         	$scope.removeItem = function(item){
         		Order.removeItem(item)
-        		.then(() => {
-        			$state.go('home');
-        		})
+        		.then(function(){
+                    $rootScope.cartContent--;
+                    $scope.order.items.splice($scope.order.items.indexOf(item),1);
+                    if(!$scope.order.items.length) {
+                        $state.go('home')
+                    }
+                })
         	};
 
         }
