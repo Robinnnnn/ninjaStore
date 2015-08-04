@@ -1,27 +1,30 @@
-<div>
-    <div ng-if="admin">
+<div class="container-fluid">
+    <div ng-if="admin" class="row">
         <h2>I am an admin</h2>
         <button class="btn btn-default" ng-click="displayUsers()">
-            Display All Users
+            {{toggleDisplay}} All Users
         </button>
         <div ng-repeat="user in usersDisplay" ng-if="usersDisplay">
             <a ng-click="switchUser(user)"> {{user.name}}, {{user._id}}</a>
         </div>
     </div>
-    <div ng-if="!editing">
+    <div ng-if="!editing" class="row">
     	<!-- <pre>{{account}}</pre> -->
         <h2>
         	Account Information
         </h2>
         <p>Name: {{user.name}}</p>
         <p>Email: {{user.email}}</p>
-        <p>Address: {{user.addresses[0]}}</p>
+        <p>Address: {{user.addresses[0].address}}</p>
+        <p>City: {{user.addresses[0].city}}, {{user.addresses[0].state}}, {{user.addresses[0].zipcode}} </p>
+        <p>Country: {{user.addresses[0].country}} </p>
+        <p>Phone: {{user.addresses[0].phone}} </p>
+
         <button class="btn btn-default" ng-click="editInformation()">
                 Edit
         </button>
     </div>
     <form class="form-group" ng-if="editing">
-
             <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name">
             <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].address" placeholder="Street Address">
             <input name="city" type="text" class="form-control" ng-model="user.addresses[0].city" placeholder="City">
@@ -34,32 +37,19 @@
             <button class="btn btn-success" ng-click="saveInformation(customer)" type="submit">
                 Save
             </button>
+    </form>
+    <div class="row">
+        <div>
+        	<h3>Your Orders</h3>
+        	<div ng-repeat="order in orders" ng-if="orders&&toggleDisplay==='Hide'">
+        		<orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
+        </div>
 
-
-        </form>
-    <div>
-    	<h3>Your Orders</h3>
-    	<div ng-repeat="order in orders" ng-if="orders">
-    		<orderdetail-account-page order="order" statuses="status"></orderdetail-account-page>
-<!--             <button ng-if=""class="btn btn-sm btn-default" ng-click="updateStatus(item)">Update Status</button>
-
- -->            
-            <!-- <button class="btn btn-success" style="float: right; display:block;" ng-click="saveInformation(customer)" type="submit">
-                Update
-            </button>
- -->    	</div>
-    </div>
-
-    <div>
-        <h3>
-            Your reviews
-        </h3>
-        <div ng-repeat="reviews in reviews"></div>
-
-    </div>
-    <div>
-
-
-
+        <div >
+            <h3>
+                Your reviews
+            </h3>
+            <div ng-repeat="reviews in reviews"></div>
+        </div> 
     </div>
 </div>

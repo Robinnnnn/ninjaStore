@@ -58,8 +58,7 @@ router.get('/:id/getOrders', function(req, res, next) {
 				temp.quantity = order.quantity;
 				return temp;		
 			})
-			return order;
-			
+			return order;	
 		})
 		res.json(orders);
 	})

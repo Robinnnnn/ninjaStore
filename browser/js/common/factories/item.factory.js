@@ -55,7 +55,7 @@ app.factory('Item', function($http) {
 
 	Item.prototype.addToCart = function() {
 		return $http.post('/api/cart', this)
-		.then(res => new Item(res.data))
+			.then(res => new Item(res.data))
 	}
 
 	Item.prototype.save = function() {
@@ -69,7 +69,7 @@ app.factory('Item', function($http) {
 			url = this.url
 		}
 		return $http[verb](url, this)
-		.then(res => new Item(res.data))
+			.then(res => new Item(res.data))
 	}
 
 	Item.prototype.destroy = function() {
