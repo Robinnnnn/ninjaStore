@@ -21,39 +21,28 @@ body {
 }
 
 .buffer {
-  margin: 1.5em 0.8em; }
-
-  .signin-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	> * {
-		width: 33%;
-	}
-	.local {
-		max-width: 18em;
-		text-align: left;
-	}
-	.or {
-		max-width: 10em;
-	}
-	.oauth {
-		max-width: 18em;
-	}
-	.btn-social {
-		text-align: center;
-		width: 100%;
-	}
-	min-width: -webkit-min-content;
+  margin: 1.5em 0.8em;
+  align-items: center;
+  text-align: center;
+  position: relative;
 }
 
-@media (max-width: 600px) {
-	.signin-container {
-		flex-direction: column;
-		> * {
-			width: 100%;
-		}
-	}
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vcenter {
+  @include centerer;
+}
+
+.large-font {
+  font-size: 2em;
+  font-style: italic;
+  font-weight: bolder;
+  font-family: fantasy;
 }
 
 @import 'directives/main';

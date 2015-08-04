@@ -1,6 +1,5 @@
-
-<div class='row'>
-  <div class='col-md-6' ng-if="loginShow">
+<div class='row signin-container'>
+  <div class='col-md-5' ng-if="loginShow">
     <form id="login-form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
         <alert type="danger" ng-show="error">
             {{ error }}
@@ -15,10 +14,10 @@
             <input type="password" ng-model="login.password" class="form-control" id="login-password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-success">Log In</button> or
-        <a type="submit" ng-click="toggleLogin()">Sign Up</a>
+        <a class='clickable' type="submit" ng-click="toggleLogin()">Sign Up</a>
     </form>
   </div>
-  <div class='col-md-6' ng-if="!loginShow">
+  <div class='col-md-5' ng-if="!loginShow">
     <form class="centered form-group col-lg-6 signup">
 
         <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name" required="required">
@@ -30,24 +29,24 @@
         <input name="state" type="text" class="form-control" ng-model="user.addresses.state" placeholder="State / Province / Region" required="required">
         <input name="zipcode" type="text" class="form-control" ng-model="user.addresses.zipcode" placeholder="Zip Code" required="required">
         <input name="country" type="text" class="form-control" ng-model="user.addresses.country" placeholder="Country" required="required">
-        
+
         <input name="phone" type="text" class="form-control" ng-model="user.addresses.phone" placeholder="Phone Number">
 
          <button class="btn btn-success" ng-click="signUp()" type="submit">
             Sign Up
-        </button> or 
-        <a ng-click="toggleLogin()" type="submit">
+        </button> or
+        <a class='clickable' ng-click="toggleLogin()" type="submit">
             Login
         </a>
     </form>
     <div ng-if="error">
         {{error}}
     </div>
-</div>
-
-
-
-  <div class='col-md-6'>
+  </div>
+  <div class='col-md-2 buffer'>
+    <p class='vcenter large-font'>- OR -</p>
+  </div>
+  <div class='col-md-5'>
     <div class="buffer oauth">
       <p><oauth-button provider-name="Facebook"></oauth-button></p>
   		<p><oauth-button provider-name="Google"></oauth-button></p>
