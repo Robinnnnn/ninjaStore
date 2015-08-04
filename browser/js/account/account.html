@@ -1,17 +1,38 @@
 <div class="container-fluid">
-    <div ng-if="admin" class="row">
-        <h2>I am an admin</h2>
+    <div ng-if="admin" class="col-md-6">
+
         <button class="btn btn-default" ng-click="displayUsers()">
             {{toggleDisplay}} All Users
         </button>
+
+        
+
         <div ng-repeat="user in usersDisplay" ng-if="usersDisplay" class="userDisplay">
             <a ng-click="switchUser(user)" style="cursor:pointer"> {{user.name}}</a><a ng-if="user.isAdmin"> (admin)</a>
             <div class="floatRight">
-                <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">set Admin</button>
-                <button class="btn btn-danger" ng-if="user.isAdmin"ng-click="setAdmin(user,false)">revoke Admin</button>
+                <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">Set Admin</button>
+                <button class="btn btn-danger" ng-if="user.isAdmin"ng-click="setAdmin(user,false)">Revoke Admin</button>
                 <button class="btn btn-danger" ng-click="deleteUser(user)">Delete</button>
                 <button class="btn btn-danger" ng-click="resetPassword(user)">Reset password</button>
+            </div>
+        </div>
+                <div class="createItem">
+            <button class="btn btn-primary" ng-click="createItem()">Create New Item</button>
+            <div ng-if="addingNewItem" class="form-group">
+                <input name="name" type="text" class="form-control" ng-model="newItem.name" placeholder="Item Name">
+                <input name="shortDescription" type="text" class="form-control" ng-model="newItem.description.short" placeholder="Short Description: Two sentences or less!">
+                <textarea name="longDescription" type="text" class="form-control" ng-model="newItem.description.long" placeholder="Long Description: As long as you want!"></textarea>
+                <input name="price" type="text" class="form-control" ng-model="newItem.price" placeholder="$ Price Per Item">
+                <input name="quantity" type="text" class="form-control" ng-model="newItem.quantity" placeholder="Quantity Available">
+                <input name="categories" type="text" class="form-control" ng-model="newItem.categories" placeholder="Categories: Separated by commas">
+                <input name="photo" type="text" class="form-control" ng-model="newItem.photos" placeholder="Photos">
 
+                <button class="btn btn-success" ng-click="saveNewItem()" type="submit">
+                    Save
+                </button>
+                <button class="btn btn-danger" ng-click="cancelCreation()" type="submit">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>

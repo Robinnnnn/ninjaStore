@@ -20,6 +20,12 @@ navbar {
   a {
     color: black;
     font-size: 16px;
+
+    &:hover {
+      color: #f31214;
+      text-decoration: none;
+      cursor: pointer;
+    }
   }
 
   .nav > li > a {
@@ -35,6 +41,10 @@ navbar {
     &:focus {
       background: none;
     }
+  }
+
+  .navbar-right > p {
+
   }
 
   .login-button {
@@ -56,5 +66,4 @@ navbar {
       cursor: pointer;
     }
   }
-
 }
