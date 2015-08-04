@@ -1,4 +1,4 @@
-app.factory('Order', function($http, Item) {
+app.factory('Order', function($http, Item,$rootScope) {
   function Order(props) {
     angular.extend(this, props)
     return this
@@ -25,6 +25,7 @@ app.factory('Order', function($http, Item) {
     return $http.get('/api/cart')
       .then(res => {
         let order = new Order(res.data)
+        $rootScope.cartContent=order.items?order.items.length:0;
         if (order.items) {
           order.items.map(obj => {
             return new Item(obj)
@@ -35,6 +36,7 @@ app.factory('Order', function($http, Item) {
   }
 
   Order.clearCart = () => {
+    $rootScope.cartContent = 0;
     return $http.delete('/api/cart')
       .then(res => res.data)
   }

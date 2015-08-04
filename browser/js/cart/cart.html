@@ -2,6 +2,7 @@
   <div class='panel'>
     <h1 class='page-header'>Cart Information</h1>
     <orderdetail order="order"></orderdetail>
+    <p ng-if="!order.items.length" class="centered">Your cart is empty</p>
   </div>
   <div class="cart-options">
   	<button class='btn btn-default' ng-click='clearCart()'>Empty Cart</button>

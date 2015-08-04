@@ -24,7 +24,7 @@
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button><!-- 
             <button ng-show="!user" ui-sref="signup" class="btn login-button">Sign Up</button> -->
             <button ui-sref="cart" class="btn login-button">
-              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">({{$root.cartContent}}) </span>
             </button>
             <button
               ng-show='user'

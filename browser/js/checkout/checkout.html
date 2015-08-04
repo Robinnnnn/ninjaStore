@@ -1,25 +1,25 @@
 <div class="container centered">
     <div id="address" class="col-lg-6">
     	<h3>Shipping Address</h3>
-        <form class="form-group" ng-if="user===null">
+        <form class="form-group" ng-if="!user||editing">
 
-            <input name="name" type="text" class="form-control" ng-model="customer.name" placeholder="Full Name">
-            <input name="streetAddress" type="text" class="form-control" ng-model="customer.addressStreet" placeholder="Street Address">
-            <input name="streetAddress" type="text" class="form-control" ng-model="customer.addressApt" placeholder="Apartment #">
-            <input name="city" type="text" class="form-control" ng-model="customer.city" placeholder="City">
-            <input name="state" type="text" class="form-control" ng-model="customer.state" placeholder="State / Province / Region">
-            <input name="zipcode" type="text" class="form-control" ng-model="customer.zipcode" placeholder="Zip Code">
-            <input name="country" type="text" class="form-control" ng-model="customer.country" placeholder="Country">
-            <input name="email" type="text" class="form-control" ng-model="customer.email" placeholder="E-mail">
-            <input name="phone" type="text" class="form-control" ng-model="customer.phone" placeholder="Phone Number">
+            <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name">
+            <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].addressStreet" placeholder="Street Address">
+            <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].addressApt" placeholder="Apartment #">
+            <input name="city" type="text" class="form-control" ng-model="user.addresses[0].city" placeholder="City">
+            <input name="state" type="text" class="form-control" ng-model="user.addresses[0].state" placeholder="State / Province / Region">
+            <input name="zipcode" type="text" class="form-control" ng-model="user.addresses[0].zipcode" placeholder="Zip Code">
+            <input name="country" type="text" class="form-control" ng-model="user.addresses[0].country" placeholder="Country">
+            <input name="email" type="text" class="form-control" ng-model="user.email" placeholder="E-mail">
+            <input name="phone" type="text" class="form-control" ng-model="user.addresses[0].phone" placeholder="Phone Number">
 
-             <button class="btn btn-success" ng-click="saveInformation(customer)" type="submit">
+             <button class="btn btn-success" ng-click="saveInformation(user)" type="submit">
                 Save
             </button>
 
 
         </form>
-        <div class="address" ng-if="user">
+        <div class="address" ng-if="user&&!editing">
             <ul class="addressList removeDot">
                 <li>
                     {{user.name}}
@@ -84,7 +84,7 @@
 
         <button class="btn btn-success" ng-click="placeOrder()" type="submit">
         Place order
-    </button>z
+    </button>
 
     </div>
     
