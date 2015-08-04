@@ -5,11 +5,16 @@ app.controller('itemDetailCtrl', function($scope, item, recommendations, user, I
 		$scope.user = user;
 		$scope.admin = user.isAdmin
 	}
+
+	$scope.deleteItem = function() {
+		$scope.item.
+	}
+
 	$scope.editOrSave = "Edit"
 
 	$scope.editOrSaveToggle = function(item) {
 		if ($scope.editOrSave === "Edit") {
-			$scope.editOrSave = "Save"
+			$scope.editOrSave = "Save Changes"
 		} else {
 			$scope.item.name = $scope.item.name.trim()
 			$scope.item.quantity = Number($scope.item.quantity)
