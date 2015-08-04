@@ -1,6 +1,10 @@
-app.controller('MainCtrl', ($scope, items) => {
+app.controller('MainCtrl', ($scope, items, $rootScope, user) => {
     $scope.activeCategory = ''
     $scope.items = items;
+    $rootScope.admin = user.isAdmin;
+    console.log($rootScope.admin)
+
+
 
     // makes sure the name of the item doesn't expand its div height
     function shortenTitle(title, length) {
