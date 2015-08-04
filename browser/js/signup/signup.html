@@ -1,7 +1,8 @@
 <div class="container centered">
 <h3>Sign Up</h3>
-    <form class="centered form-group col-lg-6 signup">
-
+  <div class='row'>
+    <div class='col-md-6'>
+      <form class="centered form-group col-lg-6 signup">
         <input name="name" type="text" class="form-control" ng-model="customer.name" placeholder="Full Name">
         <input name="email" type="text" class="form-control" ng-model="customer.email" placeholder="E-mail">
         <input name="password" type="text" class="form-control" ng-model="customer.password" placeholder="Password">
@@ -11,13 +12,16 @@
         <input name="state" type="text" class="form-control" ng-model="customer.state" placeholder="State / Province / Region">
         <input name="zipcode" type="text" class="form-control" ng-model="customer.zipcode" placeholder="Zip Code">
         <input name="country" type="text" class="form-control" ng-model="customer.country" placeholder="Country">
-        
         <input name="phone" type="text" class="form-control" ng-model="customer.phone" placeholder="Phone Number">
-
-         <button class="btn btn-success" ng-click="saveInformation(customer)" type="submit">
-            Save
-        </button>
-
-
-    </form>
+        <button class="btn btn-success" ng-click="saveInformation(customer)" type="submit">Save</button>
+      </form>
+    </div>
+    <div class='col-md-6'>
+      <div class="buffer oauth">
+        <p><oauth-button provider-name="Facebook"></oauth-button></p>
+    		<p><oauth-button provider-name="Google"></oauth-button></p>
+    		<p><oauth-button provider-name="Twitter"></oauth-button></p>
+    	</div>
+    </div>
+  </div>
 </div>
