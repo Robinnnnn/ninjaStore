@@ -1,4 +1,4 @@
-<div class="container orderDetail">
+<div class="container orderDetail" >
     <hr>
     <!-- Begin of rows -->
     <div class="row carousel-row" ng-repeat="item in order.items">
@@ -22,7 +22,7 @@
             <div class="slide-footer">
                 <span class="pull-right buttons">
                     <button class="btn btn-sm btn-default">{{item.quantity}}</button>
-                    <button class="btn btn-sm btn-danger" ng-click="cancelOrder()" ng-if="order.orderState!=='Cancelled'&&order.orderState!=='Completed'"><i class="fa fa-fw fa-remove-circle"></i> Cancel Order</button>
+                    <button class="btn btn-sm btn-danger" ng-click="cancelOrder()" ng-if="order.orderState!=='Cancelled'&&order.orderState!=='Completed'&&!admin"><i class="fa fa-fw fa-remove-circle"></i> Cancel Order</button>
                     <button class="dropdown" dropdown ng-if="admin"  >
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdown-toggle>{{order.orderState}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">

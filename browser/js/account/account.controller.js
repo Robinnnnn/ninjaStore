@@ -2,7 +2,7 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	$scope.status = ["Created","Completed","Processing","Cancelled"];
 	$scope.user = user
 	$scope.orders = orders;
-	console.log(orders)
+	$scope.toggleDisplay = "Hide";
 	$rootScope.admin = user.isAdmin
 
 	$scope.editInformation = function() {
@@ -16,9 +16,15 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	}
 
 	$scope.displayUsers = function() {
-		User.fetchAll().then(function(users) {
-			$scope.usersDisplay = users
-		})
+		if($scope.usersDisplay){
+			$scope.usersDisplay=null;
+			$scope.toggleDisplay = "Display";
+		} else {
+			$scope.toggleDisplay = "Hide";
+			User.fetchAll().then(function(users) {
+				$scope.usersDisplay = users
+			})			
+		}
 	}
 
 	$scope.switchUser = function(user) {
