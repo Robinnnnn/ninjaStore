@@ -26,6 +26,7 @@ app.directive('addToCart', function($state, $rootScope, Item) {
         scope.itemToPurchase.addToCart()
           .then(item => {
             // $state.go('cart')
+            scope.shakeBool = true;
             $rootScope.$broadcast('cartItemAdded', {
             });
             $rootScope.cartContent++;
