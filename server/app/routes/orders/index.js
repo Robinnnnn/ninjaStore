@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 var _ = require('lodash');
 var Order = mongoose.model('Order')
-
+var stripe = require("stripe")("sk_test_LQOqO4gkY9p9P00jfSw8nQPc");
 var emailer = require('./../../utils/email.js');
 
 var bool = false;
@@ -64,6 +64,23 @@ router.post('/', function(req, res, next) {
 // AUTH >>> Current User or Admin
 router.get('/:id', function(req, res, next) {
     res.status(200).json(req.order);
+})
+
+router.get('/:id/charge', function(req, res, next) {
+    // res.status(200).json(req.order);
+    var stripeToken = request.body.stripeToken;
+
+    var charge = stripe.charges.create({
+      amount: 1000, // amount in cents, again
+      currency: "usd",
+      source: stripeToken,
+      description: "Example charge"
+    }, function(err, charge) {
+      if (err && err.type === 'StripeCardError') {
+        // The card has been declined
+      }
+      res.status(200).json(charge);
+    });
 })
 
 // AUTH >>> Current User or Admin

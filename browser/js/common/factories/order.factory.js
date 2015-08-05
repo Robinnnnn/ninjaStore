@@ -46,6 +46,12 @@ app.factory('Order', function($http, Item,$rootScope) {
     .then(res => res.data)
   }
 
+  Order.prototype.charged = function(token){
+    return $http.post(this.url+'/charge',token)
+                .then(function(res){
+                  return res.data;
+                })
+  }
   Order.prototype.fetch = function() {
     return $http.get(this.url)
       .then(res => {

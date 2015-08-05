@@ -72,6 +72,7 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
         if (result.error) {
             window.alert('it failed! error: ' + result.error.message);
         } else {
+            $scope.order.charged({stripeToken:code,amount:$scope.summary.total,description:$scope.order._id})
             window.alert('You has been charged' + $scope.summary.total);
             $scope.placeOrder();
         }
