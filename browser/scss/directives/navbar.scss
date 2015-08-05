@@ -50,12 +50,19 @@ navbar {
     content: 'ホーム';
   }
 
+  #search {
+    width: 80px;
+    text-align: center;
+  }
+
   #search:hover span {
     display: none;
   }
 
   #search:hover:before {
-    content: '行きます！';
+    content: '検索！';
+    font-style: italic;
+    color: #f31214;
   }
 
   .container {
