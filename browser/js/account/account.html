@@ -163,8 +163,10 @@
             <h2>
             Your reviews
             </h2>
-            <div ng-repeat="reviews in reviews"></div>
-            <review-detail review="review"></review-detail>
+            <div ng-repeat="review in reviews">
+                <review-detail review="review"></review-detail>
+
+            </div>
         </div>
     </div>
 </div>
