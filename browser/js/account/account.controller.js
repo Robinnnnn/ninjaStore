@@ -1,4 +1,4 @@
-app.controller('accountCtrl', function($scope, $state, $http, User, user, orders, $rootScope, Item) {
+app.controller('accountCtrl', function($scope, $state, $stateParams, $http, User, user, orders, $rootScope, Item) {
 	$scope.status = ["Created", "Completed", "Processing", "Cancelled"];
 	$scope.newItem = {
 		description: {}

@@ -8,7 +8,7 @@
 }
 
 .sidebar {
-	border: black 1px solid;
+	border: #eee 1px solid;
 }
 
 .divider {
@@ -18,6 +18,12 @@
 
 .account-page input, textarea {
 	margin: 10px 0px;
+}
+
+.nav > li > span > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
 }
 
 /* Sidebar */

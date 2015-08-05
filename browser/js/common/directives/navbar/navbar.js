@@ -35,6 +35,8 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state) {
             scope.manageAccount = function() {
                 $state.go('manage', {
                     id: scope.user._id
+                }, {
+                    reload: true
                 })
             }
 
@@ -55,11 +57,11 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state) {
             $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
 
             elem.on('mouseenter', () => {
-              document.getElementById('logo').classList.add('spin')
+                document.getElementById('logo').classList.add('spin')
             })
 
             elem.on('mouseleave', () => {
-              document.getElementById('logo').classList.remove('spin')
+                document.getElementById('logo').classList.remove('spin')
             })
         },
         controller: 'navbarCtrl'
