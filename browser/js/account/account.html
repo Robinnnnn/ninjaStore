@@ -99,8 +99,8 @@
             <orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
         </div>
     </div>
-    <div ng-if="displayObject==='promo'" class="container col-md-12">
-        <h2>List of Promotion Code</h2>
+    <div ng-if="displayObject==='promo'" class="container col-md-12 centered">
+        <h2>Promotion Codes</h2>
         <div ng-repeat="promo in promos" ng-if="promos">
             <promo-detail promo="promo"></promo-detail>
         </div>
@@ -109,7 +109,7 @@
             <div>Code name
 
             </div> -->
-            <div class="col-md-6">
+            <div class="col-md-6 centered">
                 <h3>Create new Promo code</h3>
                 <form class="form-group col-md-12 centered">
                     <input name="codeName" type="text" class="form-control" ng-model="newPromo.promoCode" placeholder="Code name">
@@ -122,26 +122,26 @@
                                ng-model="newPromo.expires"
                                placeholder="Date expires"/>
                         <span class="input-group-btn">
-                          <button type="button" class="btn btn-default col-md-2" 
+                          <button type="button" class="btn btn-default col-md-2 centered" 
                                   ng-click="valuationDatePickerOpen($event)">
                             <i class="glyphicon glyphicon-calendar"></i>
                           </button>
 
                     </div>
                     </span>
-
+                    <br>
                     <p>
-                        Categories Apply:
+                        <h3>Apply to the following categories:</h3>
                     </p>
-                    <div ng-repeat="category in categories" style="float:right">
-                        
+                    <ul ng-repeat="category in categories" style="list-style:none; padding-left:0;">
+                       
 
-                            <input type="checkbox" value="{{category}}" ng-check="newPromo.validCategories.indexOf(category) > -1" ng-click="toggleSelection(category)"/>
-                            {{category}}
+                            <li><input type="checkbox" value="{{category}}" ng-check="newPromo.validCategories.indexOf(category) > -1" ng-click="toggleSelection(category)"/>
+                            {{category}}</li>
                             
                         
 
-                    </div>
+                    </ul>
                     <!-- 
                     <select ng-model="newPromo.validCategories[0]" convert-to-number>
                       <option ng-repeat='category in categories'>{{category}}</option>
