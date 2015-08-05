@@ -105,10 +105,10 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
     $scope.checkCard = function(){
         if($scope.number){        
             var firstThreeNum = $scope.number.toString().slice(0,3);
-            if(firstThreeNum === '453' || firstThreeNum === '455') $scope.card = 'VISA';
-            if(firstThreeNum === '601') $scope.card = 'DISCOVER';
-            if(firstThreeNum === '523' || firstThreeNum === '526' || firstThreeNum === '543') $scope.card = 'MASTERCARD';
-            if(firstThreeNum === '370' || firstThreeNum === '346' || firstThreeNum === '374') $scope.card = 'AMEX';
+            if(firstThreeNum.slice(0,1) === '4') $scope.card = 'VISA';
+            if(firstThreeNum === '601' || firstThreeNum === '644' || firstThreeNum === '645' || firstThreeNum === '646' || firstThreeNum === '647' || firstThreeNum === '648' || firstThreeNum === '649' || firstThreeNum.slice(0,2) === '65') $scope.card = 'DISCOVER';
+            if(firstThreeNum.slice(0,2) === '51' || firstThreeNum.slice(0,2) === '52' || firstThreeNum.slice(0,2) === '53' || firstThreeNum.slice(0,2) === '54' || firstThreeNum.slice(0,2) === '55') $scope.card = 'MASTERCARD';
+            if(firstThreeNum.slice(0,2) === '34' || firstThreeNum.slice(0,2) === '37') $scope.card = 'AMEX';
         }
     };
 
