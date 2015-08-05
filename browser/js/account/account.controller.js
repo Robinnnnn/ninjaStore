@@ -1,10 +1,12 @@
-app.controller('accountCtrl', function($scope, $state, $http, User, user, orders, $rootScope, Item) {
+app.controller('accountCtrl', function($scope, $state, $http, User, user, orders, reviews, $rootScope, Item) {
 	$scope.status = ["Created", "Completed", "Processing", "Cancelled"];
 	$scope.newItem = {
 		description: {}
 	}
 	$scope.user = user
 	$scope.orders = orders;
+	$scope.reviews = reviews;
+	console.log($scope.reviews[0]);
 	$scope.toggleDisplay = "Display";
 	$rootScope.admin = user.isAdmin
 
@@ -56,6 +58,9 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 		$scope.user = user
 		$scope.user.fetchUserOrders($scope.user._id).then(function(orders) {
 			$scope.orders = orders;
+		})
+		$scope.user.fetchUserReviews($scope.user._id).then(function(reviews) {
+			$scope.reviews = reviews;
 		})
 	}
 

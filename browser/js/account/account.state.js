@@ -9,6 +9,9 @@ app.config(function($stateProvider) {
 			},
 			orders: (user) => {
 				return user.fetchUserOrders()
+			},
+			reviews: (user) => {
+				return user.fetchUserReviews()
 			}
 		},
 		controller: "accountCtrl"

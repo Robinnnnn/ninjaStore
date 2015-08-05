@@ -5,7 +5,7 @@ app.config(function($stateProvider) {
     resolve: {
       order: (Order) => Order.fetchCurrent()
     },
-    controller: ($scope, $state, order, Order) => {
+    controller: ($scope, $state, order, Order, $rootScope) => {
       $scope.order = order
 
       $scope.clearCart = () => {
@@ -13,6 +13,15 @@ app.config(function($stateProvider) {
           .then(() => {
             $state.go('home')
           })
-      }    }
+      }    
+      $scope.checkOut = () => {
+        if($rootScope.cartContent){
+            $state.go('checkOut')
+        } else {
+            window.alert('Your cart is empty, bitch!')
+            $state.go('home')
+        }
+      }
+    }
   })
 })
