@@ -77,6 +77,7 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 
 	$scope.switchUser = function(user) {
 		$scope.user = user
+		$scope.displayObject = null;
 		$scope.user.fetchUserOrders($scope.user._id).then(function(orders) {
 			$scope.orders = orders;
 		})
