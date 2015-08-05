@@ -3,6 +3,7 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
     $scope.editing=false;
     $scope.editingCard = true;
     $scope.appliedPromo = false;
+    $scope.promo;
 
     AuthService.getLoggedInUser().then(function(user) {
         $scope.user = user;
@@ -80,11 +81,20 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
     }
 
     $scope.applyPromocode = function(promoCode){
-        console.log('go here')
         new Promo({promoCode:promoCode}).fetchPromo().then(function(promo){
-            $scope.summary.total = $scope.summary.total*(1-promo.percentOff/100)
-            // console.log(promo.percentOff)
+            if(promo){
+                $scope.promo = promo;
+                $scope.summary.total = $scope.summary.total*(1-promo.percentOff/100);
+                $scope.appliedPromo = true;
+            } else{
+                $scope.promoMessage = "Promo code not exists!!!"
+            }
         })
+    }
+    $scope.removePromoCode = function(){
+        $scope.summary.total = $scope.summary.total/(1-$scope.promo.percentOff/100);
+        $scope.promo = null;
+        $scope.appliedPromo = false;
     }
 
     $scope.placeOrder = function() {

@@ -16,7 +16,12 @@
       <form ng-if="appliedPromo===false">
           <input ng-model="promoCode">
          <button class="btn btn-success" type="submit" ng-click="applyPromocode(promoCode)">Apply promo code</button>
-      </form>  
+         <p>{{promoMessage}}</p>
+      </form>
+      <div ng-if="appliedPromo===true">
+        <p > Applied Promo Successfully! You've got {{promo.percentOff}}% off</p>  
+        <button class="btn btn-success" ng-click="removePromoCode()">Remove promo code</button>
+      </div>
     </div>
   </div>
   <br>
