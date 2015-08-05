@@ -56,10 +56,10 @@
             <div class="row display-tr" >
               <h3 class="panel-title display-td">Payment Details</h3>
                 <div>
-                  <img class="credCardImages opacity" src="https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/Visa-128.png">
-                  <img class="credCardImages" src="https://cdn3.iconfinder.com/data/icons/diagram-pro/128/diagram-pro-2-36.png">
-                  <img class="credCardImages" src="https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/Amex-128.png">
-                  <img class="credCardImages" src="https://cdn3.iconfinder.com/data/icons/payment-icons-2/128/discover_network_128.png">
+                  <img class="credCardImages" ng-class="{'opacity': card!=='VISA'}" src="https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/Visa-128.png">
+                  <img class="credCardImages" ng-class="{'opacity': card!=='MASTERCARD'}" src="https://cdn3.iconfinder.com/data/icons/diagram-pro/128/diagram-pro-2-36.png">
+                  <img class="credCardImages" ng-class="{'opacity': card!=='AMEX'}" src="https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/Amex-128.png">
+                  <img class="credCardImages" ng-class="{'opacity': card!=='DISCOVER'}" src="https://cdn3.iconfinder.com/data/icons/payment-icons-2/128/discover_network_128.png">
                 </div>
             </div>
           </div>
@@ -70,6 +70,7 @@
                   <div class="form-group">
                     <label for="cardNumber">CARD NUMBER</label>
                       <div class="input-group">
+                         <!--  ng-model-options="{ updateOn: 'blur' }" -->
                         <input
                           type="tel"
                           class="form-control"
@@ -77,10 +78,10 @@
                           placeholder="Valid Card Number"
                           autocomplete="cc-number"
                           ng-model='number'
-                          ng-model-options="{ updateOn: 'blur' }"
                           payments-format="card"
                           required autofocus
                           minlength="16"
+                          ng-blur="checkCard()"
                         />
                         <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
                       </div>
