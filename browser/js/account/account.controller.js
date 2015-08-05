@@ -9,14 +9,19 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	console.log($scope.reviews[0]);
 	$scope.toggleDisplay = "Display";
 	$rootScope.admin = user.isAdmin
+	$scope.displayObject;
+
+	$scope.displayAccountInfo = function() {
+		$scope.displayObject = 'account'
+	}
 
 	$scope.editInformation = function() {
-		$scope.editing = true;
+		$scope.displayObject = 'editing'
 	}
 
 	$scope.saveInformation = function() {
 		$scope.user.save().then(function(user) {
-			$scope.editing = false;
+			$scope.displayObject = 'account'
 		});
 	}
 
@@ -31,27 +36,43 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	}
 
 	$scope.createItem = function() {
-		$scope.addingNewItem = true;
+		$scope.displayObject = 'newItem';
 	}
 
-	$scope.cancelCreation = function() {
-		$scope.addingNewItem = $scope.addingCategory = false;
-	}
+	// $scope.cancelCreation = function() {
+	// 	$scope.addingNewItem = $scope.addingCategory = false;
+	// }
 
 	$scope.createCategory = function() {
-		$scope.addingCategory = true;
+		$scope.displayObject = 'newCategory';
 	}
 
 	$scope.displayUsers = function() {
-		if ($scope.usersDisplay) {
-			$scope.usersDisplay = null;
-			$scope.toggleDisplay = "Display";
-		} else {
-			$scope.toggleDisplay = "Hide";
-			User.fetchAll().then(function(users) {
-				$scope.usersDisplay = users
-			})
-		}
+		// if ($scope.usersDisplay) {
+		// 	$scope.usersDisplay = null;
+		// 	$scope.toggleDisplay = "Display";
+		// } else {
+		// 	$scope.toggleDisplay = "Hide";
+		// 	User.fetchAll().then(function(users) {
+		// 		$scope.usersDisplay = users
+		// 	})
+		// }
+		User.fetchAll().then(function(users) {
+			$scope.displayObject = 'users'
+			$scope.usersDisplay = users;
+		})
+	}
+
+
+
+	$scope.displayOrders = function() {
+		// $scope.displayingOrders = true;
+		$scope.displayObject = 'orders'
+	}
+
+	$scope.displayReviews = function() {
+		// $scope.displayingReviews = true;
+		$scope.displayObject = 'reviews'
 	}
 
 	$scope.switchUser = function(user) {
@@ -77,7 +98,6 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 			$state.go('manage')
 		})
 	}
-
 
 	$scope.resetPassword = function(user) {
 		user.password = 'hello';

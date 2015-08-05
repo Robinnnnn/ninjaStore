@@ -35,6 +35,8 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state) {
             scope.manageAccount = function() {
                 $state.go('manage', {
                     id: scope.user._id
+                }, {
+                    reload: true
                 })
             }
 
@@ -53,7 +55,6 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state) {
             $rootScope.$on(AUTH_EVENTS.loginSuccess, setUser);
             $rootScope.$on(AUTH_EVENTS.logoutSuccess, removeUser);
             $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
-
         },
         controller: 'navbarCtrl'
 

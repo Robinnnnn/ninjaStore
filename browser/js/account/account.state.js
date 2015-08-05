@@ -15,5 +15,5 @@ app.config(function($stateProvider) {
 			}
 		},
 		controller: "accountCtrl"
-	});
+	})
 });
