@@ -99,64 +99,60 @@
             <orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
         </div>
     </div>
-    <div ng-if="displayObject==='promo'" class="container col-md-10 centered">
+    <div ng-if="displayObject==='promo'" class="container col-md-12">
         <h2>List of Promotion Code</h2>
         <div ng-repeat="promo in promos" ng-if="promos">
-            <p>
-                Code: {{promo.promoCode}}
-            </p>
-            <p>
-                Date created: {{promo.createdDate}}
-            </p>
-            <p>
-                Date expire: {{promo.expires}}
-            </p>
-            <p>
-                Percent off:{{promo.percentOff}}
-            </p>
-            <p>
-                Valid categories:{{promo.validCategories}}
-            </p>
+            <promo-detail promo="promo"></promo-detail>
         </div>
             <!-- <div id="newPromoForm">
             
             <div>Code name
 
             </div> -->
-            <h3>Create new Promo code</h3>
-            <form class="form-group col-md-12 centered">
-                <input name="codeName" type="text" class="form-control" ng-model="newPromo.promoCode" placeholder="Code name">
-                <input name="percentOff" type="number" class="form-control" ng-model="newPromo.percentOff" placeholder="Percentage Off">
-                <input type="text" class="form-control" 
-                       datepicker-popup="mediumDate" 
-                       is-open="valuationDatePickerIsOpen" 
-                       ng-click="valuationDatePickerOpen()" 
-                       ng-model="newPromo.expires"/>
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" 
-                          ng-click="valuationDatePickerOpen($event)">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                  </button>
-                </span>
+            <div class="col-md-6">
+                <h3>Create new Promo code</h3>
+                <form class="form-group col-md-12 centered">
+                    <input name="codeName" type="text" class="form-control" ng-model="newPromo.promoCode" placeholder="Code name">
+                    <input name="percentOff" type="number" class="form-control" ng-model="newPromo.percentOff" placeholder="Percentage Off">
+                    <div>
+                        <input type="text" class="form-control col-md-10" 
+                               datepicker-popup="mediumDate" 
+                               is-open="valuationDatePickerIsOpen" 
+                               ng-click="valuationDatePickerOpen()" 
+                               ng-model="newPromo.expires"
+                               placeholder="Date expires"/>
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default col-md-2" 
+                                  ng-click="valuationDatePickerOpen($event)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                          </button>
 
-
-                Categories Apply:<!-- 
-                <div ng-repeat="category in categories">
-                    <span> 
-
-                        <input type="checkbox" ng-model="newPromo.validCategories"/>
-                        {{category}}
+                    </div>
                     </span>
 
-                </div> -->
-                <select ng-model="newPromo.validCategories[0]" convert-to-number>
-                  <option ng-repeat='category in categories'>{{category}}</option>
-                </select>
+                    <p>
+                        Categories Apply:
+                    </p>
+                    <div ng-repeat="category in categories" style="float:right">
+                        
 
-            <button class="btn btn-success" ng-click="createNewPromoCode()" type="submit">
-                    Save
-            </button>
-            </form>    
+                            <input type="checkbox" value="{{category}}" ng-check="newPromo.validCategories.indexOf(category) > -1" ng-click="toggleSelection(category)"/>
+                            {{category}}
+                            
+                        
+
+                    </div>
+                    <!-- 
+                    <select ng-model="newPromo.validCategories[0]" convert-to-number>
+                      <option ng-repeat='category in categories'>{{category}}</option>
+                    </select> -->
+
+                    <button class="btn btn-success" ng-click="createNewPromoCode()" type="submit">
+                            Save
+                    </button>
+                </form>    
+
+            </div>
         </div>
     </div>
     <div ng-if="displayObject==='reviews'" class="container col-md-10 centered">

@@ -1,0 +1,22 @@
+<div>
+    <a>
+    Code: {{promo.promoCode}}
+    </a>
+    <div ng-if="editing==='save'" >
+        <p>
+        Date created: {{promo.createdDate}}
+        </p>
+        <p>
+        Date expire: {{promo.expires}}
+        </p>
+        <p>
+        Percent off:{{promo.percentOff}}
+        </p>
+        <p>
+        Valid categories:{{promo.validCategories}}
+        </p>
+    </div>
+
+    <button class="btn btn-success" ng-click="edit()" >{{editing}}</button>
+
+</div>

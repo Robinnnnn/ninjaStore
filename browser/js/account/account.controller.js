@@ -49,7 +49,6 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 		Promo.fetchAll().then(function(promos){
 			$scope.displayObject = 'promo';
 			$scope.promos = promos;
-			console.log($scope.promos);
 		})
 	}
 
@@ -60,15 +59,23 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 		})
 	}
 
+	$scope.toggleSelection = function(category) {
+    var idx = $scope.newPromo.validCategories.indexOf(category);
 
+    // is currently selected
+    if (idx > -1) {
+      $scope.newPromo.validCategories.splice(idx, 1);
+    }
+    else {
+      $scope.newPromo.validCategories.push(category);
+    }
+  };
 
 	$scope.displayOrders = function() {
-		// $scope.displayingOrders = true;
 		$scope.displayObject = 'orders'
 	}
 
 	$scope.displayReviews = function() {
-		// $scope.displayingReviews = true;
 		$scope.displayObject = 'reviews'
 	}
 
@@ -105,13 +112,11 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 		})
 	}
 
-
 	//manage Promo code
   $scope.createNewPromoCode = function(){
   	$scope.newPromo.createdDate = new Date();
-  	var newPromo = new Promo($scope.newPromo).save().then(function(promo){
-  		console.log('go here')
-  		console.log(promo);
+  	new Promo($scope.newPromo).save().then(function(promo){
+  		$scope.promos.push(promo);
   	})
   }
   
@@ -123,65 +128,6 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
       }
       this.valuationDatePickerIsOpen = true;
   };
-
-  // // $scope.today = function() {
-    
-  // // };
-  // // $scope.today();
-
-  // $scope.clear = function () {
-  //   $scope.newPromo.createdDate = null;
-  // };
-
-  // // Disable weekend selection
-  // $scope.disabled = function(date, mode) {
-  //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  // };
-
-
-  // $scope.open = function($event) {
-  //   $scope.opened = true;
-  // };
-
-  // $scope.dateOptions = {
-  //   formatYear: 'yy',
-  //   startingDay: 1
-  // };
-
-  // $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  // $scope.format = $scope.formats[0];
-
-  // var tomorrow = new Date();
-  // tomorrow.setDate(tomorrow.getDate() + 1);
-  // var afterTomorrow = new Date();
-  // afterTomorrow.setDate(tomorrow.getDate() + 2);
-  // $scope.events =
-  //   [
-  //     {
-  //       date: tomorrow,
-  //       status: 'full'
-  //     },
-  //     {
-  //       date: afterTomorrow,
-  //       status: 'partially'
-  //     }
-  //   ];
-
-  // $scope.getDayClass = function(date, mode) {
-  //   if (mode === 'day') {
-  //     var dayToCheck = new Date(date).setHours(0,0,0,0);
-
-  //     for(var i=0; i<$scope.events.length; i++){
-  //       var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
-  //       if (dayToCheck === currentDay) {
-  //         return $scope.events[i].status;
-  //       }
-  //     }
-  //   }
-
-  //   return '';
-  // };
-
 
 
 
