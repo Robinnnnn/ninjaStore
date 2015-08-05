@@ -19,4 +19,6 @@ app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state,
 			$scope.categories = categories
 		})
 
+	$scope.shakeBool = true;
+
 })
