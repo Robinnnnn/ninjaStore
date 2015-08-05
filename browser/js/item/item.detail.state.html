@@ -89,7 +89,7 @@
 			</div>
 		</div>
 
-		<div class="list-group">
+		<div class="list-group" ng-if='user'>
 			<div class="container">
 				<div class="col-xs-8 col-xs-offset-2 slide-row">
 
@@ -99,7 +99,7 @@
 				</h3>
 				</div>
 				<div class="list-group-item row carousel-row">
-				    <add-review ng-if='user' item='item'></add-review>
+				    <add-review item='item'></add-review>
 			    </div>
 		    </div>
 		    </div>
