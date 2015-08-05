@@ -49,3 +49,11 @@ input[type=number]::-webkit-outer-spin-button {
 .css-form input.ng-valid.ng-touched {
 	border: solid 1px #6ae066;
 }
+
+input.ng-invalid.ng-touched {
+	border: solid 1px #ffb2b2;
+}
+
+input.ng-valid.ng-touched {
+	border: solid 1px #6ae066;
+}
