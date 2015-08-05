@@ -1,9 +1,16 @@
+@font-face {
+	font-family: "Comic";
+	src: url("../fonts/Track.otf");
+}
+
 * {
   box-sizing: border-box;
+  // font-family: 'Comic'
 }
 
 body {
-  background: #fdfdfd;
+  background:white;
+  // background: #545454;
 }
 
 @mixin clearfix {
