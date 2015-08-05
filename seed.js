@@ -25,10 +25,11 @@ var User = Promise.promisifyAll(mongoose.model('User'));
 var Item = Promise.promisifyAll(mongoose.model('Item'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
 var Review = Promise.promisifyAll(mongoose.model('Review'));
+var Promo = Promise.promisifyAll(mongoose.model('Promo'));
 
 var wipeDB = function () {
 
-    var models = [User, Item, Order, Review];
+    var models = [User, Item, Order, Review, Promo];
     var promiseArr = [];
     models.forEach(function (model) {
         promiseArr.push(model.find({}).remove().exec());
@@ -2751,6 +2752,28 @@ var getRating = function(){
     return Math.floor(Math.random()*6);
 };
 
+var seedPromo = function(){
+  function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+  var promos = [{
+     promoCode:"ninjaCrazy",
+     createdDate: new Date(),
+     expires:addDays(new Date(), 5),
+     percentOff:20,
+     validCategories:["sai","books"]
+  },{
+     promoCode:"ninjaAwesome",
+     createdDate: new Date(),
+     expires:addDays(new Date(), 5),
+     percentOff:10,
+     validCategories:["swords","blowguns"]
+  }]
+  return Promo.createAsync(promos);
+}
+
 for(var i = 0; i < numberOfReviews; i++){
     reviewsArr[i] = {
         review: getReview(),
@@ -2771,6 +2794,8 @@ connectToDb.then(function(){
         }
     }).then(function() {
         return seedItems();
+    }).then(function(){
+        return seedPromo();
     }).then(function() {
         User.findAsync({})
         .then(function(users) {

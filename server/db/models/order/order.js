@@ -31,7 +31,11 @@ var Order = new mongoose.Schema({
         type: String,
         default: 'Created'
     },
-    _created:String
+    _created:String,
+    promoApplied:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Promo'
+    }
 });
 
 Order.virtual('created').set(function() {
