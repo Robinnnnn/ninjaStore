@@ -1,110 +1,126 @@
 <div class="container centered">
-    <div id="address" class="col-lg-6">
-    	<h3>Shipping Address</h3>
-        <form class="form-group" ng-if="!user||editing">
-
-            <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name">
-            <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].addressStreet" placeholder="Street Address">
-            <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].addressApt" placeholder="Apartment #">
-            <input name="city" type="text" class="form-control" ng-model="user.addresses[0].city" placeholder="City">
-            <input name="state" type="text" class="form-control" ng-model="user.addresses[0].state" placeholder="State / Province / Region">
-            <input name="zipcode" type="text" class="form-control" ng-model="user.addresses[0].zipcode" placeholder="Zip Code">
-            <input name="country" type="text" class="form-control" ng-model="user.addresses[0].country" placeholder="Country">
-            <input name="email" type="text" class="form-control" ng-model="user.email" placeholder="E-mail">
-            <input name="phone" type="text" class="form-control" ng-model="user.addresses[0].phone" placeholder="Phone Number">
-
-             <button class="btn btn-success" ng-click="saveInformation(user)" type="submit">
-                Save
-            </button>
-
-
-        </form>
-        <div class="address" ng-if="user&&!editing">
-            <ul class="addressList removeDot">
-                <li>
-                    {{user.name}}
-                </li>
-                <li>
-                    {{user.addresses[0].address || user.addressStreet}} {{ user.addressApt }}
-                </li>
-                <li>
-                    {{user.addresses[0].city || user.city}}, {{user.addresses[0].state || user.state}} {{user.addresses[0].zipcode || user.zipcode}}
-                </li>
-                 <li>
-                    {{user.email}}
-                </li>
-                <li>
-                	{{user.addresses[0].phone || user.phone}}
-                </li>
-            </ul>
-            <button class="btn btn-success" ng-click="editInformation()">
-                Edit
-            </button>
-        </div>
-    </div>
-<!-- 
-    <div id="paymentMethod" class="col-lg-6 css-form" novalidate>
-        <h3> Payment Method</h3>
-        
-        <form method="POST" id="payment-form" class="form-group" name="form" ng-if="editingCard">
-          <span class="payment-errors --><!-- " stripe-form="stripeCallback"></span>
- -->
-          <!-- css not working --><!-- 
-          <div class="form-row">
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="16" data-stripe="number" name="cardNumber" class="form-control" id="card-number" placeholder="Credit Card Number" ng-model="card.number" maxlength="16" required payments-validate="card" payments-format="card"/>
- -->          <!-- </div>
-          <div>
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="3" maxlength="3" data-stripe="cvc" name="cvv" ng-model="card.cvv" class="form-control" placeholder="CVV" id="cvv" required/>
-              <input type="number"  minlength="2"maxlength="2" data-stripe="exp-month" class="form-control" placeholder="MM" id="month" name="month" ng-model="card.month" required/> / 
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="4" maxlength="4" data-stripe="exp-year" class="form-control" placeholder="YYYY" id="year" name="year" ng-model="card.year" required/>
-              <button class="btn btn-success" ng-click="editCardInformation(false)">
-                Save
-              </button>
-              <button class="btn btn-success" ng-click="editCardInformation(true)">
-                Edit
-              </button>
-          </div> -->
-        <!--   <span ng-show="form.cardNumber.$error.maxlength || form.cvv.$error.minlength || form.cvv.$error.maxlength || form.month.$error.maxlength || form.year.$error.maxlength">
-                  Too many numbers!</span> -->
-        <!-- </form>
-        
-    </div> -->
-
+  <div class='row'>
     <div id="confirmItemShipping" class="col-lg-12">
-        <h3>Review Your Purchase</h3>
-        <orderdetail order="order"></orderdetail>
+      <h3>Review Your Purchase</h3>
+      <orderdetail order="order"></orderdetail>
     </div>
-
     <div id="orderTotal" class="col-lg-12">
     	<h3> Order summary</h3>
     	<ul class="removeDot">
     		<li> Items({{summary.numItem}}): {{summary.itemPrice |currency}} </li>
     		<li> Shipping & handling: {{summary.shipping | currency}}</li>
     		<li>Total before tax:{{summary.totalBeforeTax| currency}}</li>
-
     		<li> Estimate tax: {{summary.tax| currency}}</li>
     	</ul>
-    	____________________________________________
-    		<h4> Order Total: {{summary.total| currency}}</h4>
-    <div id="paymentMethod" class="col-lg-6 css-form" novalidate>
-        <form stripe-form="stripeCallback">
-                <input ng-model="number" ng-model-options="{ updateOn: 'blur' }" placeholder="Card Number" payments-format="card"/>
-                <input ng-model="expiry" ng-model-options="{ updateOn: 'blur' }" placeholder="Expiration"  />
-                <input ng-model="cvc" ng-model-options="{ updateOn: 'blur' }" placeholder="CVC" payments-format="cvc" />
-                <button class="btn btn-success" type="submit">Submit payment</button>
-        </form>
-    </div> 
-
-
-        <!-- button  ng-click="placeOrder()" type="submit" stripe-form="stripeCallback">
-        Place order
-    </button>
- -->
+    	<h4> Order Total: {{summary.total| currency}}</h4>
     </div>
-    
-
-
-
-
-
+  </div>
+  <br>
+  <br>
+  <div class='row'>
+    <div id="address" class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading display-table" >
+          <div class="row display-tr" >
+            <h3 class="panel-title display-td">Shipping Details</h3>
+          </div>
+        </div>
+        <form id='address-form' class="form-group">
+          <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name">
+          <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].addressStreet" placeholder="Street Address">
+          <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].addressApt" placeholder="Apartment #">
+          <span class='input-group'>
+            <input name="city" type="text" class="form-control" ng-model="user.addresses[0].city" placeholder="City">
+            <input name="state" type="text" class="form-control" ng-model="user.addresses[0].state" placeholder="State / Province / Region">
+            <input name="zipcode" type="text" class="form-control" ng-model="user.addresses[0].zipcode" placeholder="Zip Code">
+          </span>
+          <input name="country" type="text" class="form-control" ng-model="user.addresses[0].country" placeholder="Country">
+          <input name="email" type="text" class="form-control" ng-model="user.email" placeholder="E-mail">
+          <input name="phone" type="text" class="form-control" ng-model="user.addresses[0].phone" placeholder="Phone Number">
+        </form>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class="row">
+        <div class="panel panel-default credit-card-box">
+          <div class="panel-heading display-table" >
+            <div class="row display-tr" >
+              <h3 class="panel-title display-td">Payment Details</h3>
+                <div class="display-td" >
+                  <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                </div>
+            </div>
+          </div>
+          <div class="panel-body css-form" novalidate>
+            <form stripe-form="stripeCallback" id="paymentMethod">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="cardNumber">CARD NUMBER</label>
+                      <div class="input-group">
+                        <input
+                          type="tel"
+                          class="form-control"
+                          name="cardNumber"
+                          placeholder="Valid Card Number"
+                          autocomplete="cc-number"
+                          ng-model='number'
+                          ng-model-options="{ updateOn: 'blur' }"
+                          payments-format="card"
+                          required autofocus
+                        />
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-7 col-md-7">
+                    <div class="form-group">
+                      <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                        <input
+                          type="tel"
+                          class="form-control"
+                          name="cardExpiry"
+                          placeholder="MM / YY"
+                          autocomplete="cc-exp"
+                          ng-model='expiry'
+                          ng-model-options="{ updateOn: 'blur' }"
+                          required
+                        />
+                    </div>
+                  </div>
+                  <div class="col-xs-5 col-md-5 pull-right">
+                    <div class="form-group">
+                      <label for="cardCVC">CV CODE</label>
+                        <input
+                          type="tel"
+                          class="form-control"
+                          name="cardCVC"
+                          placeholder="CVC"
+                          autocomplete="cc-csc"
+                          ng-model='cvc'
+                          ng-model-options="{ updateOn: 'blur' }"
+                          payments-format="cvc"
+                          required
+                        />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <button class="btn btn-success btn-lg btn-block" type="submit">Submit Payment</button>
+                  </div>
+                </div>
+                <div class="row" style="display:none;">
+                  <div class="col-xs-12">
+                    <p class="payment-errors"></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
