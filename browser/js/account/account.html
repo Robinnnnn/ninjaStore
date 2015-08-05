@@ -21,20 +21,23 @@
 
 
 
-<div class="col-lg-10">
-    <div ng-if="admin" class="col-md-6">
-        <div ng-repeat="user in usersDisplay" ng-if="displayObject === 'users'" class="userDisplay">
-            <a ng-click="switchUser(user)" style="cursor:pointer"> {{user.name}}</a><a ng-if="user.isAdmin"> (admin)</a>
-            <div class="floatRight">
-                <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">Set Admin</button>
-                <button class="btn btn-danger" ng-if="user.isAdmin"ng-click="setAdmin(user,false)">Revoke Admin</button>
-                <button class="btn btn-danger" ng-click="deleteUser(user)">Delete</button>
-                <button class="btn btn-danger" ng-click="resetPassword(user)">Reset password</button>
+<div class="col-lg-10 account-page">
+        <div ng-if="admin && displayObject === 'users'" class="col-md-6">
+            <h2>All Users</h2>
+            <div ng-repeat="user in usersDisplay" class="userDisplay">
+                <a ng-click="switchUser(user)" style="cursor:pointer"> {{user.name}}</a><a ng-if="user.isAdmin"> (admin)</a>
+                <div class="floatRight">
+                    <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">Set Admin</button>
+                    <button class="btn btn-danger" ng-if="user.isAdmin"ng-click="setAdmin(user,false)">Revoke Admin</button>
+                    <button class="btn btn-danger" ng-click="deleteUser(user)">Delete</button>
+                    <button class="btn btn-danger" ng-click="resetPassword(user)">Reset password</button>
+                </div>
             </div>
         </div>
         
         <div class="createItem">
-            <div ng-if="displayObject === 'newItem'" class="form-group">
+            <div ng-if="displayObject === 'newItem'" class="form-group col-md-6">
+                <h2>Create A New Item</h2>
                 <input name="name" type="text" class="form-control" ng-model="newItem.name" placeholder="Item Name">
                 <input name="shortDescription" type="text" class="form-control" ng-model="newItem.description.short" placeholder="Short Description: Two sentences or less!">
                 <textarea name="longDescription" type="text" class="form-control" ng-model="newItem.description.long" placeholder="Long Description: As long as you want!"></textarea>
@@ -53,7 +56,8 @@
         </div>
 
         <div class="createCategory">
-            <div ng-if="displayObject === 'newCategory'" class="form-group">
+            <div ng-if="displayObject === 'newCategory'" class="form-group col-md-6">
+                <h2>Create A New Category</h2>
                 <input name="categories" type="text" class="form-control" ng-model="newItem.categories" placeholder="Enter New Category">
                 <button class="btn btn-success" ng-click="saveNewItem()" type="submit">
                     Save
@@ -97,15 +101,15 @@
             </button>
     </form>
     <div ng-if="displayObject==='orders'">
-    	<h3>Your Orders</h3>
+    	<h2>Your Orders</h2>
     	<div ng-repeat="order in orders" ng-if="orders">
     		<orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
     </div>
 
     <div ng-if="displayObject==='reviews'">
-        <h3>
+        <h2>
             Your reviews
-        </h3>
+        </h2>
         <div ng-repeat="reviews in reviews"></div>
     </div> 
    
