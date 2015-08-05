@@ -35,12 +35,12 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
         summary.totalBeforeTax = summary.itemPrice + summary.shipping;
         summary.total = summary.tax + summary.totalBeforeTax;
     }
-    // console.log($scope.order);
+
     $scope.summary = function() {
         $scope.summary = {
             numItem: $scope.order.items.length,
             itemPrice: $scope.order.items.reduce(function(sum, item) {
-                return sum + item.price;
+                return sum + item.price*item.quantity;
             }, 0)
         }
         updateSummary($scope.summary);
@@ -102,11 +102,13 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
 
     $scope.card = '';
     $scope.checkCard = function(){
-        var firstThreeNum = $scope.number.toString().slice(0,3);
-        if(firstThreeNum === '453' || firstThreeNum === '455') $scope.card = 'VISA';
-        if(firstThreeNum === '601') $scope.card = 'DISCOVER';
-        if(firstThreeNum === '523' || firstThreeNum === '526' || firstThreeNum === '543') $scope.card = 'MASTERCARD';
-        if(firstThreeNum === '370' || firstThreeNum === '346' || firstThreeNum === '374') $scope.card = 'AMEX';
+        if($scope.number){        
+            var firstThreeNum = $scope.number.toString().slice(0,3);
+            if(firstThreeNum === '453' || firstThreeNum === '455') $scope.card = 'VISA';
+            if(firstThreeNum === '601') $scope.card = 'DISCOVER';
+            if(firstThreeNum === '523' || firstThreeNum === '526' || firstThreeNum === '543') $scope.card = 'MASTERCARD';
+            if(firstThreeNum === '370' || firstThreeNum === '346' || firstThreeNum === '374') $scope.card = 'AMEX';
+        }
     };
 
     $scope.placeOrder = function() {
