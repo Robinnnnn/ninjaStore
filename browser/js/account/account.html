@@ -23,15 +23,19 @@
         <h1>Welcome to your account, {{user.name}}-San!</h1>
     </div>
 
-    <div ng-if="admin && displayObject === 'users'" class="col-md-6 centered">
+    <div ng-if="admin && displayObject === 'users'" class="col-lg-12 centered">
         <h2>All Users</h2>
-        <div ng-repeat="user in usersDisplay" class="userDisplay">
-            <a ng-click="switchUser(user)" style="cursor:pointer"> {{user.name}}</a><a ng-if="user.isAdmin"> (admin)</a>
-            <div class="floatRight">
-                <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">Set Admin</button>
-                <button class="btn btn-danger" ng-if="user.isAdmin"ng-click="setAdmin(user,false)">Revoke Admin</button>
-                <button class="btn btn-danger" ng-click="deleteUser(user)">Delete</button>
-                <button class="btn btn-danger" ng-click="resetPassword(user)">Reset password</button>
+        <div ng-repeat="user in usersDisplay" class="userDisplay centered">
+            <div class="users">
+                <div class="username" style="float:left">
+                    <a ng-click="switchUser(user)" style="cursor:pointer"> {{user.name}}</a><a ng-if="user.isAdmin"> (admin)</a>
+                </div>
+
+                <div style="float:right">
+                    <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">Set Admin</button>
+                    <button class="btn btn-danger" ng-if="user.isAdmin"ng-click="setAdmin(user,false)">Revoke Admin</button>
+                    <button class="btn btn-danger" ng-click="deleteUser(user)">Delete</button>
+                </div>
             </div>
         </div>
     </div>
@@ -70,7 +74,6 @@
     </div>
 
 
-    </div>
     <div ng-if="displayObject==='account'" class="col-md-6 centered">
     	<!-- <pre>{{account}}</pre> -->
         <h2>
@@ -105,9 +108,10 @@
     	<h2>Your Orders</h2>
     	<div ng-repeat="order in orders" ng-if="orders">
     		<orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
+        </div>
     </div>
 
-    <div ng-if="displayObject==='reviews'">
+    <div ng-if="displayObject==='reviews'" class="col-md-10 centered">
         <h2>
             Your reviews
         </h2>
