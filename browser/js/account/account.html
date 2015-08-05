@@ -16,7 +16,8 @@
                 <button class="btn btn-danger" ng-click="resetPassword(user)">Reset password</button>
             </div>
         </div>
-                <div class="createItem">
+        
+        <div class="createItem">
             <button class="btn btn-primary" ng-click="createItem()">Create New Item</button>
             <div ng-if="addingNewItem" class="form-group">
                 <input name="name" type="text" class="form-control" ng-model="newItem.name" placeholder="Item Name">
@@ -35,6 +36,21 @@
                 </button>
             </div>
         </div>
+
+        <div class="createCategory">
+            <button class="btn btn-primary" ng-click="createCategory()">Create New Category</button>
+            <div ng-if="addingCategory" class="form-group">
+                <input name="categories" type="text" class="form-control" ng-model="newItem.categories" placeholder="Enter New Category">
+                <button class="btn btn-success" ng-click="saveNewItem()" type="submit">
+                    Save
+                </button>
+                <button class="btn btn-danger" ng-click="cancelCreation()" type="submit">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+
     </div>
     <div ng-if="!editing" class="row">
     	<!-- <pre>{{account}}</pre> -->
