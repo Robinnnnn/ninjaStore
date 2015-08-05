@@ -32,6 +32,9 @@ app.factory('Promo', function($http) {
   Promo.prototype.fetchPromo = function() {
     return $http.get(this.url)
       .then(res => new Promo(res.data))
+      .catch(function(err){
+        console.log(err);
+      })
   }
 
   Promo.prototype.save = function() {
