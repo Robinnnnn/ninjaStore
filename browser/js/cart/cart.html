@@ -1,11 +1,13 @@
-<div class='col-md-8 col-md-offset-2'>
-  <div class='panel'>
-    <h1 class='page-header'>Cart Information</h1>
-    <orderdetail order="order"></orderdetail>
-    <p ng-if="!order.items.length" class="centered">Your cart is empty</p>
-  </div>
-  <div class="cart-options">
-  	<button class='btn btn-default' ng-click='clearCart()'>Empty Cart</button>
-  	<button class='btn btn-default' ng-click="checkOut()">Check Out</button>
-  </div>
+<div class='container'>	
+	<div class='col-md-8 col-md-offset-2'>
+	  <div class='panel'>
+	    <h1 class='page-header'>Cart Information</h1>
+	    <orderdetail order="order"></orderdetail>
+	    <p ng-if="!order.items.length" class="centered">Your cart is empty</p>
+	  </div>
+	  <div class="cart-options">
+	  	<button class='btn btn-default' ng-click='clearCart()'>Empty Cart</button>
+	  	<button class='btn btn-default' ng-click="checkOut()">Check Out</button>
+	  </div>
+	</div>
 </div>
