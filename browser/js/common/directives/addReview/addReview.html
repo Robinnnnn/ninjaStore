@@ -4,13 +4,16 @@
     class='form-control'
     ng-model='newReview.review'
     type='text'
-    placeholder='Let others know how tubular the {{item.name}} is.'>
+    placeholder='Let other ninjas know how tubular the {{item.name}} is.'
+    minlength="10">
 </div>
 <div class = "input-group">
     <a ng-mouseover="applyHoverClass(star)" ng-mouseleave="removeHoverClass()" ng-repeat="star in stars" ng-click="saveReview(star)">
 	    <img class="ratingStar opaque rotateHover" ng-class="{'rotate': starTrue[star], 'opaqueRemove': starPermTrue[star]}" src="https://www.karatemart.com/images/products/large/black-ronin-throwing-star.jpg" />
     </a>
 </div>
+<div class="input-group">
   <button
-    class='review-submit'
+    class='btn btn-md'
     ng-click='submitReview()'>Submit</button>
+</div>

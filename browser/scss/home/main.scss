@@ -5,6 +5,39 @@
   }
 }
 
+.Facebook{
+  background-color: #44619D;
+  color: white;
+  font-weight: bold;
+
+}
+
+.Google{
+  background-color: #D34332;
+  color: white;
+  font-weight:bold;
+}
+
+.Twitter{
+  background-color: #55ACEE;
+  color: white;
+  font-weight:bold;  
+}
+
+.recommendationContainer{
+  width:100%;
+}
+
+.recommendationImage{
+  height: 100px;
+  width:100%;
+}
+
+.recommendationThumbnail{
+  height:20%;
+  margin: 0px 10px 20px;
+}
+
 .itemContainer {
   width: 100%;
   margin: 0 auto;

@@ -1,4 +1,4 @@
-app.factory('User', function($http, Order) {
+app.factory('User', function($http, Order, Review) {
 	function User(props) {
 		angular.extend(this, props)
 		return this
@@ -36,8 +36,17 @@ app.factory('User', function($http, Order) {
 				return res.data.map(obj => new Order(obj))
 			})
 			.then(orders => {
-				console.log(orders);
 				return orders
+			})
+	}
+
+	User.prototype.fetchUserReviews = function() {
+		return $http.get(this.url + '/getReviews')
+			.then(res => {
+				return res.data.map(obj => new Review(obj))
+			})
+			.then(reviews => {
+				return reviews
 			})
 	}
 

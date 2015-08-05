@@ -1,7 +1,28 @@
 navbar {
 
+  @mixin spin {
+    -webkit-animation-name: spinnerRotate;
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spinnerRotate;
+    -moz-animation-duration: 0.4s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spinnerRotate;
+    -ms-animation-duration: 0.4s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+  }
+
+  &:hover {
+    #logo {
+      @include spin
+    }
+  }
+
   display: block;
-  background: white;
+  background-color: white;
   border-bottom: 1px solid black;
   box-shadow: 1px 1px 14px -3px black;
   height: 55px;
@@ -12,6 +33,36 @@ navbar {
     img {
       height: 100%;
     }
+  }
+
+  #home {
+    width: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+  }
+
+  #home:hover span {
+    display: none;
+  }
+
+  #home:hover:before {
+    content: 'ホーム';
+  }
+
+  #search {
+    width: 80px;
+    text-align: center;
+  }
+
+  #search:hover span {
+    display: none;
+  }
+
+  #search:hover:before {
+    content: '検索！';
+    font-style: italic;
+    color: #f31214;
   }
 
   .container {
@@ -51,10 +102,6 @@ navbar {
     }
   }
 
-  .navbar-right > p {
-
-  }
-
   .login-button {
     float: right;
     border: 1px solid black;
@@ -88,19 +135,4 @@ navbar {
 @-ms-keyframes spinnerRotate {
   from{-ms-transform:rotate(0deg);}
   to{-ms-transform:rotate(360deg);}
-}
-
-.spin {
-  -webkit-animation-name: spinnerRotate;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-name: spinnerRotate;
-  -moz-animation-duration: 1s;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-timing-function: linear;
-  -ms-animation-name: spinnerRotate;
-  -ms-animation-duration: 1s;
-  -ms-animation-iteration-count: infinite;
-  -ms-animation-timing-function: linear;
 }

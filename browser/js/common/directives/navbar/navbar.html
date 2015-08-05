@@ -8,9 +8,9 @@
         </div>
         <div class="navbar navbar-collapse collapse vcenter">
           <ul class="nav navbar-nav">
-              <li><a ui-sref='home'>Home</a></li>
+              <li><a id='home' ui-sref='home'><span>Home</span></a></li>
               <li class="dropdown" dropdown is-open="status.isopen">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdown-toggle>Categories <span class="caret"></span></a>
+                <a id="category" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdown-toggle><span id="disappear">Categories</span> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li ng-repeat='category in categories'><a ng-click='show(category)'>{{category}}</a></li>
                 </ul>
@@ -18,19 +18,14 @@
           </ul>
           <form class="navbar-form navbar-left vcenter" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search" ng-model="query">
+              <input type="text" class="form-control search" placeholder="Search" ng-model="query">
             </div>
-            <button ng-click="search()" type="submit" class="btn btn-default">Go!</button>
+            <button id='search' ng-click="search()" type="submit" class="btn btn-default"><span>Go!</span></button>
           </form>
           <div class='navbar-right vcenter'>
             <p ng-show='!user' class='navbar-text'><a ui-sref='login' class="navbar-link">Login</a></p>
-            <p ng-show='user' class="navbar-text">Signed in as <a href='' ng-click=manageAccount() class="navbar-link">{{ user.name }}</a></p>
-            <p ng-show='user' class='navbar-text'><a href='' ng-click='logout()' class="navbar-link">Logout</a></p>
-            <!-- <button
-              ng-show='user'
-              class='btn login-button'
-              ng-click='manageAccount()'>Account
-            </button> -->
+            <p ng-show='user' class="navbar-text"><span class='muted'>welcome ninja master </span><a href='' ng-click=manageAccount() class="navbar-link">{{ user.name }}</a></p>
+            <p ng-show='user' class='navbar-text'><a href='' ng-click='logout()' class="navbar-link" id="logout"><span>Logout</span></a></p>
             <p class="navbar-text"><a ui-sref="cart" class="glyphicon glyphicon-shopping-cart" aria-hidden="true">({{$root.cartContent}})</a></p>
           </div>
         </div>
