@@ -64,6 +64,16 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
                 $scope.order = null;
             })
     }
+    $scope.stripeCallback = function (code, result) {
+        console.log('go here')
+    if (result.error) {
+        window.alert('it failed! error: ' + result.error.message);
+    } else {
+        window.alert('You has been charged' + $scope.summary.total);
+        $scope.placeOrder();
+    }
+};
+
     $scope.editCardInformation = function(edit){
         $scope.editingCard = edit;
     }
