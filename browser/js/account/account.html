@@ -104,19 +104,24 @@
                 Save
             </button>
     </form>
-    <div ng-if="displayObject==='orders'" class="col-md-10 centered">
+    <div ng-if="displayObject==='orders'" class="container col-md-10 centered">
     	<h2>Your Orders</h2>
     	<div ng-repeat="order in orders" ng-if="orders">
     		<orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
         </div>
     </div>
 
-    <div ng-if="displayObject==='reviews'" class="col-md-10 centered">
-        <h2>
-            Your reviews
-        </h2>
-        <div ng-repeat="reviews in reviews"></div>
-            <review-detail review="review"></review-detail>
+    <div ng-if="displayObject==='reviews'" class="container col-md-10 centered">
+        <div ng-if="!reviews.length">
+            <h2>You've left no reviews! Go out and buy some things!</h2>
+        </div>
+        <div ng-if="reviews.length">
+            <h2>
+                Your reviews
+            </h2>
+            <div ng-repeat="reviews in reviews"></div>
+                <review-detail review="review"></review-detail>
+            </div>
         </div>
     </div> 
    
