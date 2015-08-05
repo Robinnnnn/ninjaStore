@@ -9,8 +9,14 @@
     <script src="/angular/angular.js"></script>
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="/socket.io-client/socket.io.js"></script>
+        <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="/angular-payments/lib/angular-payments.js"></script>
+    <script>
+      Stripe.setPublishableKey('pk_test_ry9WzkerlsFdaFuXVjZuWTlu');
+    </script>
+
 </head>
 <body ng-app="NinjaApp">
     <navbar></navbar>

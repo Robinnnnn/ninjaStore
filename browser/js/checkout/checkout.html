@@ -42,28 +42,33 @@
             </button>
         </div>
     </div>
-
+<!-- 
     <div id="paymentMethod" class="col-lg-6 css-form" novalidate>
         <h3> Payment Method</h3>
-        <form method="POST" id="payment-form" class="form-group" name="form">
-          <span class="payment-errors"></span>
-
-          <!-- css not working -->
+        
+        <form method="POST" id="payment-form" class="form-group" name="form" ng-if="editingCard">
+          <span class="payment-errors --><!-- " stripe-form="stripeCallback"></span>
+ -->
+          <!-- css not working --><!-- 
           <div class="form-row">
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="16" data-stripe="number" name="cardNumber" class="form-control" id="card-number" placeholder="Credit Card Number" ng-model="cardNumber" maxlength="16" required/>
-          </div>
+              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="16" data-stripe="number" name="cardNumber" class="form-control" id="card-number" placeholder="Credit Card Number" ng-model="card.number" maxlength="16" required payments-validate="card" payments-format="card"/>
+ -->          <!-- </div>
           <div>
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="3" maxlength="3" data-stripe="cvc" name="cvv" ng-model="cvv" class="form-control" placeholder="CVV" id="cvv" required/>
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="2"maxlength="2" data-stripe="exp-month" class="form-control" placeholder="MM" id="month" name="month" ng-model="month" required/> / 
-              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="4" maxlength="4" data-stripe="exp-year" class="form-control" placeholder="YYYY" id="year" name="year" ng-model="year" required/>
-              <button class="btn btn-success" ng-click="saveCardInformation()">
+              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="3" maxlength="3" data-stripe="cvc" name="cvv" ng-model="card.cvv" class="form-control" placeholder="CVV" id="cvv" required/>
+              <input type="number"  minlength="2"maxlength="2" data-stripe="exp-month" class="form-control" placeholder="MM" id="month" name="month" ng-model="card.month" required/> / 
+              <input type="number" ng-model-options="{ updateOn: 'blur' }" minlength="4" maxlength="4" data-stripe="exp-year" class="form-control" placeholder="YYYY" id="year" name="year" ng-model="card.year" required/>
+              <button class="btn btn-success" ng-click="editCardInformation(false)">
                 Save
               </button>
-          </div>
+              <button class="btn btn-success" ng-click="editCardInformation(true)">
+                Edit
+              </button>
+          </div> -->
         <!--   <span ng-show="form.cardNumber.$error.maxlength || form.cvv.$error.minlength || form.cvv.$error.maxlength || form.month.$error.maxlength || form.year.$error.maxlength">
                   Too many numbers!</span> -->
-        </form>
-    </div>
+        <!-- </form>
+        
+    </div> -->
 
     <div id="confirmItemShipping" class="col-lg-12">
         <h3>Review Your Purchase</h3>
@@ -81,11 +86,20 @@
     	</ul>
     	____________________________________________
     		<h4> Order Total: {{summary.total| currency}}</h4>
+    <div id="paymentMethod" class="col-lg-6 css-form" novalidate>
+        <form stripe-form="stripeCallback">
+                <input ng-model="number" ng-model-options="{ updateOn: 'blur' }" placeholder="Card Number" payments-format="card"/>
+                <input ng-model="expiry" ng-model-options="{ updateOn: 'blur' }" placeholder="Expiration"  />
+                <input ng-model="cvc" ng-model-options="{ updateOn: 'blur' }" placeholder="CVC" payments-format="cvc" />
+                <button class="btn btn-success" type="submit">Submit payment</button>
+        </form>
+    </div> 
 
-        <button class="btn btn-success" ng-click="placeOrder()" type="submit">
+
+        <!-- button  ng-click="placeOrder()" type="submit" stripe-form="stripeCallback">
         Place order
     </button>
-
+ -->
     </div>
     
 
