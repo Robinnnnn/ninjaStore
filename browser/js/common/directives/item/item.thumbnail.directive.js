@@ -14,7 +14,7 @@ app.directive('itemThumbnail', function() {
 				return title;
 			}
 
-			scope.item.shortTitle = shortenTitle(scope.item.name, 35);
+			scope.item.shortTitle = shortenTitle(scope.item.name, 25);
 
 			scope.item.price /= 100;
 		}
