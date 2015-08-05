@@ -33,7 +33,11 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	}
 
 	$scope.cancelCreation = function() {
-		$scope.addingNewItem = false;
+		$scope.addingNewItem = $scope.addingCategory = false;
+	}
+
+	$scope.createCategory = function() {
+		$scope.addingCategory = true;
 	}
 
 	$scope.displayUsers = function() {
