@@ -72,7 +72,7 @@
 			    <!-- <div class="list-group-item row carousel-row"> -->
 			        <div class="col-xs-8 col-xs-offset-2 slide-row">
 			            <div class="list-group-item row carousel-row" ng-repeat = "review in item.reviews">
-			                <h4>{{review.rating}}</h4>
+			            <div star-rating rating-value="review.rating" max="5" ></div>
 			                <p>
 			                    {{review.review}}
 			                </p>
