@@ -20,7 +20,7 @@
             <div class="form-group">
               <input type="text" class="form-control search" placeholder="Search" ng-model="query">
             </div>
-            <button ng-click="search()" type="submit" class="btn btn-default">Go!</button>
+            <button id='search' ng-click="search()" type="submit" class="btn btn-default"><span>Go!</span></button>
           </form>
           <div class='navbar-right vcenter'>
             <p ng-show='!user' class='navbar-text'><a ui-sref='login' class="navbar-link">Login</a></p>
