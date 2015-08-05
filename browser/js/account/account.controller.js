@@ -6,6 +6,7 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	$scope.user = user
 	$scope.orders = orders;
 	$scope.reviews = reviews;
+	console.log($scope.reviews[0]);
 	$scope.toggleDisplay = "Display";
 	$rootScope.admin = user.isAdmin
 
@@ -57,6 +58,9 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 		$scope.user = user
 		$scope.user.fetchUserOrders($scope.user._id).then(function(orders) {
 			$scope.orders = orders;
+		})
+		$scope.user.fetchUserReviews($scope.user._id).then(function(reviews) {
+			$scope.reviews = reviews;
 		})
 	}
 
