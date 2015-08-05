@@ -25,7 +25,7 @@ app.directive('addToCart', function($state, $rootScope, Item) {
         if (!scope.itemToPurchase.quantity) scope.itemToPurchase.quantity = 1
         scope.itemToPurchase.addToCart()
           .then(item => {
-            $state.go('cart')
+            // $state.go('cart')
             $rootScope.cartContent++;
           })
       }
