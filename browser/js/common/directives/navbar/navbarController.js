@@ -1,4 +1,4 @@
-app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state, Item, Order) {
+app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state, Item, Order, $timeout) {
 	$scope.query;
 	$scope.items;
 	Order.fetchCurrent();
@@ -19,6 +19,11 @@ app.controller('navbarCtrl', function($rootScope, $scope, searchFactory, $state,
 			$scope.categories = categories
 		})
 
-	$scope.shakeBool = true;
+	$rootScope.$on('cartItemAdded', function (event, data){
+		$scope.shakeBool = true;
+		$timeout(function(){
+			$scope.shakeBool = false;
+		}, 400);
+	});
 
 })

@@ -26,7 +26,7 @@
             <p ng-show='!user' class='navbar-text'><a ui-sref='login' class="navbar-link">Login</a></p>
             <p ng-show='user' class="navbar-text"><span class='muted'>welcome ninja master </span><a href='' ng-click=manageAccount() class="navbar-link">{{ user.name }}</a></p>
             <p ng-show='user' class='navbar-text'><a href='' ng-click='logout()' class="navbar-link">Logout</a></p>
-            <p class="navbar-text"><a ui-sref="cart" class="glyphicon glyphicon-shopping-cart" ng-class="{'shake shake-rotate':shakeBool}" aria-hidden="true">({{$root.cartContent}})</a></p>
+            <p class="navbar-text"><a ui-sref="cart" class="glyphicon glyphicon-shopping-cart" ng-class="{'shake shake-constant shake-rotate':shakeBool}" aria-hidden="true">({{$root.cartContent}})</a></p>
           </div>
         </div>
     </div>
