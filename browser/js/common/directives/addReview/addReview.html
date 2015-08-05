@@ -4,7 +4,8 @@
     class='form-control'
     ng-model='newReview.review'
     type='text'
-    placeholder='Let other ninjas know how tubular the {{item.name}} is.'>
+    placeholder='Let other ninjas know how tubular the {{item.name}} is.'
+    minlength="10">
 </div>
 <div class = "input-group">
     <a ng-mouseover="applyHoverClass(star)" ng-mouseleave="removeHoverClass()" ng-repeat="star in stars" ng-click="saveReview(star)">

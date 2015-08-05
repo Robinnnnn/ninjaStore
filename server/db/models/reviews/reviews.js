@@ -34,7 +34,7 @@ Review.path('review').validate(function(v) {
 Review.statics.getReviewByUser = function(userId) {
     return this.find({
         userId: userId
-    }).populate({path:'itemId._id',select:'name description photos categories'}).exec()
+    }).populate({path:'itemId',select:'name description photos categories price'}).exec()
 }
 
 
