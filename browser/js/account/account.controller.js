@@ -1,10 +1,11 @@
-app.controller('accountCtrl', function($scope, $state, $http, User, user, orders, $rootScope, Item) {
+app.controller('accountCtrl', function($scope, $state, $http, User, user, orders, reviews, $rootScope, Item) {
 	$scope.status = ["Created", "Completed", "Processing", "Cancelled"];
 	$scope.newItem = {
 		description: {}
 	}
 	$scope.user = user
 	$scope.orders = orders;
+	$scope.reviews = reviews;
 	$scope.toggleDisplay = "Display";
 	$rootScope.admin = user.isAdmin
 
