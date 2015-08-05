@@ -77,20 +77,23 @@
     <div ng-if="displayObject==='account'" class="col-md-6 centered">
     	<!-- <pre>{{account}}</pre> -->
         <h2>
-        	Account Information
+        	Ninja Account Information
         </h2>
-        <p>Name: {{user.name}}</p>
-        <p>Email: {{user.email}}</p>
-        <p>Address: {{user.addresses[0].address}}</p>
-        <p>City: {{user.addresses[0].city}}, {{user.addresses[0].state}}, {{user.addresses[0].zipcode}} </p>
-        <p>Country: {{user.addresses[0].country}} </p>
-        <p>Phone: {{user.addresses[0].phone}} </p>
+        <div class="accountInfo" align="left">
+            <p><b>Name:</b> {{user.name}}</p>
+            <p><b>Email:</b> {{user.email}}</p>
+            <p><b>Address:</b> {{user.addresses[0].address}}</p>
+            <p><b>City:</b> {{user.addresses[0].city}}, {{user.addresses[0].state}}, {{user.addresses[0].zipcode}} </p>
+            <p><b>Country:</b> {{user.addresses[0].country}} </p>
+            <p><b>Phone:</b> {{user.addresses[0].phone}} </p>
+        </div>
 
         <button class="btn btn-default" ng-click="editInformation()">
                 Edit
         </button>
     </div>
-    <form class="form-group col-md-6 centered" ng-if="displayObject==='editing'">
+    <form class="form-group col-md-4 centered" ng-if="displayObject==='editing'">
+            <h2>Edit Ninja Settings</h2>
             <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name">
             <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].address" placeholder="Street Address">
             <input name="city" type="text" class="form-control" ng-model="user.addresses[0].city" placeholder="City">
