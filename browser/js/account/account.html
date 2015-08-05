@@ -1,13 +1,29 @@
-<div class="container-fluid">
+<div id="sidebar-collapse" class="col-lg-2 sidebar">
+    <ul class="nav menu dashboard">
+        <h4>Admin Panel</h4>
+        <li ui-sref-active="active"><a ng-click="displayUsers()"><span class="glyphicon glyphicon-heart"></span> Display All Users</a></li>
+
+        <li ui-sref-active="active"><a ng-click="createItem()"><span class="glyphicon glyphicon-check"></span> Create New Item</a></li>
+
+        <li ui-sref-active="active"><a ng-click="createCategory()"><span class="glyphicon glyphicon-star"></span> Create New Category</a></li>
+
+        <li role="presentation" class="divider"></li>
+
+        <li ui-sref-active="active"><a ng-click="displayAccountInfo()"><span class="glyphicon glyphicon-gift"></span> Account Information</a></li>
+
+        <li ui-sref-active="active"><a ng-click="displayOrders()"><span class="glyphicon glyphicon-wrench"></span> Your Orders</a></li>
+
+        <li ui-sref-active="active"><a ng-click="displayReviews()"><span class="glyphicon glyphicon-wrench"></span> Your Reviews</a></li>
+    </ul>
+</div>
+
+
+
+
+
+<div class="col-lg-10">
     <div ng-if="admin" class="col-md-6">
-
-        <button class="btn btn-default" ng-click="displayUsers()">
-            {{toggleDisplay}} All Users
-        </button>
-
-        
-
-        <div ng-repeat="user in usersDisplay" ng-if="usersDisplay" class="userDisplay">
+        <div ng-repeat="user in usersDisplay" ng-if="displayObject === 'users'" class="userDisplay">
             <a ng-click="switchUser(user)" style="cursor:pointer"> {{user.name}}</a><a ng-if="user.isAdmin"> (admin)</a>
             <div class="floatRight">
                 <button class="btn btn-danger" ng-if="!user.isAdmin"ng-click="setAdmin(user,true)">Set Admin</button>
@@ -18,8 +34,7 @@
         </div>
         
         <div class="createItem">
-            <button class="btn btn-primary" ng-click="createItem()">Create New Item</button>
-            <div ng-if="addingNewItem" class="form-group">
+            <div ng-if="displayObject === 'newItem'" class="form-group">
                 <input name="name" type="text" class="form-control" ng-model="newItem.name" placeholder="Item Name">
                 <input name="shortDescription" type="text" class="form-control" ng-model="newItem.description.short" placeholder="Short Description: Two sentences or less!">
                 <textarea name="longDescription" type="text" class="form-control" ng-model="newItem.description.long" placeholder="Long Description: As long as you want!"></textarea>
@@ -31,28 +46,27 @@
                 <button class="btn btn-success" ng-click="saveNewItem()" type="submit">
                     Save
                 </button>
-                <button class="btn btn-danger" ng-click="cancelCreation()" type="submit">
+               <!--  <button class="btn btn-danger" ng-click="cancelCreation()" type="submit">
                     Cancel
-                </button>
+                </button> -->
             </div>
         </div>
 
         <div class="createCategory">
-            <button class="btn btn-primary" ng-click="createCategory()">Create New Category</button>
-            <div ng-if="addingCategory" class="form-group">
+            <div ng-if="displayObject === 'newCategory'" class="form-group">
                 <input name="categories" type="text" class="form-control" ng-model="newItem.categories" placeholder="Enter New Category">
                 <button class="btn btn-success" ng-click="saveNewItem()" type="submit">
                     Save
                 </button>
-                <button class="btn btn-danger" ng-click="cancelCreation()" type="submit">
+                <!-- <button class="btn btn-danger" ng-click="cancelCreation()" type="submit">
                     Cancel
-                </button>
+                </button> -->
             </div>
         </div>
 
 
     </div>
-    <div ng-if="!editing" class="row">
+    <div ng-if="displayObject==='account'" class="row">
     	<!-- <pre>{{account}}</pre> -->
         <h2>
         	Account Information
@@ -68,7 +82,7 @@
                 Edit
         </button>
     </div>
-    <form class="form-group" ng-if="editing">
+    <form class="form-group" ng-if="displayObject==='editing'">
             <input name="name" type="text" class="form-control" ng-model="user.name" placeholder="Full Name">
             <input name="streetAddress" type="text" class="form-control" ng-model="user.addresses[0].address" placeholder="Street Address">
             <input name="city" type="text" class="form-control" ng-model="user.addresses[0].city" placeholder="City">
@@ -82,25 +96,18 @@
                 Save
             </button>
     </form>
-    <div class="row">
-        <div>
-        	<h3>Your Orders</h3>
-        	<div ng-repeat="order in orders" ng-if="orders">
-        		<orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
-        </div>
-
-        <div >
-            <h3>
-                Your reviews
-            </h3>
-            <div ng-repeat="reviews in reviews"></div>
-        </div> 
+    <div ng-if="displayObject==='orders'">
+    	<h3>Your Orders</h3>
+    	<div ng-repeat="order in orders" ng-if="orders">
+    		<orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page>
     </div>
-    <div class"row">
+
+    <div ng-if="displayObject==='reviews'">
         <h3>
-
+            Your reviews
         </h3>
-
-    </div>
+        <div ng-repeat="reviews in reviews"></div>
+    </div> 
+   
 
 </div>
