@@ -86,6 +86,10 @@
     	</ul>
     	____________________________________________
     		<h4> Order Total: {{summary.total| currency}}</h4>
+        <form>
+            <input ng-model="promoCode">
+            <button class="btn btn-success" type="submit" ng-click="applyPromocode(promoCode)">Apply promo code</button>
+        </form>    
     <div id="paymentMethod" class="col-lg-6 css-form" novalidate>
         <form stripe-form="stripeCallback">
                 <input ng-model="number" ng-model-options="{ updateOn: 'blur' }" placeholder="Card Number" payments-format="card"/>

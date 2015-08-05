@@ -65,18 +65,22 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, $stat
             })
     }
     $scope.stripeCallback = function (code, result) {
-        console.log('go here')
-    if (result.error) {
-        window.alert('it failed! error: ' + result.error.message);
-    } else {
-        window.alert('You has been charged' + $scope.summary.total);
-        $scope.placeOrder();
-    }
-};
+        if (result.error) {
+            window.alert('it failed! error: ' + result.error.message);
+        } else {
+            window.alert('You has been charged' + $scope.summary.total);
+            $scope.placeOrder();
+        }
+    };
 
     $scope.editCardInformation = function(edit){
         $scope.editingCard = edit;
     }
+
+    $scope.applyPromocode = function(promoCode){
+        
+    }
+
     $scope.placeOrder = function() {
         if ($scope.fieldCompleted) {
             $scope.order.save().then(function(order) {

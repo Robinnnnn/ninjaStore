@@ -4,4 +4,5 @@
 require('./reviews/reviews')
 require('./items/item')
 require('./order/order')
+require('./promo/promo')
 require('./users/user')
