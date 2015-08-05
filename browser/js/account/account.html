@@ -101,28 +101,62 @@
     </div>
     <div ng-if="displayObject==='promo'" class="container col-md-10 centered">
         <h2>List of Promotion Code</h2>
-        <div ng-repeat="promo in promos" ng-if="promos"><!--
-            <orderdetail-account-page order="order" statuses="status" class="row"></orderdetail-account-page> -->
+        <div ng-repeat="promo in promos" ng-if="promos">
+            <p>
+                Code: {{promo.promoCode}}
+            </p>
+            <p>
+                Date created: {{promo.createdDate}}
+            </p>
+            <p>
+                Date expire: {{promo.expires}}
+            </p>
+            <p>
+                Percent off:{{promo.percentOff}}
+            </p>
+            <p>
+                Valid categories:{{promo.validCategories}}
+            </p>
         </div>
-        <div id="newPromoForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="input-group">
-                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="newPromo.createdDate" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                   <!--  <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span> -->
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p class="input-group">
-                    <input type="date" class="form-control" datepicker-popup ng-model="newPromo.expires" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                    <!-- <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span> -->
-                    </p>
-                </div>
-            </div>
+            <!-- <div id="newPromoForm">
+            
+            <div>Code name
+
+            </div> -->
+            <h3>Create new Promo code</h3>
+            <form class="form-group col-md-12 centered">
+                <input name="codeName" type="text" class="form-control" ng-model="newPromo.promoCode" placeholder="Code name">
+                <input name="percentOff" type="number" class="form-control" ng-model="newPromo.percentOff" placeholder="Percentage Off">
+                <input type="text" class="form-control" 
+                       datepicker-popup="mediumDate" 
+                       is-open="valuationDatePickerIsOpen" 
+                       ng-click="valuationDatePickerOpen()" 
+                       ng-model="newPromo.expires"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" 
+                          ng-click="valuationDatePickerOpen($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </button>
+                </span>
+
+
+                Categories Apply:<!-- 
+                <div ng-repeat="category in categories">
+                    <span> 
+
+                        <input type="checkbox" ng-model="newPromo.validCategories"/>
+                        {{category}}
+                    </span>
+
+                </div> -->
+                <select ng-model="newPromo.validCategories[0]" convert-to-number>
+                  <option ng-repeat='category in categories'>{{category}}</option>
+                </select>
+
+            <button class="btn btn-success" ng-click="createNewPromoCode()" type="submit">
+                    Save
+            </button>
+            </form>    
         </div>
     </div>
     <div ng-if="displayObject==='reviews'" class="container col-md-10 centered">

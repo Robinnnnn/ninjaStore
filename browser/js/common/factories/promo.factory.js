@@ -21,9 +21,6 @@ app.factory('Promo', function($http) {
       })
   }
 
-  // Promo.prototype.fetchByName = function() {
-  //   return $http.get()
-  // }
   Promo.fetchCurrent = () => {
     return $http.get(Promo.url + 'current')
       .then(res => new Promo(res.data))
@@ -40,7 +37,6 @@ app.factory('Promo', function($http) {
   Promo.prototype.save = function() {
     let verb
     let url
-    console.log(this);
     if (this.isNew()) {
       verb = 'post'
       url = Promo.url
