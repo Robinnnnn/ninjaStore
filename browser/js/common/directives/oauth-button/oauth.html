@@ -1,4 +1,5 @@
-<a target='_self' href="/auth/{{ providerName | lowercase }}" class="btn btn-default btn-social">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<a target='_self' href="/auth/{{ providerName | lowercase }}" class="btn btn-default btn-social" ng-class="{'{{providerName}}':true}">
 	<i class="fa fa-{{ providerName | lowercase }}"></i>
 	<span>Sign in with {{ providerName }}</span>
 </a>
