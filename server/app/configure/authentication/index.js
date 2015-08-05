@@ -9,13 +9,13 @@ var UserModel = mongoose.model('User');
 
 var ENABLED_AUTH_STRATEGIES = [
     'local',
-    'twitter',
+    // 'twitter',
     'facebook',
     'google'
 ];
 
 module.exports = function(app) {
-
+// 
     // First, our session middleware will set/read sessions from the request.
     // Our sessions will get stored in Mongo using the same connection from
     // mongoose. Check out the sessions collection in your MongoCLI.
