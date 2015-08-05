@@ -1,6 +1,6 @@
 app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo, $state) {
     $scope.order = order;
-    $scope.editing=false;
+    $scope.editing = false;
     $scope.editingCard = true;
     $scope.appliedPromo = false;
 
@@ -28,6 +28,7 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
     }
 
     function updateSummary(summary) {
+        summary.itemPrice /= 100;
         summary.shipping = summary.itemPrice * 0.03;
         summary.tax = summary.itemPrice * 0.08;
         summary.totalBeforeTax = summary.itemPrice + summary.shipping;
@@ -49,7 +50,7 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
     $scope.saveInformation = function(user) {
         $scope.order.userInfo = user;
         $scope.user = user;
-        $scope.editing=false;
+        $scope.editing = false;
         // $scope.fieldCompleted = true;
     }
 
@@ -57,7 +58,7 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
         console.log($scope.user);
         // $scope.customer = $scope.user;
         // $scope.user = null;
-        $scope.editing=true;
+        $scope.editing = true;
     }
 
     $scope.clearCart = () => {
@@ -66,7 +67,7 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
                 $scope.order = null;
             })
     }
-    $scope.stripeCallback = function (code, result) {
+    $scope.stripeCallback = function(code, result) {
         if (result.error) {
             window.alert('it failed! error: ' + result.error.message);
         } else {
@@ -75,15 +76,17 @@ app.controller("checkoutCtrl", function($scope, order, AuthService, Order, Promo
         }
     };
 
-    $scope.editCardInformation = function(edit){
+    $scope.editCardInformation = function(edit) {
         $scope.editingCard = edit;
     }
 
-    $scope.applyPromocode = function(promoCode){
+    $scope.applyPromocode = function(promoCode) {
         console.log('go here')
-        new Promo({promoCode:promoCode}).fetchPromo().then(function(promo){
-            $scope.summary.total = $scope.summary.total*(1-promo.percentOff/100)
-            // console.log(promo.percentOff)
+        new Promo({
+            promoCode: promoCode
+        }).fetchPromo().then(function(promo) {
+            $scope.summary.total = $scope.summary.total * (1 - promo.percentOff / 100)
+                // console.log(promo.percentOff)
         })
     }
 

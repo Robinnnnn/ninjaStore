@@ -13,13 +13,13 @@ app.config(function($stateProvider) {
           .then(() => {
             $state.go('home')
           })
-      }    
+      }
       $scope.checkOut = () => {
-        if($rootScope.cartContent){
-            $state.go('checkOut')
+        if ($rootScope.cartContent) {
+          $state.go('checkOut')
         } else {
-            window.alert('Your cart is empty, bitch!')
-            $state.go('home')
+          window.alert('Your cart is empty, bitch!')
+          $state.go('home')
         }
       }
     }

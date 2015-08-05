@@ -1,7 +1,6 @@
-<div class="container orderDetail">
-    <hr>
+<div class="orderDetail">
     <!-- Begin of rows -->
-    <div class="row carousel-row" ng-repeat="item in order.items">
+    <div class="row carousel-row" ng-repeat="item in order.items" style="margin-bottom: 15px">
         <div class="col-xs-8 col-xs-offset-2 slide-row">
             <div id="carousel-1" class="carousel slide slide-carousel" data-ride="carousel">
               <!-- Wrapper for slides -->
@@ -15,7 +14,7 @@
                 <h4>{{item.name}}</h4>
                 <p>{{item.description.short}}
                 </p>
-                <strong>Price: </strong> {{item.price}}
+                <strong>$</strong> {{item.price}}
             </div>
             <div class="slide-footer">
                 <span class="pull-right buttons">
