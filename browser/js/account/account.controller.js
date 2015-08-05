@@ -76,7 +76,7 @@ app.controller('accountCtrl', function($scope, $state, $http, User, user, orders
 	}
 
 	$scope.displayReviews = function() {
-		$scope.displayObject = 'reviews'
+		$scope.displayObject = 'reviews';
 	}
 
 	$scope.switchUser = function(user) {
