@@ -5,26 +5,24 @@ var mongoose = require('mongoose');
 
 var _ = require('lodash');
 var Promo = mongoose.model('Promo')
+var HttpError = require('../../utils/HttpError');
 
 router.param('id', function(req, res, next, id) {
     Promo.findById(id).then(function(promo) {
-        if (promo) {
+        if(!promo) throw HttpError(404);
+        else{
             req.promo = promo;
-            if (req.promo.userId.toString() === req.user._id.toString() || req.user.isAdmin) return next()
-            res.status(401).end()
-        } else {
-            throw Error('promo not found')
+            next();
         }
     }).then(null, next)
 })
 
 router.param('name', function(req, res, next, name) {
     Promo.findOne({promoCode:name}).then(function(promo) {
-        if (promo) {
+        if(!promo) throw HttpError(404);
+        else{
             req.promo = promo;
             next();
-        } else {
-            throw Error('promo not found')
         }
     }).then(null, next)
 })
