@@ -18,6 +18,17 @@ router.param('id', function(req, res, next, id) {
     }).then(null, next)
 })
 
+router.param('name', function(req, res, next, name) {
+    Promo.findOne({promoCode:name}).then(function(promo) {
+        if (promo) {
+            req.promo = promo;
+            next();
+        } else {
+            throw Error('promo not found')
+        }
+    }).then(null, next)
+})
+
 // AUTH >>> ADMIN
 router.get('/',
     function(req, res, next) {
@@ -25,9 +36,9 @@ router.get('/',
         res.status(401).end()
     },
     function(req, res, next) {
-        Order.find({}).exec()
-            .then(function(orders) {
-                res.json(orders)
+        Promo.find({}).exec()
+            .then(function(promos) {
+                res.json(promos)
             })
             .then(null, next);
     }
@@ -40,16 +51,16 @@ router.post('/', function(req, res, next) {
 
 // AUTH >>> Current User or Admin
 router.get('/:id', function(req, res, next) {
-    res.status(200).json(req.order);
+    res.status(200).json(req.promo);
 })
 
-router.get('/name/:name', function(req, res, next) {
-    res.status(200).json(req.order);
+router.get('/code/:name', function(req, res, next) {
+    res.status(200).json(req.promo);
 })
 
 
 // AUTH >>> Current User or Admin
-// consider using order.updateOrderState() method
+// consider using promo.updatepromoState() method
 router.put('/:id', function(req, res, next) {
     
 })

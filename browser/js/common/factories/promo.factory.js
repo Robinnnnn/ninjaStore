@@ -4,10 +4,10 @@ app.factory('Promo', function($http) {
     return this
   }
 
-  Promo.url = '/api/Promo/'
+  Promo.url = '/api/promo/'
 
   Object.defineProperty(Promo.prototype, 'url', {
-    get: function() { return Promo.url + this._id }
+    get: function() { return Promo.url + 'code/'+this.promoCode }
   })
 
   Promo.prototype.isNew = function() { return !this._id }
@@ -21,12 +21,15 @@ app.factory('Promo', function($http) {
       })
   }
 
+  // Promo.prototype.fetchByName = function() {
+  //   return $http.get()
+  // }
   Promo.fetchCurrent = () => {
     return $http.get(Promo.url + 'current')
       .then(res => new Promo(res.data))
   }
 
-  Promo.prototype.fetch = function() {
+  Promo.prototype.fetchPromo = function() {
     return $http.get(this.url)
       .then(res => new Promo(res.data))
   }

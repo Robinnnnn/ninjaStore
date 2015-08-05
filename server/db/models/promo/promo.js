@@ -9,6 +9,7 @@ var Promo = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'
     }],
+    percentOff:Number,
     validCategories:[String]
 });
 

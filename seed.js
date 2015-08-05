@@ -29,7 +29,7 @@ var Promo = Promise.promisifyAll(mongoose.model('Promo'));
 
 var wipeDB = function () {
 
-    var models = [User, Item, Order, Review];
+    var models = [User, Item, Order, Review, Promo];
     var promiseArr = [];
     models.forEach(function (model) {
         promiseArr.push(model.find({}).remove().exec());
@@ -2762,11 +2762,13 @@ var seedPromo = function(){
      promoCode:"ninjaCrazy",
      createdDate: new Date(),
      expires:addDays(new Date(), 5),
+     percentOff:20,
      validCategories:["sai","books"]
   },{
      promoCode:"ninjaAwesome",
      createdDate: new Date(),
      expires:addDays(new Date(), 5),
+     percentOff:10,
      validCategories:["swords","blowguns"]
   }]
   return Promo.createAsync(promos);
