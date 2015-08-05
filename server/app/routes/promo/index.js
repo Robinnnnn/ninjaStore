@@ -42,9 +42,16 @@ router.get('/',
     }
 );
 
-// AUTH >>> Everyone
-router.post('/', function(req, res, next) {
-   
+// AUTH >>> Admin
+router.post('/',function(req, res, next) {
+        if (req.user.isAdmin) return next()
+        res.status(401).end()
+    }, 
+    function(req, res, next) {
+        Promo.create(req.body).then(function(promo){
+            res.json(promo);
+        })
+        .then(null,next);
 })
 
 // AUTH >>> Current User or Admin

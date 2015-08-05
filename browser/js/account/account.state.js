@@ -12,6 +12,9 @@ app.config(function($stateProvider) {
 			},
 			reviews: (user) => {
 				return user.fetchUserReviews()
+			},
+			categories:(Item) => {
+				return Item.getCategories();
 			}
 		},
 		controller: "accountCtrl"
